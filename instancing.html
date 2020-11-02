@@ -34,7 +34,7 @@
 				a *= smoothstep(thickness, thickness + smoothness, length(abs(vPos.yz) - size.yz));
 				a *= smoothstep(thickness, thickness + smoothness, length(abs(vPos.xz) - size.xz));
 				
-				vec3 c = mix(vec3(1), vec3(0), a);
+				vec3 c = mix(vec3(0), vec3(1), a);
 				
 				gl_FragColor = vec4(c, 1.0);
 			  }
@@ -53,6 +53,10 @@
 
 			let boxes, spheres, wireFrames;
 
+			var boxCount = 180
+			let flowControlPositions
+
+			let liftIndex = 0
 			init();
 
 			async function init() {
@@ -63,11 +67,14 @@
 				// Camera
 
 				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
-				camera.position.set( - 1, 1.5, 2 );
-				camera.lookAt( 0, 0.5, 0 );
+				camera.position.set( 0, 4.5, 0 );
+				camera.rotation.x = 1.2
+				camera.rotation.y = 1.8
+				camera.rotation.z = -1
+				// camera.lookAt( 1.5, 4.5, 1 );
 
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 'grey' );
+				scene.background = new THREE.Color( 'white' );
 
 				// Lights
 
@@ -85,13 +92,51 @@
 
 				const floor = new THREE.Mesh(
 					new THREE.BoxBufferGeometry( 10, 5, 10 ),
-					new THREE.ShadowMaterial( { color: 'blue' } )
+					// new THREE.ShadowMaterial( { color: 'blue' } )
+					new THREE.MeshBasicMaterial({ color: 'white' } )
 				);
-				floor.position.y = - 2.5;
+				floor.position.y = - 10.5;
 				floor.receiveShadow = true;
 				scene.add( floor );
 				physics.addMesh( floor );
 
+				// Flow Control Object
+				const flowControl = new THREE.Mesh(
+					new THREE.BoxBufferGeometry( 5, .5, 5 ),
+					// new THREE.ShadowMaterial( { color: 'blue' } )
+					new THREE.MeshBasicMaterial({ color: 'blue' } )
+				);
+				flowControlPositions = {
+					xRotation : 9.7,
+					yRotation : 0,
+					zRotation : 8.5,
+					xPosition : 0,
+					yPosition : 4,
+					zPosition : -2,
+				}
+
+				flowControl.rotation.x = flowControlPositions.xRotation
+				flowControl.rotation.z = flowControlPositions.zRotation
+				flowControl.position.y = flowControlPositions.yPosition;
+				flowControl.position.x = flowControlPositions.xPosition;
+				flowControl.position.z = flowControlPositions.zPosition;
+				flowControl.receiveShadow = true;
+				scene.add( flowControl );
+				physics.addMesh( flowControl );
+
+				const flowControl2 = new THREE.Mesh(
+					new THREE.BoxBufferGeometry( 5, .5, 5 ),
+					// new THREE.ShadowMaterial( { color: 'blue' } )
+					new THREE.MeshBasicMaterial({ color: 'blue' } )
+				);
+				flowControl2.rotation.x = flowControlPositions.xRotation
+				flowControl2.rotation.z = -(flowControlPositions.zRotation)
+				flowControl2.position.y = flowControlPositions.yPosition;
+				flowControl2.position.x = flowControlPositions.xPosition;
+				flowControl2.position.z = flowControlPositions.zPosition;
+				flowControl2.receiveShadow = true;
+				scene.add( flowControl2 );
+				physics.addMesh( flowControl2 );
 				// Object Material
 
 				const geometryBox = new THREE.BoxBufferGeometry( .1, .1, .1 );
@@ -130,17 +175,16 @@
 				// var box2 = new THREE.Mesh(geometryBox, material)
 				boxes = []
 
-				for (let i = 0; i < 100; i++) {
+				for (let i = 0; i < boxCount; i++) {
 
 					var box = new THREE.Mesh(geometryBox, material)
 					console.log('this')
 					scene.add( box );
 					boxes.push(box)
-					physics.addMesh( box, .1 );
+					physics.addMesh( box, 10 );
 					box.castShadow = true;
 					box.receiveShadow = true;
 				}
-				console.log(boxes)
 
 				// boxes.castShadow = true;
 				// boxes.receiveShadow = true;
@@ -162,8 +206,32 @@
 
 				// Wireframe
 				var gui = new dat.GUI();
-				gui.add(material.uniforms.thickness, "value", 0.01, 1.0).name("thickness");
-				gui.add(material.uniforms.smoothness, "value", 0.01, 1.0).name("smoothness");
+				const cameraFolder = gui.addFolder("Camera")
+				cameraFolder.add(camera.position, "y", 0, 10).name("camera y");
+				cameraFolder.add(camera.position, "x", 0, 10).name("camera x");
+				cameraFolder.add(camera.position, "z", 0, 10).name("camera z");
+				cameraFolder.add(camera.rotation, "y", -4, 4).name("rotation y");
+				cameraFolder.add(camera.rotation, "x", -4, 4).name("rotation x");
+				cameraFolder.add(camera.rotation, "z", -4, 4).name("rotation z");
+
+				const boxLinesFolder = gui.addFolder("BoxLines")
+				boxLinesFolder.add(material.uniforms.thickness, "value", 0.001, .01).name("thickness");
+				boxLinesFolder.add(material.uniforms.smoothness, "value", 0.001, .01).name("smoothness");
+				
+				const flowControlFolder = gui.addFolder("FlowControl")
+
+				flowControlFolder.add(flowControl.position, "x", 0, 10).name("flowControl x");
+				flowControlFolder.add(flowControl.position, "z", 0, 10).name("flowControl z");
+				flowControlFolder.add(flowControl.rotation, "y", 0, 10).name("fc rotation y");
+				flowControlFolder.add(flowControl.rotation, "x", 8, 11).name("fc rotation x");
+				flowControlFolder.add(flowControl.rotation, "z", 0, 10).name("fc rotation z");
+
+				
+				flowControlFolder.add(flowControl2.position, "x", 0, 10).name("flowControl2 x");
+				flowControlFolder.add(flowControl2.position, "z", 0, 10).name("flowControl2 z");
+				flowControlFolder.add(flowControl2.rotation, "y", 0, 10).name("fc2 rotation y");
+				flowControlFolder.add(flowControl2.rotation, "x", 8, 11).name("fc2 rotation x");
+				flowControlFolder.add(flowControl2.rotation, "z", 0, 10).name("fc2 rotation z");
 
 				// Renderer
 
@@ -180,30 +248,41 @@
 				// Renderer
 
 				const controls = new OrbitControls( camera, renderer.domElement );
-				controls.target.y = 0.5;
+				// controls.target.y = 0;
+				// controls.target.x = 0;
+				// controls.target.z = 0;
 				controls.update();
 
 				animate();
 
 			}
-
+			
 			function animate() {
 
 				requestAnimationFrame( animate );
 				
-				let index
-				// Picks a random box
-				index = Math.floor( Math.random() * 100 );
-				// Randomly sets a new position at top
-				// boxes[index].position.x = ( Math.random() + 10 )
-				position.set( 0, Math.random() + 1, 0 );
-				physics.setMeshPosition(boxes[index], position)
+				if (liftIndex === boxCount) {
+					liftIndex = 0
+				}
+				else {
+					liftIndex++
+				}
+				
+				for (let i = 0; i < 2; i++) {
+					// Picks a random box
+					// index = Math.floor( Math.random() * boxCount );
+					// Randomly sets a new position at top
+					// boxes[index].position.x = ( Math.random() + 10 )
+					position.set( Math.random() - .5, Math.random() + 6, Math.random() - .5);
+					physics.setMeshPosition(boxes[liftIndex], position)
 
-				// boxes.setColorAt( index, color.setHex( 'blue' * Math.random() ) );
-				// moves mesh to that position
-				// physics.setMeshPosition( boxes, position, index );
+					// boxes.setColorAt( index, color.setHex( 'blue' * Math.random() ) );
+					// moves mesh to that position
+					// physics.setMeshPosition( boxes, position, index );
 
 
+
+				}
 
 
 				//
