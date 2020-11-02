@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js physics - ammo.js instancing</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<link type="text/css" rel="stylesheet" href="main.css">
+	</head>
+	<body>
+
+		<div id="info">
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> physics - ammo.js instancing
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js"></script>
+		<script src="./three/examples/js/libs/ammo.wasm.js"></script>
+		<script>
+			var vertexShader = `
+			  varying vec3 vPos;
+			  void main()	{
+				vPos = position;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+			  }
+			`;
+			var fragmentShader = `
+		  
+			  varying vec3 vPos;
+			  uniform vec3 size;
+			  uniform float thickness;
+			  uniform float smoothness;
+			 
+			  void main() {
+					  
+				float a = smoothstep(thickness, thickness + smoothness, length(abs(vPos.xy) - size.xy));
+				a *= smoothstep(thickness, thickness + smoothness, length(abs(vPos.yz) - size.yz));
+				a *= smoothstep(thickness, thickness + smoothness, length(abs(vPos.xz) - size.xz));
+				
+				vec3 c = mix(vec3(1), vec3(0), a);
+				
+				gl_FragColor = vec4(c, 1.0);
+			  }
+			`;
+		  
+		</script>
+		<script type="module">
+
+			import * as THREE from './three/build/three.module.js';
+			import { OrbitControls } from './three/examples/jsm/controls/OrbitControls.js';
+			import { AmmoPhysics } from './three/examples/jsm/physics/AmmoPhysics.js';
+			import Stats from './three/examples/jsm/libs/stats.module.js';
+
+			let camera, scene, renderer, stats;
+			let physics, position;
+
+			let boxes, spheres, wireFrames;
+
+			init();
+
+			async function init() {
+
+				physics = await AmmoPhysics();
+				position = new THREE.Vector3();
+
+				// Camera
+
+				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
+				camera.position.set( - 1, 1.5, 2 );
+				camera.lookAt( 0, 0.5, 0 );
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 'grey' );
+
+				// Lights
+
+				const hemiLight = new THREE.HemisphereLight();
+				hemiLight.intensity = 0.35;
+				scene.add( hemiLight );
+
+				const dirLight = new THREE.DirectionalLight();
+				dirLight.position.set( 5, 5, 5 );
+				dirLight.castShadow = true;
+				dirLight.shadow.camera.zoom = 2;
+				scene.add( dirLight );
+
+				// Floor
+
+				const floor = new THREE.Mesh(
+					new THREE.BoxBufferGeometry( 10, 5, 10 ),
+					new THREE.ShadowMaterial( { color: 'blue' } )
+				);
+				floor.position.y = - 2.5;
+				floor.receiveShadow = true;
+				scene.add( floor );
+				physics.addMesh( floor );
+
+				// Object Material
+
+				const geometryBox = new THREE.BoxBufferGeometry( .1, .1, .1 );
+
+				var material = new THREE.ShaderMaterial({
+				uniforms: {
+					size: {
+					value: new THREE.Vector3(geometryBox.parameters.width, geometryBox.parameters.height, geometryBox.parameters.depth).multiplyScalar(0.5)
+					},
+					thickness: {
+						value: 0.001
+					},
+					smoothness: {
+						value: 0.001
+					}
+				},
+				vertexShader: vertexShader,
+				fragmentShader: fragmentShader
+				});
+				// const material = new THREE.MeshLambertMaterial();
+
+				// const material = new THREE.ShaderMaterial();
+				const matrix = new THREE.Matrix4();
+				const color = new THREE.Color();
+
+				// Wireframe Material
+
+				const wireFrameMaterial = new THREE.LineBasicMaterial({color: 'black'})
+
+				// Boxes
+				// var box = new THREE.Mesh( geometryBox, material );
+				// scene.add( box );
+				// const geometryWireFrame = new THREE.EdgesGeometry( geometryBox )
+				// wireFrames = new THREE.LineSegments(geometryWireFrame, wireFrameMaterial, 10)
+				// boxes = new THREE.InstancedMesh( geometryBox, material, 100 );
+				// var box2 = new THREE.Mesh(geometryBox, material)
+				boxes = []
+
+				for (let i = 0; i < 100; i++) {
+
+					var box = new THREE.Mesh(geometryBox, material)
+					console.log('this')
+					scene.add( box );
+					boxes.push(box)
+					physics.addMesh( box, .1 );
+					box.castShadow = true;
+					box.receiveShadow = true;
+				}
+				console.log(boxes)
+
+				// boxes.castShadow = true;
+				// boxes.receiveShadow = true;
+				// scene.add( boxes );
+				// scene.add( wireFrames )
+				// console.log(boxes)
+				// for ( let i = 0; i < boxes.count; i ++ ) {
+					// Sets initial loading position of boxes
+					// matrix.setPosition( Math.random() - 0.5, Math.random() * 2, Math.random() - 0.5 );
+					// boxes.setMatrixAt( i, matrix );
+					// boxes.setColorAt( i, color.setHex( 0xffffff ) );
+
+				// }
+
+				
+				// physics.addMesh(wireFrames, .1)
+				// physics.addMesh( boxes, .1 );
+				// physics.addMesh( box, .1 );
+
+				// Wireframe
+				var gui = new dat.GUI();
+				gui.add(material.uniforms.thickness, "value", 0.01, 1.0).name("thickness");
+				gui.add(material.uniforms.smoothness, "value", 0.01, 1.0).name("smoothness");
+
+				// Renderer
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.shadowMap.enabled = true;
+				renderer.outputEncoding = THREE.sRGBEncoding;
+				document.body.appendChild( renderer.domElement );
+				renderer.setClearColor(0x404040);
+				stats = new Stats();
+				document.body.appendChild( stats.dom );
+
+				// Renderer
+
+				const controls = new OrbitControls( camera, renderer.domElement );
+				controls.target.y = 0.5;
+				controls.update();
+
+				animate();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+				
+				let index
+				// Picks a random box
+				index = Math.floor( Math.random() * 100 );
+				// Randomly sets a new position at top
+				// boxes[index].position.x = ( Math.random() + 10 )
+				position.set( 0, Math.random() + 1, 0 );
+				physics.setMeshPosition(boxes[index], position)
+
+				// boxes.setColorAt( index, color.setHex( 'blue' * Math.random() ) );
+				// moves mesh to that position
+				// physics.setMeshPosition( boxes, position, index );
+
+
+
+
+				//
+
+				// index = Math.floor( Math.random() * spheres.count );
+
+				// position.set( 0, Math.random() + 1, 0 );
+				// // physics.setMeshPosition( spheres, position, index );
+
+				renderer.render( scene, camera );
+
+				stats.update();
+
+			}
+
+		</script>
+	</body>
+</html>

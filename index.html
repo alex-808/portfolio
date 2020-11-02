@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+
+		<script type="module">
+            import * as THREE from 'https://unpkg.com/three@0.122.0/build/three.module.js';
+            import {CSS2DRenderer} from 'https://unpkg.com/three@0.122.0/examples/jsm/renderers/CSS2DRenderer.js';
+
+            // Renderer
+            // const renderer = new CSS2DRenderer();
+            const renderer = new THREE.WebGLRenderer({antialias: true});
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+            renderer.setClearColor('white');
+
+            // Scene
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            // Cube
+            const geometry = new THREE.BoxGeometry();
+			const material = new THREE.MeshBasicMaterial( { color: 'white'} );
+			const cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+            camera.position.z = 5;
+            
+            // Line
+            const edges = new THREE.EdgesGeometry( geometry );
+            const line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 'black', lineWidth: 10 } ) );
+            scene.add( line );
+
+            // Render
+			const animate = function () {
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                line.rotation.x += 0.01;
+				line.rotation.y += 0.01;
+
+				renderer.render( scene, camera );
+			};
+
+            animate();
+            
+            // I'm thinking just a flow of boxes
+            // Or a two dimensional flocking simulation
+
+		</script>
+	</body>
+</html>
+
