@@ -1,0 +1,16 @@
+body {
+    background-image: url("white\ and\ black\ clean.png");
+    background-attachment: fixed;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    height: 3000px;
+}
+
+canvas {
+    height: 3000px;
+}
+
+#container {
+    height: 3000px;
+    
+}

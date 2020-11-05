@@ -8,9 +8,13 @@
 	</head>
 	<body>
 
+
 		<div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> physics - ammo.js instancing
 		</div>
+
+
+		<!-- Scripts -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js"></script>
 		<script src="./three/examples/js/libs/ammo.wasm.js"></script>
 		<script>
@@ -67,26 +71,26 @@
 				// Camera
 
 				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
-				camera.position.set( 0, 4.5, 0 );
-				camera.rotation.x = 1.2
-				camera.rotation.y = 1.8
-				camera.rotation.z = -1
+				camera.position.set( 1.4, 3.7, 1 );
+				camera.rotation.x = 1
+				camera.rotation.y = 1.7
+				camera.rotation.z = -0.7
 				// camera.lookAt( 1.5, 4.5, 1 );
 
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 'white' );
+				// scene.background = new THREE.Color( 'white' );
 
 				// Lights
 
 				const hemiLight = new THREE.HemisphereLight();
 				hemiLight.intensity = 0.35;
-				scene.add( hemiLight );
+				// scene.add( hemiLight );
 
 				const dirLight = new THREE.DirectionalLight();
 				dirLight.position.set( 5, 5, 5 );
 				dirLight.castShadow = true;
 				dirLight.shadow.camera.zoom = 2;
-				scene.add( dirLight );
+				// scene.add( dirLight );
 
 				// Floor
 
@@ -121,7 +125,7 @@
 				flowControl.position.x = flowControlPositions.xPosition;
 				flowControl.position.z = flowControlPositions.zPosition;
 				flowControl.receiveShadow = true;
-				scene.add( flowControl );
+				// scene.add( flowControl );
 				physics.addMesh( flowControl );
 
 				const flowControl2 = new THREE.Mesh(
@@ -135,11 +139,11 @@
 				flowControl2.position.x = flowControlPositions.xPosition;
 				flowControl2.position.z = flowControlPositions.zPosition;
 				flowControl2.receiveShadow = true;
-				scene.add( flowControl2 );
+				// scene.add( flowControl2 );
 				physics.addMesh( flowControl2 );
 				// Object Material
 
-				const geometryBox = new THREE.BoxBufferGeometry( .1, .1, .1 );
+				const geometryBox = new THREE.BoxBufferGeometry( .2, .2, .2 );
 
 				var material = new THREE.ShaderMaterial({
 				uniforms: {
@@ -147,7 +151,7 @@
 					value: new THREE.Vector3(geometryBox.parameters.width, geometryBox.parameters.height, geometryBox.parameters.depth).multiplyScalar(0.5)
 					},
 					thickness: {
-						value: 0.001
+						value: 0.002
 					},
 					smoothness: {
 						value: 0.001
@@ -226,32 +230,39 @@
 				flowControlFolder.add(flowControl.rotation, "x", 8, 11).name("fc rotation x");
 				flowControlFolder.add(flowControl.rotation, "z", 0, 10).name("fc rotation z");
 
-				
+			
 				flowControlFolder.add(flowControl2.position, "x", 0, 10).name("flowControl2 x");
 				flowControlFolder.add(flowControl2.position, "z", 0, 10).name("flowControl2 z");
 				flowControlFolder.add(flowControl2.rotation, "y", 0, 10).name("fc2 rotation y");
 				flowControlFolder.add(flowControl2.rotation, "x", 8, 11).name("fc2 rotation x");
 				flowControlFolder.add(flowControl2.rotation, "z", 0, 10).name("fc2 rotation z");
 
+
 				// Renderer
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				renderer.outputEncoding = THREE.sRGBEncoding;
 				document.body.appendChild( renderer.domElement );
-				renderer.setClearColor(0x404040);
+				// renderer.setClearColor(0x404040);
 				stats = new Stats();
 				document.body.appendChild( stats.dom );
 
 				// Renderer
 
-				const controls = new OrbitControls( camera, renderer.domElement );
+				// const controls = new OrbitControls( camera, renderer.domElement );
 				// controls.target.y = 0;
 				// controls.target.x = 0;
-				// controls.target.z = 0;
-				controls.update();
+				// controls.target.z = 20;
+				// controls.update();
+
+				// const controlsFolder = gui.addFolder("Controls")
+				// controlsFolder.add(controls.target, "x", -10, 10).name("controls x");
+				// controlsFolder.add(controls.target, "y", -10, 10).name("controls y");
+				// controlsFolder.add(controls.target, "z", -10, 10).name("controls z");
+				
 
 				animate();
 
