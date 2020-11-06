@@ -1,7 +1,5 @@
 body {
-    /* background-image: url("white\ and\ black\ clean.png"); */
     background-attachment: fixed;
-    /* background-position: center; */
     background-repeat: no-repeat;
     height: 3000px;
 }
@@ -13,8 +11,6 @@ body {
     width: 100vw;
     height: 100vh;
     display: block;
-
-    /* background-color: black; */
     z-index: -2;
 }
 
@@ -40,4 +36,9 @@ body {
 }
 
 #landing_text {
+    margin: auto;
+    text-align: center;
 }
+
+/* convert this to react */
+/* add bootstrap */
