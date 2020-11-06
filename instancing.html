@@ -8,9 +8,13 @@
 	</head>
 	<body>
 
+		<canvas id="main_canvas"></canvas>
 
-		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> physics - ammo.js instancing
+		<div class="landing_screen">
+			<div class="landing_screen_child" id="landing_text">
+				<p> is the text</p>
+			</div>
+			<div class="landing_screen_child"  id="landing_screen_viewport"></div>
 		</div>
 
 
@@ -61,12 +65,62 @@
 			let flowControlPositions
 
 			let liftIndex = 0
+
+			let scene_1
 			init();
 
 			async function init() {
 
 				physics = await AmmoPhysics();
 				position = new THREE.Vector3();
+
+
+				//Scenes
+
+				function makeScene(elem) {
+					const scene = new THREE.Scene();
+					const fov = 50;
+					const aspect = window.innerWidth / window.innerHeight;  // the canvas default
+					const near = 0.1;
+					const far = 1000;
+					const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+					camera.position.set( 1.4, 3.7, 1 );
+					camera.rotation.x = 1
+					camera.rotation.y = 1.7
+					camera.rotation.z = -0.7
+					// camera.lookAt(0, 0, 0);
+
+					return {scene, camera, elem};
+				}
+
+				scene_1 = setupScene(document.querySelector('#landing_screen_viewport'))
+
+				function setupScene(elem) {
+
+					const sceneInfo = makeScene(elem);
+					const geometryBox = new THREE.BoxBufferGeometry( .2, .2, .2 );
+					const material = new THREE.ShaderMaterial({
+				uniforms: {
+					size: {
+					value: new THREE.Vector3(geometryBox.parameters.width, geometryBox.parameters.height, geometryBox.parameters.depth).multiplyScalar(0.5)
+					},
+					thickness: {
+						value: 0.002
+					},
+					smoothness: {
+						value: 0.001
+					}
+				},
+				vertexShader: vertexShader,
+				fragmentShader: fragmentShader
+				});
+					sceneInfo.geometry = geometryBox;
+					sceneInfo.material = material;
+
+
+					return sceneInfo;
+				}
+
 
 				// Camera
 
@@ -78,36 +132,24 @@
 				// camera.lookAt( 1.5, 4.5, 1 );
 
 				scene = new THREE.Scene();
-				// scene.background = new THREE.Color( 'white' );
 
-				// Lights
-
-				const hemiLight = new THREE.HemisphereLight();
-				hemiLight.intensity = 0.35;
-				// scene.add( hemiLight );
-
-				const dirLight = new THREE.DirectionalLight();
-				dirLight.position.set( 5, 5, 5 );
-				dirLight.castShadow = true;
-				dirLight.shadow.camera.zoom = 2;
-				// scene.add( dirLight );
 
 				// Floor
 
 				const floor = new THREE.Mesh(
 					new THREE.BoxBufferGeometry( 10, 5, 10 ),
-					// new THREE.ShadowMaterial( { color: 'blue' } )
-					new THREE.MeshBasicMaterial({ color: 'white' } )
+					new THREE.ShadowMaterial( { color: 'blue' } )
 				);
 				floor.position.y = - 10.5;
 				floor.receiveShadow = true;
 				scene.add( floor );
 				physics.addMesh( floor );
 
+
 				// Flow Control Object
+
 				const flowControl = new THREE.Mesh(
 					new THREE.BoxBufferGeometry( 5, .5, 5 ),
-					// new THREE.ShadowMaterial( { color: 'blue' } )
 					new THREE.MeshBasicMaterial({ color: 'blue' } )
 				);
 				flowControlPositions = {
@@ -141,10 +183,10 @@
 				flowControl2.receiveShadow = true;
 				// scene.add( flowControl2 );
 				physics.addMesh( flowControl2 );
-				// Object Material
 
+
+				// Box Material/Geometry
 				const geometryBox = new THREE.BoxBufferGeometry( .2, .2, .2 );
-
 				var material = new THREE.ShaderMaterial({
 				uniforms: {
 					size: {
@@ -160,53 +202,29 @@
 				vertexShader: vertexShader,
 				fragmentShader: fragmentShader
 				});
-				// const material = new THREE.MeshLambertMaterial();
-
-				// const material = new THREE.ShaderMaterial();
 				const matrix = new THREE.Matrix4();
 				const color = new THREE.Color();
+
 
 				// Wireframe Material
 
 				const wireFrameMaterial = new THREE.LineBasicMaterial({color: 'black'})
 
+
 				// Boxes
-				// var box = new THREE.Mesh( geometryBox, material );
-				// scene.add( box );
-				// const geometryWireFrame = new THREE.EdgesGeometry( geometryBox )
-				// wireFrames = new THREE.LineSegments(geometryWireFrame, wireFrameMaterial, 10)
-				// boxes = new THREE.InstancedMesh( geometryBox, material, 100 );
-				// var box2 = new THREE.Mesh(geometryBox, material)
+
 				boxes = []
 
 				for (let i = 0; i < boxCount; i++) {
-
-					var box = new THREE.Mesh(geometryBox, material)
+					var box = new THREE.Mesh(scene_1.geometry, scene_1.material)
 					console.log('this')
-					scene.add( box );
+					scene_1.scene.add( box );
 					boxes.push(box)
 					physics.addMesh( box, 10 );
 					box.castShadow = true;
 					box.receiveShadow = true;
 				}
 
-				// boxes.castShadow = true;
-				// boxes.receiveShadow = true;
-				// scene.add( boxes );
-				// scene.add( wireFrames )
-				// console.log(boxes)
-				// for ( let i = 0; i < boxes.count; i ++ ) {
-					// Sets initial loading position of boxes
-					// matrix.setPosition( Math.random() - 0.5, Math.random() * 2, Math.random() - 0.5 );
-					// boxes.setMatrixAt( i, matrix );
-					// boxes.setColorAt( i, color.setHex( 0xffffff ) );
-
-				// }
-
-				
-				// physics.addMesh(wireFrames, .1)
-				// physics.addMesh( boxes, .1 );
-				// physics.addMesh( box, .1 );
 
 				// Wireframe
 				var gui = new dat.GUI();
@@ -239,51 +257,65 @@
 
 
 				// Renderer
-
-				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+				const canvas = document.getElementById("main_canvas")
+				renderer = new THREE.WebGLRenderer( { canvas, antialias: true, alpha: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				renderer.outputEncoding = THREE.sRGBEncoding;
 				document.body.appendChild( renderer.domElement );
+				// document.getElementById("landing_screen").appendChild(renderer.domElement)
 				// renderer.setClearColor(0x404040);
 				stats = new Stats();
-				document.body.appendChild( stats.dom );
+				// document.body.appendChild( stats.dom );
 
-				// Renderer
 
-				// const controls = new OrbitControls( camera, renderer.domElement );
-				// controls.target.y = 0;
-				// controls.target.x = 0;
-				// controls.target.z = 20;
-				// controls.update();
+				  function renderSceneInfo(sceneInfo) {
 
-				// const controlsFolder = gui.addFolder("Controls")
-				// controlsFolder.add(controls.target, "x", -10, 10).name("controls x");
-				// controlsFolder.add(controls.target, "y", -10, 10).name("controls y");
-				// controlsFolder.add(controls.target, "z", -10, 10).name("controls z");
+					const {scene, camera, elem} = sceneInfo;
+
+					// get the viewport relative position of this element
+					const {left, right, top, bottom, width, height} =
+						elem.getBoundingClientRect();
+
+					const isOffscreen =
+						bottom < 0 ||
+						top > renderer.domElement.clientHeight ||
+						right < 0 ||
+						left > renderer.domElement.clientWidth;
+
+						if (isOffscreen) {
+							return;
+						}
+					// console.log(renderer)
+					camera.aspect = width / height;
+					camera.updateProjectionMatrix();
+
+					const positiveYUpBottom = renderer.domElement.clientHeight - bottom;
+					renderer.setScissor(left, positiveYUpBottom, width, height);
+					renderer.setViewport(left, positiveYUpBottom, width, height);
+					renderer.render(scene, camera)
+
+    
+  }
+
 				
+			animate();
 
-				animate();
-
-			}
-			
 			function animate() {
 
 				requestAnimationFrame( animate );
-				
+
 				if (liftIndex === boxCount) {
 					liftIndex = 0
 				}
 				else {
 					liftIndex++
 				}
-				
+
 				for (let i = 0; i < 2; i++) {
 					// Picks a random box
-					// index = Math.floor( Math.random() * boxCount );
 					// Randomly sets a new position at top
-					// boxes[index].position.x = ( Math.random() + 10 )
 					position.set( Math.random() - .5, Math.random() + 6, Math.random() - .5);
 					physics.setMeshPosition(boxes[liftIndex], position)
 
@@ -291,23 +323,20 @@
 					// moves mesh to that position
 					// physics.setMeshPosition( boxes, position, index );
 
-
-
 				}
-
 
 				//
 
-				// index = Math.floor( Math.random() * spheres.count );
 
-				// position.set( 0, Math.random() + 1, 0 );
-				// // physics.setMeshPosition( spheres, position, index );
-
-				renderer.render( scene, camera );
-
+				// renderer.render( scene, camera );
+				renderSceneInfo(scene_1)
 				stats.update();
 
+				}
+
 			}
+			
+
 
 		</script>
 	</body>

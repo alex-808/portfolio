@@ -1,16 +1,43 @@
 body {
-    background-image: url("white\ and\ black\ clean.png");
+    /* background-image: url("white\ and\ black\ clean.png"); */
     background-attachment: fixed;
     /* background-position: center; */
     background-repeat: no-repeat;
     height: 3000px;
 }
 
-canvas {
-    height: 3000px;
+#main_canvas {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+
+    /* background-color: black; */
+    z-index: -2;
 }
 
 #container {
     height: 3000px;
     
+}
+
+.landing_screen {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.landing_screen_child {
+    flex: 1;
+}
+
+#landing_screen_viewport {
+    background-image: url("white\ and\ black\.png");
+    background-attachment: fixed;
+    z-index: -3;
+}
+
+#landing_text {
 }
