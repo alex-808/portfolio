@@ -14,7 +14,7 @@ function LandingPage() {
                 </div>
             </div>
             <div className="landing_screen_child" id="ls_divider"></div>
-            <div className="landing_screen_child"  id="landing_screen_viewport"></div>
+            <div className="landing_screen_child fixed_background"  id="landing_screen_viewport"></div>
             
     </div>
     )

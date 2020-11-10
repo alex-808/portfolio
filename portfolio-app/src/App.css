@@ -81,18 +81,18 @@ body {
 
 .ls_main {
   position: absolute;
-width: 349px;
-height: 134px;
-left: 187px;
-top: 260px;
+  width: 349px;
+  height: 134px;
+  left: 187px;
+  top: 260px;
 
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 64px;
-line-height: 96px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 96px;
 
-color: #000000;
+  color: #000000;
 }
 
 .ls_secondary {
@@ -128,15 +128,49 @@ color: #000000;
   flex: 1;
 }
 
-#landing_screen_viewport {
+.fixed_background {
   background-image: url("./imgs/whiteblack.png");
   background-attachment: fixed;
+}
+
+#landing_screen_viewport {
   z-index: -3;
 }
 
 #landing_text {
   margin: auto;
   text-align: center;
+}
+
+.spec_section {
+  position: relative;
+  width: 1440px;
+  height: 814px;
+  left: 0px;
+  top: 0px;
+}
+
+.spec_content {
+  position: absolute;
+  width: 60vw;
+  height: 620px;
+  left: 20vw;
+  top: 88px;
+
+  background: #FFFFFF;
+  border: 4px solid #000000;
+  box-sizing: border-box;
+  border-radius: 33px;
+}
+
+.spec_top {
+  position: absolute;
+  width: 90vw;
+  height: 218px;
+  left: 5vw;
+  top: 0px;
+
+  border-radius: 0px 0px 25px 25px;
 }
 
 /* convert this to react */

@@ -1,20 +1,20 @@
 import SpecializationItem from "./SpecializationItem"
 
-function LandingPage() {
-    const spec_top_style = {
-        backgroundColor: "blue",
-        height: 100,
-        width: 100
-    }
+function Specializations() {
+
     return (
 		<div className="spec_section">
-            <div className="spec_top" style={spec_top_style}>
-
+            <div className="spec_top fixed_background">
             </div>
-            <SpecializationItem />
+            <div className="spec_content">
+                <SpecializationItem />
+                <SpecializationItem />
+                <SpecializationItem />
+            </div>
+
 
     </div>
     )
 }
 
-export default LandingPage;
+export default Specializations;
