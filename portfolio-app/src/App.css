@@ -119,7 +119,6 @@ body {
   top: 0px;
 
   /* kinda fresher / light blue */
-
   background: #10E9EE;
 }
 
@@ -156,11 +155,51 @@ body {
   height: 620px;
   left: 20vw;
   top: 88px;
+  display: flex;
 
   background: #FFFFFF;
   border: 4px solid #000000;
   box-sizing: border-box;
   border-radius: 33px;
+}
+
+.spec_item {
+  flex: 1;
+}
+
+.icon_div {
+
+  display: flex;
+  justify-content: space-around;
+  padding: 5vh;
+  
+}
+
+.icon_bg {
+  position: absolute;
+  /* top: 40%; */
+  height: 20vh;
+  width: 20vh; 
+  display: flex;
+  /* kinda fresher / light blue */
+  background: #10E9EE;
+  border-radius: 50%;
+   display: inline-block;
+   flex-direction: column;
+   align-items: center;
+}
+
+.icon {
+  position: absolute;
+  flex: 1;
+  top: 25%;
+  left: 25%;
+}
+
+.spec_main_text {
+  position: absolute;
+  top: 50%;
+  left: 25%
 }
 
 .spec_top {
