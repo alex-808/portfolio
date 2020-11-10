@@ -178,28 +178,44 @@ body {
 .icon_bg {
   position: absolute;
   /* top: 40%; */
-  height: 20vh;
-  width: 20vh; 
+  height: 15vw;
+  width: 15vw; 
   display: flex;
   /* kinda fresher / light blue */
   background: #10E9EE;
   border-radius: 50%;
-   display: inline-block;
-   flex-direction: column;
-   align-items: center;
+  display: inline-block;
+  /* flex-direction: column; */
+  /* align-items: center; */
 }
 
 .icon {
   position: absolute;
   flex: 1;
-  top: 25%;
-  left: 25%;
+  height: 7vw;
+  width: 7vw;
+  top: 4vw;
+  left: 4vw;
 }
 
+.spec_text {
+  display: flex;
+  justify-content: space-evenly;
+}
 .spec_main_text {
+  font-size: 24px;
+  font-weight: 600;
   position: absolute;
-  top: 50%;
-  left: 25%
+  top: 30vh;
+}
+
+.spec_content_text {
+  position: absolute;
+  width: 185px;
+  height: 210px;
+  top: 40vh;
+
+  font-size: 14px;
 }
 
 .spec_top {

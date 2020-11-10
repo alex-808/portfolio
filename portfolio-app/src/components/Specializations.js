@@ -1,20 +1,26 @@
-import SpecializationItem from "./SpecializationItem"
+import React, { Component } from 'react';
+import SpecializationItem from './SpecializationItem';
 
-function Specializations() {
+class Specializations extends Component {
 
-    return (
-		<div className="spec_section">
-            <div className="spec_top fixed_background">
-            </div>
-            <div className="spec_content">
-                <SpecializationItem />
-                <SpecializationItem />
-                <SpecializationItem />
-            </div>
-
-
-    </div>
-    )
+    render() {
+        console.log(this.props.texts)
+        return (
+            <div className="spec_section">
+                <div className="spec_top fixed_background">
+                </div>
+                <div className="spec_content">
+                    {this.props.texts.map((text) => {
+                        console.log(text)
+                        return <SpecializationItem text={text} />
+                    })}
+                </div>
+    
+    
+        </div>
+        )
+    }
+    
 }
 
 export default Specializations;
