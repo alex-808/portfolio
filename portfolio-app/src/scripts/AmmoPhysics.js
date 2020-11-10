@@ -2,11 +2,11 @@ async function AmmoPhysics() {
 
 	if ( 'Ammo' in window === false ) {
 
-		console.error( 'AmmoPhysics: Couldn\'t find Ammo.js' );
-		return;
+		// console.error( 'AmmoPhysics: Couldn\'t find Ammo.js' );
+		// return;
 
 	}
-
+	console.log("Yes!")
 	const AmmoLib = await Ammo(); // eslint-disable-line no-undef
 
 	const frameRate = 60;

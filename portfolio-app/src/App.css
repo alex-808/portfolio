@@ -37,9 +37,12 @@
   }
 }
 
+
+
 body {
   background-attachment: fixed;
   background-repeat: no-repeat;
+  font-family: 'Poppins';
   height: 3000px;
 }
 
@@ -63,6 +66,63 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+.color_box {
+  position: absolute;
+  width: 111px;
+  height: 80px;
+  left: 76px;
+  top: 102px;
+  
+  /* kinda fresher / light blue */
+  
+  background: #10E9EE;
+}
+
+.ls_main {
+  position: absolute;
+width: 349px;
+height: 134px;
+left: 187px;
+top: 260px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 96px;
+
+color: #000000;
+}
+
+.ls_secondary {
+  position: absolute;
+  width: 461px;
+  height: 138px;
+  left: 187px;
+  top: 394px;
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+
+  color: #000000;
+}
+
+#ls_divider {
+  position: absolute;
+  width: 30px;
+  height: 100vh;
+  left: 50%;
+  top: 0px;
+
+  /* kinda fresher / light blue */
+
+  background: #10E9EE;
+}
+
 
 .landing_screen_child {
   flex: 1;
