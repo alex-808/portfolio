@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>three.js physics - ammo.js instancing</title>
+        <title>Alex Davis</title>
         <meta charset="utf-8" />
         <meta
             name="viewport"
@@ -29,7 +29,7 @@
                 <div class="spec_item_container">
                     <div class="spec_item">
                         <img class="spec_icon" src="./imgs/fingerprint.svg" />
-                        <h3 class="spec_title">Who I am</h2>
+                        <h2 class="spec_title">Who I am</h2>
                         <p class="spec_text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Cras nibh magna, condimentum non pulvinar nec,
@@ -38,7 +38,7 @@
                     </div>
                     <div class="spec_item">
                         <img class="spec_icon" src="./imgs/code.svg" />
-                        <h3 class="spec_title">What I do</h2>
+                        <h2 class="spec_title">What I do</h2>
                         <p class="spec_text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Cras nibh magna, condimentum non pulvinar nec,
@@ -47,7 +47,7 @@
                     </div>
                     <div class="spec_item">
                         <img class="spec_icon" src="./imgs/checkmark.svg" />
-                        <h3 class="spec_title">What I know</h2>
+                        <h2 class="spec_title">What I know</h2>
                         <p class="spec_text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Cras nibh magna, condimentum non pulvinar nec,
@@ -57,7 +57,7 @@
                 </div>
             </section>
             <section class="port_section">
-                <h2 class="port_title">Past_Projects</h2>
+                <h1 class="port_title">Past Projects</h1>
                 <div class="port_container">
                     <div class="port_item port_left">
                         <div class="port_accent"></div>
@@ -102,7 +102,7 @@
                 </div>
             </section>
             <section class="about_me_section">
-                <h2 class="about_me_title">About Me</h2>
+                <h1 class="about_me_title">About Me</h1>
                 <p class="about_me_text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras nibh magna, condimentum non pulvinar nec, semper vel
@@ -116,7 +116,7 @@
                 </p>
             </section>
             <footer>
-                <div class="footer_accent"></div>
+                <div class="footer_accent">Call to Action</div>
                 <div class="social_icons">
                     <img class="social_icon" src="imgs/checkmark.svg" />
                     <img class="social_icon" src="imgs/checkmark.svg" />
@@ -348,62 +348,62 @@
                 }
 
                 // Wireframe
-                var gui = new dat.GUI();
-                const cameraFolder = gui.addFolder('Camera');
-                cameraFolder.add(camera.position, 'y', 0, 10).name('camera y');
-                cameraFolder.add(camera.position, 'x', 0, 10).name('camera x');
-                cameraFolder.add(camera.position, 'z', 0, 10).name('camera z');
-                cameraFolder
-                    .add(camera.rotation, 'y', -4, 4)
-                    .name('rotation y');
-                cameraFolder
-                    .add(camera.rotation, 'x', -4, 4)
-                    .name('rotation x');
-                cameraFolder
-                    .add(camera.rotation, 'z', -4, 4)
-                    .name('rotation z');
+                // var gui = new dat.GUI();
+                // const cameraFolder = gui.addFolder('Camera');
+                // cameraFolder.add(camera.position, 'y', 0, 10).name('camera y');
+                // cameraFolder.add(camera.position, 'x', 0, 10).name('camera x');
+                // cameraFolder.add(camera.position, 'z', 0, 10).name('camera z');
+                // cameraFolder
+                //     .add(camera.rotation, 'y', -4, 4)
+                //     .name('rotation y');
+                // cameraFolder
+                //     .add(camera.rotation, 'x', -4, 4)
+                //     .name('rotation x');
+                // cameraFolder
+                //     .add(camera.rotation, 'z', -4, 4)
+                //     .name('rotation z');
 
-                const boxLinesFolder = gui.addFolder('BoxLines');
-                boxLinesFolder
-                    .add(material.uniforms.thickness, 'value', 0.001, 0.01)
-                    .name('thickness');
-                boxLinesFolder
-                    .add(material.uniforms.smoothness, 'value', 0.001, 0.01)
-                    .name('smoothness');
+                // const boxLinesFolder = gui.addFolder('BoxLines');
+                // boxLinesFolder
+                //     .add(material.uniforms.thickness, 'value', 0.001, 0.01)
+                //     .name('thickness');
+                // boxLinesFolder
+                //     .add(material.uniforms.smoothness, 'value', 0.001, 0.01)
+                //     .name('smoothness');
 
-                const flowControlFolder = gui.addFolder('FlowControl');
+                // const flowControlFolder = gui.addFolder('FlowControl');
 
-                flowControlFolder
-                    .add(flowControl.position, 'x', 0, 10)
-                    .name('flowControl x');
-                flowControlFolder
-                    .add(flowControl.position, 'z', 0, 10)
-                    .name('flowControl z');
-                flowControlFolder
-                    .add(flowControl.rotation, 'y', 0, 10)
-                    .name('fc rotation y');
-                flowControlFolder
-                    .add(flowControl.rotation, 'x', 8, 11)
-                    .name('fc rotation x');
-                flowControlFolder
-                    .add(flowControl.rotation, 'z', 0, 10)
-                    .name('fc rotation z');
+                // flowControlFolder
+                //     .add(flowControl.position, 'x', 0, 10)
+                //     .name('flowControl x');
+                // flowControlFolder
+                //     .add(flowControl.position, 'z', 0, 10)
+                //     .name('flowControl z');
+                // flowControlFolder
+                //     .add(flowControl.rotation, 'y', 0, 10)
+                //     .name('fc rotation y');
+                // flowControlFolder
+                //     .add(flowControl.rotation, 'x', 8, 11)
+                //     .name('fc rotation x');
+                // flowControlFolder
+                //     .add(flowControl.rotation, 'z', 0, 10)
+                //     .name('fc rotation z');
 
-                flowControlFolder
-                    .add(flowControl2.position, 'x', 0, 10)
-                    .name('flowControl2 x');
-                flowControlFolder
-                    .add(flowControl2.position, 'z', 0, 10)
-                    .name('flowControl2 z');
-                flowControlFolder
-                    .add(flowControl2.rotation, 'y', 0, 10)
-                    .name('fc2 rotation y');
-                flowControlFolder
-                    .add(flowControl2.rotation, 'x', 8, 11)
-                    .name('fc2 rotation x');
-                flowControlFolder
-                    .add(flowControl2.rotation, 'z', 0, 10)
-                    .name('fc2 rotation z');
+                // flowControlFolder
+                //     .add(flowControl2.position, 'x', 0, 10)
+                //     .name('flowControl2 x');
+                // flowControlFolder
+                //     .add(flowControl2.position, 'z', 0, 10)
+                //     .name('flowControl2 z');
+                // flowControlFolder
+                //     .add(flowControl2.rotation, 'y', 0, 10)
+                //     .name('fc2 rotation y');
+                // flowControlFolder
+                //     .add(flowControl2.rotation, 'x', 8, 11)
+                //     .name('fc2 rotation x');
+                // flowControlFolder
+                //     .add(flowControl2.rotation, 'z', 0, 10)
+                //     .name('fc2 rotation z');
 
                 // Renderer
                 const canvas = document.getElementById('main_canvas');

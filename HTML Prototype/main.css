@@ -1,0 +1,221 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Poppins Regular';
+    font-style: normal;
+    font-size: 16px;
+    src: url('./fonts/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins SemiBold';
+    font-style: normal;
+    font-size: 16px;
+    src: url('./fonts/Poppins/Poppins-SemiBold.ttf');
+}
+
+/* Variables */
+:root {
+    --accent_color: #10e9ee;
+}
+
+/* Typography */
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+/* General */
+html {
+    box-sizing: border-box;
+    font-family: 'Poppins Regular';
+    font-size: 1rem;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+p {
+    margin-bottom: 0.85em;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Hero */
+
+.hero_section {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.hero_texts {
+    flex: 1;
+    padding: 10em 5em;
+}
+
+.hero_accent_box {
+    background-color: var(--accent_color);
+    padding: 1em;
+}
+
+#hero_animation {
+    flex: 1;
+    z-index: -2;
+    padding-top: 100%;
+
+    background-image: url('./imgs/white\ and\ black.png');
+    background-attachment: fixed;
+    background-size: cover;
+
+    border-style: solid solid solid solid;
+    border-color: var(--accent_color);
+    border-width: 1em;
+}
+
+/* Specializations */
+
+.spec_section {
+    margin-bottom: 10em;
+}
+
+.spec_header_box {
+    background-image: url(./imgs/white\ and\ black.png);
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 2em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    border-radius: 0px 0px 1em 1em;
+}
+
+.spec_item_container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: -2.5em;
+
+    border-style: solid;
+    border-radius: 1em;
+    background-color: white;
+}
+
+.spec_item {
+    padding: 1.5em;
+}
+
+.spec_icon {
+    width: 5em;
+    margin: auto;
+    padding: 1em;
+}
+
+.spec_title {
+    padding: 0.5em 0em;
+}
+/* Portfolio */
+
+.port_section {
+    margin-bottom: 4em;
+}
+
+.port_container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.port_title {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.port_item {
+    padding: 2.5em 0em;
+}
+
+.proj_title {
+    padding: 1em;
+}
+
+.proj_text {
+    padding: 1.5em;
+}
+
+.proj_img {
+    width: 100%;
+
+    box-shadow: 1em 1em 2em;
+}
+/* About me */
+.about_me_section {
+    padding: 1.5em;
+    margin-bottom: 5em;
+}
+
+.about_me_title {
+    text-align: center;
+}
+
+.about_me_text {
+    padding: 3em;
+}
+/* Footer */
+
+footer {
+    background-image: url('./imgs/white\ and\ black.png');
+}
+
+.social_icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social_icon {
+    width: 5em;
+    padding: 4em 2em;
+}
+
+.footer_accent {
+    background-color: var(--accent_color);
+    position: relative;
+    padding: 2em;
+    margin-left: 4em;
+    margin-right: 4em;
+    border-radius: 1em;
+    top: -2em;
+    text-align: center;
+}
