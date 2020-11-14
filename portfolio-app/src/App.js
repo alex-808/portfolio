@@ -9,18 +9,21 @@ class App extends Component {
     spec_txt: [
       {
         id: 1,
-        text: "Lorem ip ship",
-        title: "Whoo"
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet scelerisque nibh. Maecenas ligula eros, volutpat ut justo at, porttitor iaculis leo. Curabitur ut ipsum vel nunc pretium elementum vel a arcu.",
+        title: "Who I Am?",
+        img: "fingerprint.svg"
       },
       {
         id: 2,
-        text: "Bom is ship",
-        title: "Yeahah"
+        text: "Dolor sit amet, consectetur adipiscing elit. Ut sit amet scelerisque nibh. Maecenas ligula eros, volutpat ut justo at, porttitor iaculis leo. Curabitur ut ipsum vel nunc pretium elementum vel a arcu.",
+        title: "What I Do?",
+        img: "code.svg"
       },
       {
         id: 1,
-        text: "Rem ship",
-        title: "Yahow"
+        text: "Ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet scelerisque nibh. Maecenas ligula eros, volutpat ut justo at, porttitor iaculis leo. Curabitur ut ipsum vel nunc pretium elementum vel a arcu.",
+        title: "What Do I Know?",
+        img: "checkmark.svg"
       }
     ]
   }

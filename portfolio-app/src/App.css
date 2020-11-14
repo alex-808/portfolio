@@ -44,6 +44,7 @@ body {
   background-repeat: no-repeat;
   font-family: 'Poppins';
   height: 3000px;
+  width: 100vh;
 }
 
 #main_canvas {
@@ -65,6 +66,7 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
+  margin: 0;
 }
 
 .color_box {
@@ -111,15 +113,29 @@ body {
   color: #000000;
 }
 
-#ls_divider {
+.ls_divider {
   position: absolute;
   width: 30px;
   height: 100vh;
-  left: 50%;
+  left: 50vw;
   top: 0px;
 
   /* kinda fresher / light blue */
   background: #10E9EE;
+}
+
+.ls_divider_bottom {
+  position: absolute;
+  width: 30px;
+  height: 100vw;
+  padding-top: 32vh;
+  /* left: 0vw; */
+  /* padding-top: 100vh; */
+
+/* kinda fresher / light blue */
+
+background: #10E9EE;
+transform: rotate(90deg);
 }
 
 
@@ -143,7 +159,7 @@ body {
 
 .spec_section {
   position: relative;
-  width: 1440px;
+  width: 100vh;
   height: 814px;
   left: 0px;
   top: 0px;
@@ -220,10 +236,11 @@ body {
 
 .spec_top {
   position: absolute;
+  display: block;
+  margin: auto;
   width: 90vw;
   height: 218px;
-  left: 5vw;
-  top: 0px;
+  left: 15vw;
 
   border-radius: 0px 0px 25px 25px;
 }

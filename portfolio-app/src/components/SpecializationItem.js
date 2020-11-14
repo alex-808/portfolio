@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 
 class SpecializationItem extends Component {
   render() {
-    console.log(this.props.cont_text)
     return (
       <div className="spec_item">
         <div className="icon_div">
           <div className="icon_bg">
-            <img className="icon" src="fingerprint.svg" alt="white and black waves" width="100"></img>
+            <img className="icon" src={this.props.text.img} alt="white and black waves" width="100"></img>
           </div>
         </div>
         <div className="spec_text">
