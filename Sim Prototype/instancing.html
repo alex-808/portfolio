@@ -21,6 +21,7 @@
                 id="landing_screen_viewport"
             ></div>
         </div>
+        <footer id="footer_viewport"></footer>
 
         <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js"></script>
@@ -69,6 +70,7 @@
             let liftIndex = 0;
 
             let scene_1;
+            let scene_2;
             init();
 
             async function init() {
@@ -77,7 +79,7 @@
 
                 //Scenes
 
-                function makeScene(elem) {
+                function makeScene_1(elem) {
                     const scene = new THREE.Scene();
                     const fov = 50;
                     const aspect = window.innerWidth / window.innerHeight; // the canvas default
@@ -98,12 +100,75 @@
                     return { scene, camera, elem };
                 }
 
-                scene_1 = setupScene(
+                function makeScene_2(elem) {
+                    const scene = new THREE.Scene();
+                    const fov = 50;
+                    const aspect = window.innerWidth / window.innerHeight; // the canvas default
+                    const near = 0.1;
+                    const far = 1000;
+                    const camera = new THREE.PerspectiveCamera(
+                        fov,
+                        aspect,
+                        near,
+                        far
+                    );
+                    camera.position.set(0, 0, 5);
+                    // camera.lookAt(0, 0, 0);
+
+                    return { scene, camera, elem };
+                }
+
+                scene_1 = setupScene_1(
                     document.querySelector('#landing_screen_viewport')
                 );
 
-                function setupScene(elem) {
-                    const sceneInfo = makeScene(elem);
+                scene_2 = setupScene_2(
+                    document.querySelector('#footer_viewport')
+                );
+
+                // scene_2 Camera
+
+                var scene_2_box = new THREE.Mesh(
+                    scene_2.geometry,
+                    scene_2.material
+                );
+
+                scene_2.scene.add(scene_2_box);
+
+                function setupScene_1(elem) {
+                    const sceneInfo = makeScene_1(elem);
+                    const geometryBox = new THREE.BoxBufferGeometry(
+                        0.2,
+                        0.2,
+                        0.2
+                    );
+                    const material = new THREE.ShaderMaterial({
+                        uniforms: {
+                            size: {
+                                value: new THREE.Vector3(
+                                    geometryBox.parameters.width,
+                                    geometryBox.parameters.height,
+                                    geometryBox.parameters.depth
+                                ).multiplyScalar(0.5),
+                            },
+                            thickness: {
+                                value: 0.002,
+                            },
+                            smoothness: {
+                                value: 0.001,
+                            },
+                        },
+                        vertexShader: vertexShader,
+                        fragmentShader: fragmentShader,
+                    });
+                    sceneInfo.geometry = geometryBox;
+                    sceneInfo.material = material;
+
+                    return sceneInfo;
+                }
+
+                function setupScene_2(elem) {
+                    const sceneInfo = makeScene_2(elem);
                     const geometryBox = new THREE.BoxBufferGeometry(
                         0.2,
                         0.2,
@@ -389,6 +454,7 @@
 
                     // renderer.render( scene, camera );
                     renderSceneInfo(scene_1);
+                    renderSceneInfo(scene_2);
                     stats.update();
                 }
             }

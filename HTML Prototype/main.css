@@ -1,3 +1,7 @@
+/* Add media queries and changes for larger screens */
+/* Figure out how to improve transitions between sections */
+/* Add footer animation */
+
 /* Fonts */
 
 @font-face {
@@ -15,6 +19,7 @@
 }
 
 /* Variables */
+
 :root {
     --accent_color: #10e9ee;
 }
@@ -30,6 +35,7 @@ h2 {
 }
 
 /* General */
+
 html {
     box-sizing: border-box;
     font-family: 'Poppins Regular';
@@ -79,7 +85,7 @@ img {
 
 .hero_texts {
     flex: 1;
-    padding: 10em 5em;
+    padding: 5em 3.5em;
 }
 
 .hero_accent_box {
@@ -90,15 +96,19 @@ img {
 #hero_animation {
     flex: 1;
     z-index: -2;
-    padding-top: 100%;
+    padding-top: 80%;
 
     background-image: url('./imgs/white\ and\ black.png');
     background-attachment: fixed;
     background-size: cover;
 
-    border-style: solid solid solid solid;
+    /* border-style: solid solid solid solid;
     border-color: var(--accent_color);
-    border-width: 1em;
+    border-width: 1em; */
+    margin: 1em;
+    outline-style: solid;
+    outline-color: var(--accent_color);
+    outline-width: 1em;
 }
 
 /* Specializations */
@@ -132,18 +142,21 @@ img {
 }
 
 .spec_item {
-    padding: 1.5em;
+    padding: 2.5em;
 }
 
 .spec_icon {
     width: 5em;
     margin: auto;
-    padding: 1em;
+    padding: 2em;
+    background-color: var(--accent_color);
+    border-radius: 2em;
 }
 
 .spec_title {
     padding: 0.5em 0em;
 }
+
 /* Portfolio */
 
 .port_section {
@@ -156,13 +169,27 @@ img {
     flex-wrap: wrap;
 }
 
+.port_item {
+    padding: 2.5em 0em;
+    width: 100%;
+}
+
+.port_left {
+}
+
+.port_right {
+}
+
 .port_title {
     text-align: center;
     margin-bottom: 1.5em;
 }
 
-.port_item {
-    padding: 2.5em 0em;
+.port_accent {
+    background-color: var(--accent_color);
+    display: inline-block;
+    padding: 1em;
+    margin-left: 48%;
 }
 
 .proj_title {
@@ -174,11 +201,14 @@ img {
 }
 
 .proj_img {
-    width: 100%;
-
+    width: 20em;
+    height: auto;
+    margin: auto;
     box-shadow: 1em 1em 2em;
 }
+
 /* About me */
+
 .about_me_section {
     padding: 1.5em;
     margin-bottom: 5em;
@@ -191,10 +221,12 @@ img {
 .about_me_text {
     padding: 3em;
 }
+
 /* Footer */
 
-footer {
-    background-image: url('./imgs/white\ and\ black.png');
+.footer_section {
+    display: flex;
+    flex-flow: column wrap;
 }
 
 .social_icons {
@@ -205,7 +237,8 @@ footer {
 }
 
 .social_icon {
-    width: 5em;
+    width: 2em;
+    height: auto;
     padding: 4em 2em;
 }
 
@@ -219,3 +252,25 @@ footer {
     top: -2em;
     text-align: center;
 }
+
+#footer_animation {
+    z-index: -2;
+    padding: 20%;
+
+    background-image: url('./imgs/white\ and\ black.png');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+@media only screen and (min-width: 600px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+/* less than 360 */
+/* more than 600 */
+/* more than 900 */
+
+/* recommended is 600, 768, 992, 1200 */
+/* Smallest screen size I can find is 320 */
