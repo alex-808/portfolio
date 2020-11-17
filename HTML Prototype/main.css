@@ -1,6 +1,6 @@
-/* Add media queries and changes for larger screens */
 /* Figure out how to improve transitions between sections */
-/* Add footer animation */
+/* Add media queries and changes for larger screens */
+/* Frame footer animation better */
 
 /* Fonts */
 
@@ -46,6 +46,11 @@ html {
 body {
     margin: 0;
     padding: 0;
+}
+
+html,
+body {
+    height: 100%;
 }
 
 canvas {
@@ -161,6 +166,16 @@ img {
 
 .port_section {
     margin-bottom: 4em;
+    display: flex;
+    flex-direction: column;
+}
+
+#port_animation {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 20em;
+    background-color: yellow;
 }
 
 .port_container {
@@ -239,7 +254,11 @@ img {
 .social_icon {
     width: 2em;
     height: auto;
-    padding: 4em 2em;
+    margin: auto;
+    margin-top: 4em;
+    /* padding: 4em 2em; */
+    background-color: #10e9ee;
+    border-radius: 10em;
 }
 
 .footer_accent {
@@ -257,7 +276,7 @@ img {
     position: absolute;
     z-index: -2;
     width: 100%;
-    height: 400px;
+    height: 300px;
 
     background-image: url('./imgs/white\ and\ black.png');
     background-attachment: fixed;

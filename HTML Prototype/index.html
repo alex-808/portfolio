@@ -64,7 +64,7 @@
                 <div class="port_container">
                     <div class="port_item port_left">
                         <h2 class="proj_title">Project Title</h2>
-                        <img class="proj_img" src="imgs/proj_img.png" />
+                        <!-- <img class="proj_img" src="imgs/proj_img.png" /> -->
                         <p class="proj_text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Cras nibh magna, condimentum non pulvinar nec,
@@ -74,7 +74,7 @@
                     </div>
                     <div class="port_item port_right">
                         <h2 class="proj_title">Project Title</h2>
-                        <img class="proj_img" src="imgs/proj_img.png" />
+                        <!-- <img class="proj_img" src="imgs/proj_img.png" /> -->
                         <p class="proj_text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Cras nibh magna, condimentum non pulvinar nec,
@@ -84,7 +84,7 @@
                     </div>
                     <div class="port_item port_left">
                         <h2 class="proj_title">Project Title</h2>
-                        <img class="proj_img" src="imgs/proj_img.png" />
+                        <!-- <img class="proj_img" src="imgs/proj_img.png" /> -->
                         <p class="proj_text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Cras nibh magna, condimentum non pulvinar nec,
@@ -94,7 +94,7 @@
                     </div>
                     <div class="port_item port_right">
                         <h2 class="proj_title">Project Title</h2>
-                        <img class="proj_img" src="imgs/proj_img.png" />
+                        <!-- <img class="proj_img" src="imgs/proj_img.png" /> -->
                         <p class="proj_text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Cras nibh magna, condimentum non pulvinar nec,
@@ -103,6 +103,7 @@
                         <div class="port_accent"></div>
                     </div>
                 </div>
+                <div id="port_animation"></div>
             </section>
 
             <section class="about_me_section">
@@ -190,16 +191,20 @@
 
             let camera, scene, renderer, stats;
             let physics, position;
-            let hero_boxes, spheres, wireFrames;
-            let footer_boxes;
+
+            let hero_boxes, port_boxes, footer_boxes;
+
             // originally 180
-            var hero_boxcount = 100;
-            var footer_boxcount = 20;
+            var hero_boxcount = 110;
+            var port_boxcount = 20;
+            var footer_boxcount = 40;
+
             let flowControlPositions;
             let hero_lift_index = 0;
+            let port_lift_index = 0;
             let footer_lift_index = 0;
-            let hero_scene;
-            let footer_scene;
+
+            let hero_scene, port_scene, footer_scene;
             let accent_color;
 
             init();
@@ -234,6 +239,11 @@
                 hero_scene = setupScene(
                     document.querySelector('#hero_animation')
                 );
+
+                port_scene = setupScene(
+                    document.querySelector('#port_animation')
+                );
+
                 footer_scene = setupScene(
                     document.querySelector('#footer_animation')
                 );
@@ -358,12 +368,65 @@
                     box.receiveShadow = true;
                 }
 
-                // Footer Boxes
-                for (let i = 0; i < footer_boxcount; i++) {
-                    var footer_box = new THREE.Mesh(
-                        footer_scene.geometry,
-                        footer_scene.material
+                // Port Boxes
+
+                port_boxes = [];
+
+                for (let i = 0; i < port_boxcount; i++) {
+                    var port_box = new THREE.Mesh(
+                        new THREE.BoxBufferGeometry(50, 50, 50),
+                        new THREE.MeshBasicMaterial({ color: 'red' })
                     );
+
+                    port_scene.scene.add(port_box);
+                    port_boxes.push(port_box);
+                    physics.addMesh(port_box, 10);
+                }
+                var {
+                    left,
+                    right,
+                    top,
+                    bottom,
+                } = port_scene.elem.getBoundingClientRect();
+
+                console.log(port_scene.elem.getBoundingClientRect());
+
+                const port_camera = new THREE.OrthographicCamera(
+                    left,
+                    right,
+                    top,
+                    bottom,
+                    1,
+                    1000
+                );
+
+                port_scene.camera = port_camera;
+
+                port_scene.camera.position.set(-500, -300, 0);
+                port_scene.camera.lookAt(0, 0, 0);
+                port_scene.camera.rotation.x = 0;
+                port_scene.camera.rotation.y = 0;
+                port_scene.camera.rotation.z = 0;
+
+                // where you are on the page when you reload matters
+                // right now it is showing up if the div is in the center of my screen
+
+                console.log(port_scene);
+
+                // Footer Boxes
+
+                for (let i = 0; i < footer_boxcount; i++) {
+                    if (i < 1) {
+                        var footer_box = new THREE.Mesh(
+                            footer_scene.geometry,
+                            footer_scene.accent_material
+                        );
+                    } else {
+                        var footer_box = new THREE.Mesh(
+                            footer_scene.geometry,
+                            footer_scene.material
+                        );
+                    }
 
                     footer_box.castShadow = true;
                     footer_box.recieveShadow = true;
@@ -385,9 +448,9 @@
 
                 // footer_scene camera
 
-                footer_scene.camera.position.set(0, 2, 5);
+                footer_scene.camera.position.set(0, 2, 1);
                 footer_scene.camera.lookAt(0, 0, 0);
-                footer_scene.camera.rotation.x = 0;
+                footer_scene.camera.rotation.x = 1;
                 footer_scene.camera.rotation.y = 0;
                 footer_scene.camera.rotation.z = 0;
 
@@ -396,24 +459,44 @@
                 // GUI
 
                 var gui = new dat.GUI();
-                const cameraFolder = gui.addFolder('Camera');
-                cameraFolder
-                    .add(footer_scene.camera.position, 'y', 0, 20)
+                const footerCameraFolder = gui.addFolder('Footer Camera');
+                footerCameraFolder
+                    .add(footer_scene.camera.position, 'y', 0, 10)
                     .name('camera y');
-                cameraFolder
+                footerCameraFolder
                     .add(footer_scene.camera.position, 'x', 0, 10)
                     .name('camera x');
-                cameraFolder
+                footerCameraFolder
                     .add(footer_scene.camera.position, 'z', 0, 10)
                     .name('camera z');
-                cameraFolder
+                footerCameraFolder
                     .add(footer_scene.camera.rotation, 'y', -1, 1)
                     .name('rotation y');
-                cameraFolder
+                footerCameraFolder
                     .add(footer_scene.camera.rotation, 'x', -1, 1)
                     .name('rotation x');
-                cameraFolder
+                footerCameraFolder
                     .add(footer_scene.camera.rotation, 'z', -1, 1)
+                    .name('rotation z');
+
+                const portCameraFolder = gui.addFolder('Port Camera');
+                portCameraFolder
+                    .add(port_scene.camera.position, 'y', -100, 100)
+                    .name('camera y');
+                portCameraFolder
+                    .add(port_scene.camera.position, 'x', -100, 100)
+                    .name('camera x');
+                portCameraFolder
+                    .add(port_scene.camera.position, 'z', -100, 100)
+                    .name('camera z');
+                portCameraFolder
+                    .add(port_scene.camera.rotation, 'y', -1, 1)
+                    .name('rotation y');
+                portCameraFolder
+                    .add(port_scene.camera.rotation, 'x', -1, 1)
+                    .name('rotation x');
+                portCameraFolder
+                    .add(port_scene.camera.rotation, 'z', -1, 1)
                     .name('rotation z');
 
                 const flowControlFolder = gui.addFolder('FlowControl');
@@ -507,15 +590,14 @@
                 function animate() {
                     requestAnimationFrame(animate);
 
+                    // Hero Lift
+
                     if (hero_lift_index === hero_boxcount) {
                         hero_lift_index = 0;
                     } else {
                         hero_lift_index++;
                     }
-
                     for (let i = 0; i < 2; i++) {
-                        // Picks a random box
-                        // Randomly sets a new position at top
                         position.set(
                             Math.random() - 0.5,
                             Math.random() + 6,
@@ -525,19 +607,36 @@
                             hero_boxes[hero_lift_index],
                             position
                         );
-
-                        // hero_boxes.setColorAt( index, color.setHex( 'blue' * Math.random() ) );
                     }
+
+                    // Port Lift
+                    if (port_lift_index % 10 === 0) {
+                        if (port_lift_index === port_boxcount) {
+                            port_lift_index = 0;
+                        } else {
+                            port_lift_index++;
+                        }
+                        position.set(
+                            Math.random(),
+                            Math.random(),
+                            Math.random()
+                        );
+                        physics.setMeshPosition(
+                            port_boxes[port_lift_index],
+                            position
+                        );
+                    }
+
+                    // Footer Lift
 
                     if (footer_lift_index === footer_boxcount) {
                         footer_lift_index = 0;
                     } else {
                         footer_lift_index++;
                     }
-
                     position.set(
-                        Math.random() - 0.5,
-                        Math.random() + 2,
+                        Math.random() * 2 - 1,
+                        Math.random() + 3,
                         Math.random() - 0.5
                     );
                     physics.setMeshPosition(
@@ -545,9 +644,8 @@
                         position
                     );
 
-                    // footer_boxes.setColorAt( index, color.setHex( 'blue' * Math.random() ) );
-
                     renderSceneInfo(hero_scene);
+                    renderSceneInfo(port_scene);
                     renderSceneInfo(footer_scene);
                     stats.update();
                 }
