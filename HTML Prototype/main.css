@@ -21,7 +21,8 @@
 /* Variables */
 
 :root {
-    --accent_color: #10e9ee;
+    --accent_color_main: #10e9ee;
+    --accent_color_secondary: #ffda01;
 }
 
 /* Typography */
@@ -94,7 +95,7 @@ img {
 }
 
 .hero_accent_box {
-    background-color: var(--accent_color);
+    background-color: var(--accent_color_main);
     padding: 1em;
 }
 
@@ -112,7 +113,7 @@ img {
     border-width: 1em; */
     margin: 1em;
     outline-style: solid;
-    outline-color: var(--accent_color);
+    outline-color: var(--accent_color_main);
     outline-width: 1em;
 }
 
@@ -127,8 +128,8 @@ img {
     background-size: cover;
     background-attachment: fixed;
     padding: 2em;
-    margin-left: 1.5em;
-    margin-right: 1.5em;
+    margin-left: 1.25em;
+    margin-right: 1.25em;
     border-radius: 0px 0px 1em 1em;
 }
 
@@ -137,9 +138,9 @@ img {
     flex-direction: column;
     flex-wrap: wrap;
 
-    margin-left: 3em;
-    margin-right: 3em;
+    margin: auto;
     margin-top: -2.5em;
+    width: 80%;
 
     border-style: solid;
     border-radius: 1em;
@@ -154,7 +155,7 @@ img {
     width: 5em;
     margin: auto;
     padding: 2em;
-    background-color: var(--accent_color);
+    background-color: var(--accent_color_main);
     border-radius: 2em;
 }
 
@@ -168,14 +169,7 @@ img {
     margin-bottom: 4em;
     display: flex;
     flex-direction: column;
-}
-
-#port_animation {
-    position: absolute;
-    z-index: -2;
-    width: 100%;
-    height: 20em;
-    background-color: yellow;
+    align-items: center;
 }
 
 .port_container {
@@ -186,7 +180,11 @@ img {
 
 .port_item {
     padding: 2.5em 0em;
-    width: 100%;
+    width: 80%;
+    margin: auto;
+
+    border-style: solid;
+    border-radius: 1.5em;
 }
 
 .port_left {
@@ -197,29 +195,72 @@ img {
 
 .port_title {
     text-align: center;
-    margin-bottom: 1.5em;
+    margin-bottom: 2.5em;
+}
+
+.proj_title_container {
+    display: flex;
+}
+
+.port_accent_container {
+    flex: 1;
 }
 
 .port_accent {
-    background-color: var(--accent_color);
+    position: relative;
+    right: 10%;
+    top: 30%;
     display: inline-block;
-    padding: 1em;
-    margin-left: 48%;
+
+    padding: 1.5em 1em;
+
+    background-color: var(--accent_color_secondary);
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.25);
+    transform: rotate(135deg);
 }
 
 .proj_title {
-    padding: 1em;
+    padding: 1em 1.1em;
+    letter-spacing: 0.25em;
+    text-decoration: underline;
+    flex: 2;
 }
 
 .proj_text {
     padding: 1.5em;
 }
 
+.proj_img_container {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+
 .proj_img {
-    width: 20em;
+    width: 75%;
     height: auto;
-    margin: auto;
     box-shadow: 1em 1em 2em;
+}
+
+.proj_img_tab {
+    background-image: url('./imgs/white\ and\ black.png');
+    background-size: cover;
+    border-radius: 0px 0.5em 0.5em 0px;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.25);
+    width: 10%;
+}
+
+.port_divider {
+    background-color: var(--accent_color_secondary);
+    padding: 0.35em;
+    margin: 4em;
+}
+
+#port_animation {
+    /* position: absolute; */
+    z-index: -1;
+    height: 20em;
+    background-color: yellow;
 }
 
 /* About me */
@@ -262,7 +303,7 @@ img {
 }
 
 .footer_accent {
-    background-color: var(--accent_color);
+    background-color: var(--accent_color_main);
     position: relative;
     padding: 2em;
     margin-left: 4em;
