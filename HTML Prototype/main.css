@@ -178,6 +178,23 @@ img {
     flex-wrap: wrap;
 }
 
+.proj_container {
+}
+
+.proj_box_img {
+    z-index: -2;
+    position: relative;
+    background-image: url('./imgs/Blocks\ image.png');
+    background-size: 30%;
+    background-repeat: no-repeat;
+    padding: 50%;
+    margin-bottom: -100%;
+    left: 70%;
+}
+
+.proj_img_container {
+}
+
 .port_item {
     padding: 2.5em 0em;
     width: 80%;
