@@ -341,59 +341,37 @@ img {
     /* Hero */
 
     .hero_section {
-        display: flex;
         flex-flow: row;
     }
 
     .hero_texts {
         flex: 1;
-        display: inline-block;
         margin: auto;
-        padding: 1em;
+        padding: 0em;
+    }
+
+    .hero_texts p {
+        padding: 0 15%;
+
+    }
+
+    .hero_texts h1 {
+        padding: 0 15%;
+
     }
 
     .hero_accent_box {
         position: absolute;
-        background-color: var(--accent_color_main);
-        padding: 1em;
     }
 
-    #hero_animation {
-        flex: 1;
-        z-index: -2;
-        padding-top: 80%;
-
-        background-image: url('./imgs/white\ and\ black.png');
-        background-attachment: fixed;
-        background-size: cover;
-
-        /* border-style: solid solid solid solid;
-        border-color: var(--accent_color);
-        border-width: 1em; */
-        margin: 1em;
-        outline-style: solid;
-        outline-color: var(--accent_color_main);
-        outline-width: 1em;
-    }
 
     /* Specializations */
 
     .spec_item_container {
-        display: flex;
         flex-direction: row;
-        flex: wrap;
-
-        margin: auto;
-        margin-top: -2.5em;
-        width: 80%;
-
-        border-style: solid;
-        border-radius: 1em;
-        background-color: white;
     }
 
     .spec_item {
-        padding: 2.5em;
         flex: 1;
     }
 
@@ -407,10 +385,7 @@ img {
     }
 
 
-
     /* Portfolio */
-
-
 
     .port_container {
         flex-direction: row;
@@ -421,16 +396,9 @@ img {
         flex: 1;
     }
 
-
-
     .port_right {
         margin-top: 7em;
     }
-
-
-
-
-
 
     .port_divider {
         display: none;
@@ -445,9 +413,6 @@ img {
     }
 
 
-
-
-
     /* Footer */
 
     .social_icon {
@@ -458,16 +423,39 @@ img {
 
 
 
-
-
 @media only screen and (min-width: 732px) {
-    /* 732, 733 and 734 widths are currently glitched */
+    /* 732, 733 and 734 widths are currently glitched for the spec borders*/
+
+    /* Hero */
+
+    .hero_texts {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+
+
+    /* Specializations */
+
     .spec_item:last-child {
+
         border-top: none;
         border-left: 0.15em solid;
     }
+
+    /* About Me */
+
+    .about_me_section {
+        padding: 7em;
+    }
 }
 
+@media only screen and (min-width: 973px) {
+    html {
+        font-size: 18px;
+    }
+}
 /* more than 600 */
 /* more than 750 */
 /* more than 900 */
