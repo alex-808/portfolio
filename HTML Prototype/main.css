@@ -176,7 +176,6 @@ img {
 
 .port_title {
     text-align: center;
-
 }
 
 .port_title_underline {
@@ -213,10 +212,8 @@ img {
 
     border-style: solid;
     border-radius: 1.5em;
-    border-width: .15em;
+    border-width: 0.15em;
 }
-
-
 
 .proj_title_container {
     display: flex;
@@ -327,10 +324,10 @@ img {
 
 .footer_accent {
     background-color: var(--accent_color_main);
-    margin: auto;
-    max-width: 700px;
     position: relative;
     padding: 2em;
+    margin-left: 4em;
+    margin-right: 4em;
     border-radius: 1em;
     top: -2em;
     text-align: center;
@@ -373,18 +370,15 @@ img {
 
     .hero_texts p {
         padding: 0 15%;
-
     }
 
     .hero_texts h1 {
         padding: 0 15%;
-
     }
 
     .hero_accent_box {
         position: absolute;
     }
-
 
     /* Specializations */
 
@@ -405,7 +399,6 @@ img {
         border-top: 0.15em solid;
     }
 
-
     /* Portfolio */
 
     .port_container {
@@ -419,12 +412,16 @@ img {
 
     .port_right {
         margin-top: 7em;
+        margin-left: 7%;
+    }
+
+    .port_left {
+        margin-right: 7%;
     }
 
     .port_divider {
         display: none;
     }
-
 
     /* About me */
 
@@ -433,7 +430,6 @@ img {
         margin-bottom: 0em;
     }
 
-
     /* Footer */
 
     .social_icon {
@@ -441,8 +437,7 @@ img {
         margin: 2em;
         margin-top: 4em;
     }
-
-
+}
 
 @media only screen and (min-width: 732px) {
     /* 732, 733 and 734 widths are currently glitched for the spec borders*/
@@ -455,14 +450,22 @@ img {
         overflow: hidden;
     }
 
-
-
     /* Specializations */
 
     .spec_item:last-child {
-
         border-top: none;
         border-left: 0.15em solid;
+    }
+
+    .spec_icon {
+        margin: auto;
+        width: 3em;
+    }
+
+    /* Portfolio */
+
+    .proj_title {
+        font-size: 1.4em;
     }
 
     /* About Me */
@@ -476,10 +479,48 @@ img {
     html {
         font-size: 18px;
     }
+}
 
-/* more than 600 */
-/* more than 750 */
-/* more than 900 */
+@media only screen and (min-width: 1100px) {
+    /* Specializations */
 
-/* recommended is 600, 768, 992, 1200 */
-/* Smallest screen size I can find is 320 */
+    .spec_header_box {
+        margin-left: 5em;
+        margin-right: 5em;
+        padding: 4em;
+    }
+
+    .spec_item_container {
+        width: 70%;
+        margin-top: -4.5em;
+    }
+    .spec_item {
+        padding: 2em 3em;
+    }
+
+    /* Portfolio */
+
+    .port_title_underline {
+        margin-bottom: 9em;
+    }
+
+    .proj_text {
+        padding-left: 4em;
+        padding-right: 4em;
+        padding-bottom: 3em;
+        padding-top: 4em;
+    }
+
+    .about_me_section {
+        width: 50%;
+        margin: auto;
+        padding-bottom: 10em;
+    }
+
+    /* Footer */
+
+    .footer_accent {
+        margin-left: 12em;
+        margin-right: 12em;
+    }
+}
