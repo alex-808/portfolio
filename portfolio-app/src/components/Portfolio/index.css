@@ -1,0 +1,160 @@
+/* Portfolio */
+
+.port_section {
+    margin-bottom: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.port_title {
+    text-align: center;
+}
+
+.port_title_underline {
+    background-color: var(--accent_color_secondary);
+    padding: 0.35em;
+    width: 50%;
+    margin-bottom: 4em;
+}
+
+.port_container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.proj_box_img {
+    z-index: -2;
+    position: relative;
+    background-image: url('./imgs/Blocks\ image.png');
+    background-size: 49%;
+    background-repeat: no-repeat;
+    padding: 50%;
+    margin-bottom: -100%;
+    /* margin-right: 100%; */
+    /* left: 52%; */
+    overflow: hidden;
+}
+
+.port_item {
+    padding: 1em 0em;
+    width: 80%;
+    margin: auto;
+    background: white;
+
+    border-style: solid;
+    border-radius: 1.5em;
+    border-width: 0.15em;
+}
+
+.proj_title_container {
+    display: flex;
+    padding: 1.5em 0em;
+}
+
+.port_accent_container {
+    flex: 1;
+}
+
+.port_accent {
+    position: relative;
+    right: 0em;
+    top: 0%;
+    display: inline-block;
+
+    padding: 30% 15%;
+
+    background-color: var(--accent_color_secondary);
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.25);
+    transform: rotate(135deg);
+}
+
+.proj_title {
+    padding: 1em 1.1em;
+    margin-left: 6.5%;
+    letter-spacing: 0.15em;
+    text-decoration: underline;
+    flex: 2;
+}
+
+.proj_text {
+    padding: 1.5em;
+    padding-top: 2.5em;
+}
+
+.proj_img_container {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+
+.proj_img {
+    width: 75%;
+    height: auto;
+    box-shadow: 1em 1em 2em;
+}
+
+.proj_img_tab {
+    background-image: url('./imgs/whiteblack.png');
+    background-size: cover;
+    border-radius: 0px 0.5em 0.5em 0px;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.25);
+    width: 10%;
+}
+
+.port_divider {
+    background-color: var(--accent_color_secondary);
+    padding: 0.35em;
+    margin: 4em;
+}
+
+#port_animation {
+    /* position: absolute; */
+    z-index: -1;
+    height: 20em;
+    background-color: yellow;
+}
+
+@media only screen and (min-width: 600px) {
+    .port_container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .proj_container {
+        flex: 1;
+    }
+
+    .port_right {
+        margin-top: 7em;
+        margin-left: 7%;
+    }
+
+    .port_left {
+        margin-right: 7%;
+    }
+
+    .port_divider {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 732px) {
+    .proj_title {
+        font-size: 1.4em;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .port_title_underline {
+        margin-bottom: 9em;
+    }
+
+    .proj_text {
+        padding-left: 4em;
+        padding-right: 4em;
+        padding-bottom: 3em;
+        padding-top: 4em;
+    }
+}
