@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { AmmoPhysics } from 'three/examples/jsm/physics/AmmoPhysics.js';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 export class Animation extends Component {
@@ -49,11 +48,11 @@ export class Animation extends Component {
       gl_FragColor = vec4(c, 1.0);
     }
   `;
-        let camera, scene, renderer, stats;
+        let scene, renderer, stats;
         let physics, position;
 
         let hero_boxes, port_boxes, footer_boxes;
-
+        let box, footer_box;
         // originally 180
         var hero_boxcount = 110;
         var port_boxcount = 20;
@@ -200,16 +199,15 @@ export class Animation extends Component {
             // Hero Boxes
 
             hero_boxes = [];
-            footer_boxes = [];
 
             for (let i = 0; i < hero_boxcount; i++) {
                 if (i < 1) {
-                    var box = new THREE.Mesh(
+                    box = new THREE.Mesh(
                         hero_scene.geometry,
                         hero_scene.accent_material
                     );
                 } else {
-                    var box = new THREE.Mesh(
+                    box = new THREE.Mesh(
                         hero_scene.geometry,
                         hero_scene.material
                     );
@@ -283,14 +281,16 @@ export class Animation extends Component {
 
             // Footer Boxes
 
+            footer_boxes = [];
+
             for (let i = 0; i < footer_boxcount; i++) {
                 if (i < 1) {
-                    var footer_box = new THREE.Mesh(
+                    footer_box = new THREE.Mesh(
                         footer_scene.geometry,
                         footer_scene.accent_material
                     );
                 } else {
-                    var footer_box = new THREE.Mesh(
+                    footer_box = new THREE.Mesh(
                         footer_scene.geometry,
                         footer_scene.material
                     );
@@ -470,6 +470,18 @@ export class Animation extends Component {
                 renderer.render(scene, camera);
             }
 
+            function resizeRendererToDisplaySize(renderer) {
+                const canvas = renderer.domElement;
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+                const needResize =
+                    canvas.width !== width || canvas.height !== height;
+                if (needResize) {
+                    renderer.setSize(width, height, false);
+                }
+                return needResize;
+            }
+
             animate();
 
             function animate() {
@@ -478,20 +490,22 @@ export class Animation extends Component {
 
                 // Hero Lift
 
-                if (hero_lift_index === hero_boxcount - 1) {
+                if (hero_lift_index === hero_boxcount - 2) {
                     hero_lift_index = 0;
                 } else {
-                    hero_lift_index++;
+                    hero_lift_index += 2;
                 }
-                // for (let i = 0; i < 2; i++) {
-                position.set(
-                    Math.random() - 0.5,
-                    Math.random() + 6,
-                    Math.random() - 0.5
-                );
-                // console.log(hero_boxes[hero_lift_index]);
-                physics.setMeshPosition(hero_boxes[hero_lift_index], position);
-                // }
+                for (let i = 0; i < 2; i++) {
+                    position.set(
+                        Math.random() - 0.5,
+                        Math.random() + 6,
+                        Math.random() - 0.5
+                    );
+                    physics.setMeshPosition(
+                        hero_boxes[hero_lift_index + i],
+                        position
+                    );
+                }
 
                 // Port Lift
                 // if (port_lift_index % 10 === 0) {
@@ -527,7 +541,7 @@ export class Animation extends Component {
                     footer_boxes[footer_lift_index],
                     position
                 );
-
+                resizeRendererToDisplaySize(renderer);
                 renderSceneInfo(hero_scene);
                 // renderSceneInfo(port_scene);
                 renderSceneInfo(footer_scene);
