@@ -215,7 +215,6 @@ export class Animation extends Component {
                     );
                 }
 
-                console.log('this');
                 hero_scene.scene.add(box);
                 hero_boxes.push(box);
                 physics.addMesh(box, 10);
@@ -322,8 +321,6 @@ export class Animation extends Component {
             footer_scene.camera.rotation.x = 1;
             footer_scene.camera.rotation.y = 0;
             footer_scene.camera.rotation.z = 0;
-
-            console.log(footer_scene.camera);
 
             // GUI
 
