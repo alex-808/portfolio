@@ -17,18 +17,21 @@ class App extends Component {
                     'My name is Alex and this is my website etc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh magna, condimentum non pulvinar nec, semper vel ipsum.',
             },
             spec: {
-                spec_items: [
+                items: [
                     {
+                        icon_url: './imgs/fingerprint.svg',
                         title: 'Who I am',
                         text:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh magna, condimentum non pulvinar nec, semper vel ipsum. Nulla facilisi. Suspendisse potent',
                     },
                     {
+                        icon_url: './imgs/code.svg',
                         title: 'What I do',
                         text:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh magna, condimentum non pulvinar nec, semper vel ipsum. Nulla facilisi. Suspendisse potent',
                     },
                     {
+                        icon_url: './imgs/checkmark.svg',
                         title: 'What I know',
                         text:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh magna, condimentum non pulvinar nec, semper vel ipsum. Nulla facilisi. Suspendisse potent',
@@ -59,13 +62,7 @@ class App extends Component {
             },
             footer: {
                 footer_cta: 'Call to action',
-                social_icons: [
-                    {
-                        social_icon: 'Url here',
-                        social_icon: 'Url here',
-                        social_icon: 'Url here',
-                    },
-                ],
+                social_icons: ['Url here', 'Url here', 'Url here'],
             },
         };
     }
@@ -75,10 +72,10 @@ class App extends Component {
                 <main>
                     <canvas id="main_canvas"></canvas>
                     <Hero hero={this.state.hero} />
-                    <Specializations />
-                    <Portfolio />
+                    <Specializations spec={this.state.spec} />
+                    <Portfolio port={this.state.port} />
                     <AboutMe about_me={this.state.about_me} />
-                    <Footer />
+                    <Footer footer={this.state.footer} />
                     <Animation />
                 </main>
             </div>

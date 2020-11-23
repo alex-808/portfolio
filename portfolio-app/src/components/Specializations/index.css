@@ -28,23 +28,6 @@
     background-color: white;
 }
 
-.spec_item {
-    padding: 2.5em;
-}
-
-.spec_icon {
-    width: 5em;
-    margin: auto;
-    padding: 2em;
-    background-color: var(--accent_color_main);
-    border-radius: 2em;
-    margin-bottom: 2em;
-}
-
-.spec_title {
-    padding: 0.5em 0em;
-}
-
 @media only screen and (min-width: 600px) {
     .spec_item_container {
         flex-direction: row;
