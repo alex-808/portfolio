@@ -40,18 +40,20 @@ class App extends Component {
             },
             port: {
                 port_title: 'Past Projects',
-                project_items: [
+                projects: [
                     {
                         title: 'Project Title',
-                        img: 'Url here',
+                        img: './imgs/mockup_yellow_cropped.png',
                         text:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh magna, condimentum non pulvinar nec, semper vel ipsum. Nulla facilisi. Suspendisse potent',
+                        side_class: 'port_item port_left',
                     },
                     {
                         title: 'Project Title',
-                        img: 'Url here',
+                        img: './imgs/mockup_yellow_cropped.png',
                         text:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh magna, condimentum non pulvinar nec, semper vel ipsum. Nulla facilisi. Suspendisse potent',
+                        side_class: 'port_item port_right',
                     },
                 ],
             },
@@ -62,7 +64,11 @@ class App extends Component {
             },
             footer: {
                 footer_cta: 'Call to action',
-                social_icons: ['Url here', 'Url here', 'Url here'],
+                social_icons: [
+                    './imgs/checkmark.svg',
+                    './imgs/checkmark.svg',
+                    './imgs/checkmark.svg',
+                ],
             },
         };
     }

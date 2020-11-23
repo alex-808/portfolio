@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
-import SocialIcons from './SocialIcons/SocialIcons';
 
-export class Footer extends Component {
+export class SocialIcon extends Component {
     render() {
         return (
             <section className="footer_section">
@@ -10,9 +9,9 @@ export class Footer extends Component {
                     {this.props.footer.footer_cta}
                 </div>
                 <div className="social_icons">
-                    <SocialIcons
-                        social_icons={this.props.footer.social_icons}
-                    />
+                    <img className="social_icon" src="imgs/checkmark.svg" />
+                    <img className="social_icon" src="imgs/checkmark.svg" />
+                    <img className="social_icon" src="imgs/checkmark.svg" />
                 </div>
                 <div class="footer_animation"></div>
             </section>
@@ -20,4 +19,4 @@ export class Footer extends Component {
     }
 }
 
-export default Footer;
+export default SocialIcon;
