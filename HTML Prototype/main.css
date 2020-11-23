@@ -353,6 +353,7 @@ img {
 
     .hero_section {
         flex-flow: row;
+        height: 100vh;
     }
 
     .hero_accent_box {
@@ -510,6 +511,8 @@ img {
         padding-bottom: 3em;
         padding-top: 4em;
     }
+
+    /* About Me */
 
     .about_me_section {
         width: 50%;

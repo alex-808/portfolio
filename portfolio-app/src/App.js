@@ -4,6 +4,7 @@ import Specializations from './components/Specializations/Specializations';
 import Portfolio from './components/Portfolio/Portfolio';
 import AboutMe from './components/AboutMe/AboutMe';
 import Footer from './components/Footer/Footer';
+import Animation from './components/Animation/Animation';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Portfolio />
                 <AboutMe />
                 <Footer />
+                <Animation />
             </main>
         </div>
     );
