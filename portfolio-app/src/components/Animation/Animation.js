@@ -490,22 +490,20 @@ export class Animation extends Component {
 
                 // Hero Lift
 
-                if (hero_lift_index === hero_boxcount - 2) {
+                if (hero_lift_index === hero_boxcount - 1) {
                     hero_lift_index = 0;
                 } else {
-                    hero_lift_index += 2;
+                    hero_lift_index += 1;
                 }
-                for (let i = 0; i < 2; i++) {
-                    position.set(
-                        Math.random() - 0.5,
-                        Math.random() + 6,
-                        Math.random() - 0.5
-                    );
-                    physics.setMeshPosition(
-                        hero_boxes[hero_lift_index + i],
-                        position
-                    );
-                }
+                // for (let i = 0; i < 2; i++) {
+
+                position.set(
+                    Math.random() - 0.5,
+                    Math.random() + 6,
+                    Math.random() - 0.5
+                );
+                physics.setMeshPosition(hero_boxes[hero_lift_index], position);
+                // }
 
                 // Port Lift
                 // if (port_lift_index % 10 === 0) {
