@@ -8,7 +8,7 @@ export class Hero extends Component {
                 <div className="hero_accent_box"></div>
                 <div className="hero_texts">
                     <h1 className="hero_title">{this.props.hero.title}</h1>
-                    <p className="hero_text">{this.props.hero.text}</p>
+                    {this.props.hero.text}
                 </div>
                 <div className="hero_animation"></div>
             </section>

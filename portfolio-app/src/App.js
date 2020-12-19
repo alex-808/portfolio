@@ -13,28 +13,95 @@ class App extends Component {
         this.state = {
             hero: {
                 title: 'Hello,',
-                text:
-                    'My name is Alex and this is my website. I am a self-taught developer excited by the problems and opportunities of the modern web. Take a look around. Let me know if you see anything you like. Careful of the cubes.',
+                text: (
+                    <p>
+                        My name is Alex and this is my website. I am a{' '}
+                        <b>self-taught developer</b> excited by the problems and
+                        opportunities of the <b>modern web</b>. Take a look
+                        around. Let me know if you see anything you like.{' '}
+                        <b>Careful of the cubes.</b>
+                    </p>
+                ),
             },
             spec: {
                 items: [
                     {
                         icon_url: './imgs/fingerprint.svg',
                         title: 'Who I am',
-                        text:
-                            'I am a self-taught developer born and raised in the sprawling cheese country (Wisconsin). I lived in Massachusetts for several years where I attended Clark University majoring in Communcations before finally landing in San Diego. Along the way I realized the conventional path was not for me and decided to find my own way. My passions aside from my burning love of programming are finding and making weird music, reading very dry books, trying to get outside once in a while and talking to people who are much smarter than me.',
+                        text: (
+                            <div>
+                                <p>
+                                    I am a <b>self-taught developer</b> born and
+                                    raised in the sprawling cheese country
+                                    (Wisconsin). I lived in Massachusetts for
+                                    several years where I attended{' '}
+                                    <b>Clark University</b> majoring in{' '}
+                                    <b>Communications</b> before finally landing
+                                    in San Diego. Along the way I realized the
+                                    conventional path was not for me and decided
+                                    to find my own way.
+                                </p>
+                                <p>
+                                    My passions aside from my burning{' '}
+                                    <b>love of programming</b> are finding and
+                                    making <b>weird music</b>, reading very{' '}
+                                    <b>dry books</b>, trying to get outside once
+                                    in a while and <b>talking to people</b> who
+                                    are <b>much smarter</b> than me.
+                                </p>
+                            </div>
+                        ),
                     },
                     {
                         icon_url: './imgs/code.svg',
                         title: 'What I do',
-                        text:
-                            'I solve problems through simple, elegant and scalable solutions, learn like crazy, rinse and repeat. Moreover, I plan, design and code full-stack web applications such as the one on your screen now.',
+                        text: (
+                            <div>
+                                <p>
+                                    I solve problems through simple, elegant and
+                                    scalable solutions, <b>learn like crazy</b>,
+                                    rinse and repeat. Moreover, I plan, design
+                                    and code<b> full-stack web applications </b>{' '}
+                                    such as the one on <b>your screen now</b>.
+                                    In everything I set my heart to I try to be
+                                    careful, meticulous and imbue it with my own
+                                    personal <b>passion</b>. When working with
+                                    others I find my{' '}
+                                    <b>strong communication skills</b> are often
+                                    an asset to the final product. In my work I
+                                    strive to be an{' '}
+                                    <b>out-of-the-box thinker</b> and look for
+                                    solutions beyond the obvious and apparent.
+                                </p>
+                            </div>
+                        ),
                     },
                     {
                         icon_url: './imgs/checkmark.svg',
                         title: 'What I know',
-                        text:
-                            'JavaScript, HTML, CSS, REST, SQL, Git/Github, Web Design and Prototyping, Python, Networking, Object Oriented Programming, React.js, Node.js, Express.js, Three.js, Authetication, Algorithms and Data Structures, TypeScript, Testing, Agile Development',
+                        text: (
+                            <ul>
+                                <li>JavaScript</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>REST</li>
+                                <li>SQL</li>
+                                <li>Git/Github</li>
+                                <li>Web Design and Prototyping</li>
+                                <li>Python</li>
+                                <li>Networks</li>
+                                <li>Object Oriented Programming</li>
+                                <li>React.js</li>
+                                <li>Node.js</li>
+                                <li>Express.js</li>
+                                <li>Three.js</li>
+                                <li>Authetication</li>
+                                <li>Algorithms and Data Structures</li>
+                                <li>TypeScript</li>
+                                <li>Testing</li>
+                                <li>Agile Development</li>
+                            </ul>
+                        ),
                     },
                 ],
             },
@@ -44,23 +111,50 @@ class App extends Component {
                     {
                         title: 'Hyporeal',
                         img: './imgs/mockup_yellow_cropped.png',
-                        text:
-                            'Hyporeal is a Spotify visualizer designed with the intention of improving on the existing Spotify visualizers I had seen by making a more dynamic, memorable and visually appealing experience done through the use of the Spotify Web API and ThreeJS. ',
+                        text: (
+                            <p>
+                                Hyporeal is a <b>Spotify visualizer</b> designed
+                                with the intention of improving on the existing
+                                Spotify visualizers I had seen by making a more
+                                dynamic, memorable and visually appealing
+                                experience done through the use of the Spotify{' '}
+                                <b>Web API</b> and <b>ThreeJS</b>.
+                            </p>
+                        ),
                         side_class: 'port_item port_left',
                     },
                     {
                         title: 'Project Title',
                         img: './imgs/mockup_yellow_cropped.png',
-                        text:
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nibh magna, condimentum non pulvinar nec, semper vel ipsum. Nulla facilisi. Suspendisse potent',
+                        text: (
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Cras nibh magna, condimentum
+                                non pulvinar nec, semper vel ipsum. Nulla
+                                facilisi. Suspendisse potent
+                            </p>
+                        ),
                         side_class: 'port_item port_right',
                     },
                 ],
             },
             about_me: {
                 title: 'My_Story: From for-loop to full-stack() {',
-                text:
-                    'Several months ago I found myself with some extra time on my hands and decided to do something with it. In the process I discovered that I have a true passion for code in all its forms. In a span of months I went from writing my first for-loop to planning, designing and executing full-stack applications. Today I am looking for more opportunities to show my skills, create value with them and continue to grow by learning with the best. Although there is much that I still want to learn, my ambition is to create things that will change peoples lives.',
+                text: (
+                    <p>
+                        Several months ago I found myself with some extra time
+                        on my hands and decided to do something with it. In the
+                        process I discovered that I have a true passion for code
+                        in all its forms. In a span of months I went from
+                        writing my first for-loop to planning, designing and
+                        executing full-stack applications. Today I am looking
+                        for more opportunities to show my skills, create value
+                        with them and continue to grow by learning with the
+                        best. Although there is much that I still want to learn,
+                        my ambition is to create things that will change peoples
+                        lives.
+                    </p>
+                ),
             },
             footer: {
                 cta: 'Get in touch',

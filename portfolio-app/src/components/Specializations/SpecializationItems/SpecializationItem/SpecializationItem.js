@@ -7,7 +7,7 @@ export class SpecializationItem extends Component {
             <div className="spec_item">
                 <img className="spec_icon" src={this.props.item.icon_url} />
                 <h2 className="spec_title">{this.props.item.title}</h2>
-                <p className="spec_text">{this.props.item.text}</p>
+                {this.props.item.text}
             </div>
         );
     }
