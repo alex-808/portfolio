@@ -1,71 +1,76 @@
 /* Specializations */
 
 .spec_section {
-    margin-bottom: 10em;
+  margin-bottom: 10em;
 }
 
 .spec_header_box {
-    background-image: url(./imgs/whiteblack.png);
-    background-size: cover;
-    background-attachment: fixed;
-    padding: 2em;
-    margin-left: 1.25em;
-    margin-right: 1.25em;
-    border-radius: 0px 0px 1em 1em;
+  background-image: url(./imgs/whiteblack.png);
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 2em;
+  margin-left: 1.25em;
+  margin-right: 1.25em;
+  border-radius: 0px 0px 1em 1em;
 }
 
 .spec_item_container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 
-    margin: auto;
-    margin-top: -2.5em;
-    width: 80%;
+  margin: auto;
+  margin-top: -2.5em;
+  width: 80%;
 
-    border-style: solid;
-    border-radius: 1em;
-    background-color: white;
+  border-style: solid;
+  border-radius: 1em;
+  background-color: white;
+}
+
+.spec_title {
+  text-align: center;
+  font-family: 'Poppins SemiBold';
 }
 
 @media only screen and (min-width: 600px) {
-    .spec_item_container {
-        flex-direction: row;
-    }
+  .spec_item_container {
+    flex-direction: row;
+  }
 
-    .spec_item {
-        flex: 1;
-    }
+  .spec_item {
+    flex: 1;
+  }
 
-    .spec_item + .spec_item {
-        border-left: 0.15em solid;
-    }
+  .spec_item + .spec_item {
+    border-left: 0.15em solid;
+  }
 
-    .spec_item:last-child {
-        border-left: none;
-        border-top: 0.15em solid;
-    }
+  .spec_item:last-child {
+    border-left: none;
+    border-top: 0.15em solid;
+  }
 }
 
 @media only screen and (min-width: 732px) {
-    .spec_item:last-child {
-        border-top: none;
-        border-left: 0.15em solid;
-    }
+  .spec_item:last-child {
+    border-top: none;
+    border-left: 0.15em solid;
+  }
 }
 
 @media only screen and (min-width: 1100px) {
-    .spec_header_box {
-        margin-left: 5em;
-        margin-right: 5em;
-        padding: 4em;
-    }
+  .spec_header_box {
+    margin-left: 5em;
+    margin-right: 5em;
+    padding: 4em;
+  }
 
-    .spec_item_container {
-        width: 70%;
-        margin-top: -4.5em;
-    }
-    .spec_item {
-        padding: 2em 3em;
-    }
+  .spec_item_container {
+    width: 70%;
+    margin-top: -4.5em;
+  }
+  .spec_item {
+    padding: 2em 3em;
+  }
 }
