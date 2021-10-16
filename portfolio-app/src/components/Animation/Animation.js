@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
-import { AmmoPhysics } from 'three/examples/jsm/physics/AmmoPhysics.js';
+import { AmmoPhysics } from './AmmoPhysics';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 export class Animation extends Component {
   componentDidMount() {
@@ -72,6 +72,8 @@ export class Animation extends Component {
     async function init() {
       physics = await AmmoPhysics();
       position = new THREE.Vector3();
+
+      console.log(window.Ammo);
 
       //Scenes
 
