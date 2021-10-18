@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 import { AmmoPhysics } from './AmmoPhysics';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
+import { GUI } from 'three/examples/jsm/libs/dat.gui.module';
 export class Animation extends Component {
   componentDidMount() {
     var vertexShader = `
@@ -71,8 +72,6 @@ export class Animation extends Component {
     async function init() {
       physics = await AmmoPhysics();
       position = new THREE.Vector3();
-
-      console.log(window.Ammo);
 
       //Scenes
 
@@ -190,8 +189,7 @@ export class Animation extends Component {
       // scene.add( flowControl2 );
       physics.addMesh(flowControl2);
 
-      // Hero Boxes
-
+      // Add boxes to scenes
       addSceneBoxes(hero_scene, hero_boxcount);
       addSceneBoxes(footer_scene, footer_boxcount);
 
@@ -204,10 +202,10 @@ export class Animation extends Component {
             box = new THREE.Mesh(scene.geometry, scene.material);
           }
           scene.scene.add(box);
-          boxes.push(box);
           physics.addMesh(box, 10);
           box.castShadow = true;
           box.receiveShadow = true;
+          boxes.push(box);
         }
         scene.boxes = boxes;
       }
@@ -292,26 +290,26 @@ export class Animation extends Component {
 
       // GUI
 
-      // var gui = new dat.GUI();
-      // const footerCameraFolder = gui.addFolder('Footer Camera');
-      // footerCameraFolder
-      //     .add(footer_scene.camera.position, 'y', 0, 10)
-      //     .name('camera y');
-      // footerCameraFolder
-      //     .add(footer_scene.camera.position, 'x', 0, 10)
-      //     .name('camera x');
-      // footerCameraFolder
-      //     .add(footer_scene.camera.position, 'z', 0, 10)
-      //     .name('camera z');
-      // footerCameraFolder
-      //     .add(footer_scene.camera.rotation, 'y', -1, 1)
-      //     .name('rotation y');
-      // footerCameraFolder
-      //     .add(footer_scene.camera.rotation, 'x', -1, 1)
-      //     .name('rotation x');
-      // footerCameraFolder
-      //     .add(footer_scene.camera.rotation, 'z', -1, 1)
-      //     .name('rotation z');
+      var gui = new GUI();
+      const footerCameraFolder = gui.addFolder('Footer Camera');
+      footerCameraFolder
+        .add(footer_scene.camera.position, 'y', 0, 10)
+        .name('camera y');
+      footerCameraFolder
+        .add(footer_scene.camera.position, 'x', 0, 10)
+        .name('camera x');
+      footerCameraFolder
+        .add(footer_scene.camera.position, 'z', 0, 10)
+        .name('camera z');
+      footerCameraFolder
+        .add(footer_scene.camera.rotation, 'y', -1, 1)
+        .name('rotation y');
+      footerCameraFolder
+        .add(footer_scene.camera.rotation, 'x', -1, 1)
+        .name('rotation x');
+      footerCameraFolder
+        .add(footer_scene.camera.rotation, 'z', -1, 1)
+        .name('rotation z');
 
       // const portCameraFolder = gui.addFolder('Port Camera');
       // portCameraFolder
@@ -449,61 +447,28 @@ export class Animation extends Component {
         requestAnimationFrame(animate);
         // port_controls.update();
 
-        // Hero Lift
-
-        if (hero_lift_index === hero_boxcount - 1) {
-          hero_lift_index = 0;
-        } else {
-          hero_lift_index += 1;
+        function resetBoxes(scene, resetY, newPos) {
+          for (let i = 0; i < scene.boxes.length; i++) {
+            if (scene.boxes[i].position.y < resetY) {
+              position.set(
+                Math.random() + newPos.x,
+                Math.random() + newPos.y,
+                Math.random() + newPos.z
+              );
+              physics.setMeshPosition(scene.boxes[i], position);
+            }
+          }
         }
-        // for (let i = 0; i < 2; i++) {
 
-        position.set(
-          Math.random() - 0.5,
-          Math.random() + 6,
-          Math.random() - 0.5
-        );
-        physics.setMeshPosition(hero_scene.boxes[hero_lift_index], position);
-        // }
+        resetBoxes(hero_scene, 2, { x: -0.5, y: 6, z: -0.5 });
+        resetBoxes(footer_scene, 2, { x: 0, y: 3, z: -0.5 });
 
-        // Port Lift
-        // if (port_lift_index % 10 === 0) {
-        //     if (port_lift_index === port_boxcount) {
-        //         port_lift_index = 0;
-        //     } else {
-        //         port_lift_index++;
-        //     }
-        //     position.set(
-        //         Math.random(),
-        //         Math.random(),
-        //         Math.random()
-        //     );
-        //     physics.setMeshPosition(
-        //         port_boxes[port_lift_index],
-        //         position
-        //     );
-        // }
-
-        // Footer Lift
-
-        if (footer_lift_index === footer_boxcount - 1) {
-          footer_lift_index = 0;
-        } else {
-          footer_lift_index++;
-        }
-        position.set(
-          Math.random() * 2 - 1,
-          Math.random() + 3,
-          Math.random() - 0.5
-        );
-        physics.setMeshPosition(
-          footer_scene.boxes[footer_lift_index],
-          position
-        );
         resizeRendererToDisplaySize(renderer);
+
         renderSceneInfo(hero_scene);
         // renderSceneInfo(port_scene);
         renderSceneInfo(footer_scene);
+
         stats.update();
       }
     }
