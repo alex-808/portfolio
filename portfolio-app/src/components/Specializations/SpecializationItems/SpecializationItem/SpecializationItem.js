@@ -7,7 +7,7 @@ import './index.css';
 export class SpecializationItem extends Component {
   constructor(props) {
     super(props);
-    Aos.init({ offset: 0, duration: 700, easing: 'ease-in-out' });
+    Aos.init({ offset: 0, duration: 300, easing: 'ease-in-out' });
   }
   render() {
     return (
