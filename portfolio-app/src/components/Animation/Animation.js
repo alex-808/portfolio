@@ -51,7 +51,6 @@ export class Animation extends Component {
     let scene, renderer, stats;
     let physics, position;
 
-    let hero_boxes, port_boxes, footer_boxes;
     let box, footer_box;
     // originally 180
     var hero_boxcount = 110;
@@ -193,20 +192,24 @@ export class Animation extends Component {
 
       // Hero Boxes
 
-      hero_boxes = [];
+      addSceneBoxes(hero_scene, hero_boxcount);
+      addSceneBoxes(footer_scene, footer_boxcount);
 
-      for (let i = 0; i < hero_boxcount; i++) {
-        if (i < 1) {
-          box = new THREE.Mesh(hero_scene.geometry, hero_scene.accent_material);
-        } else {
-          box = new THREE.Mesh(hero_scene.geometry, hero_scene.material);
+      function addSceneBoxes(scene, boxCount) {
+        const boxes = [];
+        for (let i = 0; i < boxCount; i++) {
+          if (i < 1) {
+            box = new THREE.Mesh(scene.geometry, scene.accent_material);
+          } else {
+            box = new THREE.Mesh(scene.geometry, scene.material);
+          }
+          scene.scene.add(box);
+          boxes.push(box);
+          physics.addMesh(box, 10);
+          box.castShadow = true;
+          box.receiveShadow = true;
         }
-
-        hero_scene.scene.add(box);
-        hero_boxes.push(box);
-        physics.addMesh(box, 10);
-        box.castShadow = true;
-        box.receiveShadow = true;
+        scene.boxes = boxes;
       }
 
       // Port Boxes
@@ -267,30 +270,6 @@ export class Animation extends Component {
       // // idk i think that the orthographic camera's aspect or something is fucked up
 
       // console.log(port_scene);
-
-      // Footer Boxes
-
-      footer_boxes = [];
-
-      for (let i = 0; i < footer_boxcount; i++) {
-        if (i < 1) {
-          footer_box = new THREE.Mesh(
-            footer_scene.geometry,
-            footer_scene.accent_material
-          );
-        } else {
-          footer_box = new THREE.Mesh(
-            footer_scene.geometry,
-            footer_scene.material
-          );
-        }
-
-        footer_box.castShadow = true;
-        footer_box.recieveShadow = true;
-        footer_scene.scene.add(footer_box);
-        footer_boxes.push(footer_box);
-        physics.addMesh(footer_box, 10);
-      }
 
       // Footer Floor
 
@@ -484,7 +463,7 @@ export class Animation extends Component {
           Math.random() + 6,
           Math.random() - 0.5
         );
-        physics.setMeshPosition(hero_boxes[hero_lift_index], position);
+        physics.setMeshPosition(hero_scene.boxes[hero_lift_index], position);
         // }
 
         // Port Lift
@@ -517,7 +496,10 @@ export class Animation extends Component {
           Math.random() + 3,
           Math.random() - 0.5
         );
-        physics.setMeshPosition(footer_boxes[footer_lift_index], position);
+        physics.setMeshPosition(
+          footer_scene.boxes[footer_lift_index],
+          position
+        );
         resizeRendererToDisplaySize(renderer);
         renderSceneInfo(hero_scene);
         // renderSceneInfo(port_scene);
