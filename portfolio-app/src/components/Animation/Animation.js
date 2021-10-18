@@ -49,29 +49,44 @@ export class Animation extends Component {
       gl_FragColor = vec4(c, 1.0);
     }
   `;
-    let scene, renderer, stats;
-    let physics, position;
+    let renderer, stats;
+    let physics;
 
-    let box, footer_box;
     // originally 180
     var hero_boxcount = 110;
     var port_boxcount = 20;
     var footer_boxcount = 40;
 
     let flowControlPositions;
-    let hero_lift_index = 0;
-    let port_lift_index = 0;
-    let footer_lift_index = 0;
 
     let hero_scene, port_scene, footer_scene;
-    let accent_color;
-    let port_controls;
 
     init();
 
+    const heroDiv = document.querySelector('.hero_animation');
+    const footerDiv = document.querySelector('.footer_animation');
+
+    window.addEventListener('mousemove', onMouseMove);
+    function onMouseMove(event) {
+      // current sticking point: the z-index of the animations are -2 so the event doesn't reach them
+      console.log(event.target);
+      if (event.target !== heroDiv && event.target !== footerDiv) return;
+      console.log('yes');
+      //const { left, right, top, bottom, width, height } =
+      //elem.getBoundingClientRect();
+      //if (
+      //event.clientX > right ||
+      //event.clientX < left ||
+      //event.clientY > top ||
+      //event.clientY < bottom
+      //)
+      //return;
+      //mouse.x = (event.clientX / width) * 2 - 1;
+      //mouse.y = (event.clientY / height) * 2 + 1;
+    }
+
     async function init() {
       physics = await AmmoPhysics();
-      position = new THREE.Vector3();
 
       //Scenes
 
@@ -92,6 +107,9 @@ export class Animation extends Component {
       }
 
       hero_scene = setupScene(document.querySelector('.hero_animation'));
+      document
+        .querySelector('.hero_animation')
+        .addEventListener('mousemove', onMouseMove, false);
 
       // port_scene = setupScene(
       //     document.querySelector('#port_animation')
@@ -147,10 +165,6 @@ export class Animation extends Component {
         return sceneInfo;
       }
 
-      // Camera
-
-      scene = new THREE.Scene();
-
       // Flow Control Object
 
       const flowControl = new THREE.Mesh(
@@ -195,6 +209,7 @@ export class Animation extends Component {
 
       function addSceneBoxes(scene, boxCount) {
         const boxes = [];
+        let box;
         for (let i = 0; i < boxCount; i++) {
           if (i < 1) {
             box = new THREE.Mesh(scene.geometry, scene.accent_material);
@@ -403,6 +418,9 @@ export class Animation extends Component {
       // port_controls.enableDamping = true;
       // console.log(port_controls);
       // port_controls.update();
+      //
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
 
       function renderSceneInfo(sceneInfo) {
         const { scene, camera, elem } = sceneInfo;
@@ -441,6 +459,7 @@ export class Animation extends Component {
         return needResize;
       }
 
+      let position = new THREE.Vector3();
       animate();
 
       function animate() {
