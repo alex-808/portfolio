@@ -432,6 +432,7 @@ export class Animation extends Component {
 
         // get the viewport relative position of this element
         const { left, right, top, bottom, width, height } =
+          // need to use this bounding rect to also orientate mouse for raycaster
           elem.getBoundingClientRect();
         const isOffscreen =
           bottom < 0 ||

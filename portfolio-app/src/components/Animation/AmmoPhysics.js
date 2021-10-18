@@ -19,7 +19,7 @@ async function AmmoPhysics() {
     solver,
     collisionConfiguration
   );
-  world.setGravity(new AmmoLib.btVector3(0, -0.8, 0));
+  world.setGravity(new AmmoLib.btVector3(0, -3.8, 0));
 
   const worldTransform = new AmmoLib.btTransform();
 
