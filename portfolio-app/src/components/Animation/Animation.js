@@ -69,7 +69,6 @@ export class Animation extends Component {
     window.addEventListener('mousemove', onMouseMove);
     function onMouseMove(event) {
       // current sticking point: the z-index of the animations are -2 so the event doesn't reach them
-      console.log(event.target);
       if (event.target !== heroDiv && event.target !== footerDiv) return;
       console.log('yes');
       //const { left, right, top, bottom, width, height } =
