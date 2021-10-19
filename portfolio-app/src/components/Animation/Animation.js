@@ -111,8 +111,8 @@ export class Animation extends Component {
         .addEventListener('mousemove', onMouseMove, false);
 
       port_scene = setupScene(document.querySelector('.proj_animation'));
-      const portLeftDivs = document.querySelectorAll('.proj_animation_left');
-      const portRightDivs = document.querySelectorAll('.proj_animation_right');
+      const portRightDivs = document.querySelectorAll('.proj_animation_left');
+      const portLeftDivs = document.querySelectorAll('.proj_animation_right');
 
       const portLeftScenes = [];
       const portRightScenes = [];
@@ -123,7 +123,16 @@ export class Animation extends Component {
         scene.camera.lookAt(0, 0, 0);
         scene.camera.rotation.x = 0;
         scene.camera.rotation.y = 0;
-        scene.camera.rotation.z = 0;
+        scene.camera.rotation.z = -1;
+        portLeftScenes.push(scene);
+      }
+      for (let portRightDiv of portRightDivs) {
+        let scene = setupScene(portRightDiv);
+        scene.camera.position.set(0, 4, 6);
+        scene.camera.lookAt(0, 0, 0);
+        scene.camera.rotation.x = 0;
+        scene.camera.rotation.y = 0;
+        scene.camera.rotation.z = -1;
         portLeftScenes.push(scene);
       }
 
@@ -224,6 +233,9 @@ export class Animation extends Component {
       for (let portLeftScene of portLeftScenes) {
         addSceneBoxes(portLeftScene, port_boxcount);
       }
+      for (let portRightScene of portRightScenes) {
+        addSceneBoxes(portRightScene, port_boxcount);
+      }
 
       function addSceneBoxes(scene, boxCount) {
         const boxes = [];
@@ -243,65 +255,6 @@ export class Animation extends Component {
         scene.boxes = boxes;
       }
 
-      // Port Boxes
-
-      // port_boxes = [];
-
-      // for (let i = 0; i < port_boxcount; i++) {
-      //     var port_box = new THREE.Mesh(
-      //         new THREE.BoxBufferGeometry(5, 5, 5),
-      //         hero_scene.accent_material
-      //     );
-      //     port_box.position.x = 0;
-      //     port_box.position.y = 0;
-      //     port_box.position.z = 0;
-      //     port_box.material.wireframe = true;
-      //     port_scene.scene.add(port_box);
-      //     port_boxes.push(port_box);
-
-      //     // physics.addMesh(port_box, 10);
-      // }
-      // var {
-      //     left,
-      //     right,
-      //     top,
-      //     bottom,
-      // } = port_scene.elem.getBoundingClientRect();
-
-      // console.log(port_scene.elem.getBoundingClientRect());
-
-      // // const port_camera = new THREE.OrthographicCamera(
-      // //     left,
-      // //     right,
-      // //     top,
-      // //     bottom,
-      // //     1,
-      // //     2000
-      // // );
-
-      // const port_camera = new THREE.OrthographicCamera(
-      //     10,
-      //     -10,
-      //     2,
-      //     -2,
-      //     1,
-      //     2000
-      // );
-      // // we are working on this bullshit
-      // port_scene.camera = port_camera;
-
-      // port_scene.camera.position.set(0, 0, 0);
-      // port_scene.camera.lookAt(0, 0, 0);
-      // port_scene.camera.rotation.x = 0;
-      // port_scene.camera.rotation.y = 0;
-      // port_scene.camera.rotation.z = 0;
-
-      // // where you are on the page when you reload matters
-      // // right now it is showing up if the div is in the center of my screen
-      // // idk i think that the orthographic camera's aspect or something is fucked up
-
-      // console.log(port_scene);
-
       // Footer Floor
 
       const floor = new THREE.Mesh(
@@ -320,12 +273,6 @@ export class Animation extends Component {
       footer_scene.camera.rotation.x = 1;
       footer_scene.camera.rotation.y = 0;
       footer_scene.camera.rotation.z = 0;
-
-      port_scene.camera.position.set(0, 4, 6);
-      port_scene.camera.lookAt(0, 0, 0);
-      port_scene.camera.rotation.x = 0;
-      port_scene.camera.rotation.y = 0;
-      port_scene.camera.rotation.z = 0;
 
       // GUI
 
@@ -348,26 +295,6 @@ export class Animation extends Component {
         .name('rotation x');
       footerCameraFolder
         .add(footer_scene.camera.rotation, 'z', -1, 1)
-        .name('rotation z');
-
-      const portCameraFolder = gui.addFolder('Port Camera');
-      portCameraFolder
-        .add(port_scene.camera.position, 'y', 0, 10)
-        .name('camera y');
-      portCameraFolder
-        .add(port_scene.camera.position, 'x', 0, 10)
-        .name('camera x');
-      portCameraFolder
-        .add(port_scene.camera.position, 'z', 0, 10)
-        .name('camera z');
-      portCameraFolder
-        .add(port_scene.camera.rotation, 'y', -3, 3)
-        .name('rotation y');
-      portCameraFolder
-        .add(port_scene.camera.rotation, 'x', -3, 3)
-        .name('rotation x');
-      portCameraFolder
-        .add(port_scene.camera.rotation, 'z', -3, 3)
         .name('rotation z');
 
       // const flowControlFolder = gui.addFolder('FlowControl');
@@ -425,24 +352,6 @@ export class Animation extends Component {
       document.body.appendChild(renderer.domElement);
       stats = new Stats();
 
-      // port_controls = new OrbitControls(
-      //     port_scene.camera,
-      //     renderer.domElement
-      // );
-      // port_controls.autoRotate = true;
-      // port_controls.enableKeys = true;
-      // port_controls.mouseButtons = {
-      //     LEFT: THREE.MOUSE.ROTATE,
-      //     MIDDLE: THREE.MOUSE.DOLLY,
-      //     RIGHT: THREE.MOUSE.PAN,
-      // };
-      // port_controls.domElement = document.querySelector(
-      //     '#port_animation'
-      // );
-      // port_controls.enableDamping = true;
-      // console.log(port_controls);
-      // port_controls.update();
-      //
       const raycaster = new THREE.Raycaster();
       const mouse = new THREE.Vector2();
 
@@ -488,7 +397,6 @@ export class Animation extends Component {
 
       function animate() {
         requestAnimationFrame(animate);
-        // port_controls.update();
 
         function resetBoxes(scene, resetY, newPos) {
           for (let i = 0; i < scene.boxes.length; i++) {
@@ -510,9 +418,15 @@ export class Animation extends Component {
 
         renderSceneInfo(hero_scene);
         for (let portLeftScene of portLeftScenes) {
+          resetBoxes(portLeftScene, 2, { x: -0.5, y: 6, z: -0.5 });
+
           renderSceneInfo(portLeftScene);
         }
-        //renderSceneInfo(port_scene);
+        for (let portRightScene of portRightScenes) {
+          resetBoxes(portRightScene, 2, { x: -0.5, y: 6, z: -0.5 });
+
+          renderSceneInfo(portRightScene);
+        }
         renderSceneInfo(footer_scene);
 
         stats.update();
