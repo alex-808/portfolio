@@ -111,7 +111,21 @@ export class Animation extends Component {
         .addEventListener('mousemove', onMouseMove, false);
 
       port_scene = setupScene(document.querySelector('.proj_animation'));
-      //port_scene.scene.background = new THREE.Color(0xff0000);
+      const portLeftDivs = document.querySelectorAll('.proj_animation_left');
+      const portRightDivs = document.querySelectorAll('.proj_animation_right');
+
+      const portLeftScenes = [];
+      const portRightScenes = [];
+
+      for (let portLeftDiv of portLeftDivs) {
+        let scene = setupScene(portLeftDiv);
+        scene.camera.position.set(0, 4, 6);
+        scene.camera.lookAt(0, 0, 0);
+        scene.camera.rotation.x = 0;
+        scene.camera.rotation.y = 0;
+        scene.camera.rotation.z = 0;
+        portLeftScenes.push(scene);
+      }
 
       footer_scene = setupScene(document.querySelector('.footer_animation'));
 
@@ -206,6 +220,10 @@ export class Animation extends Component {
       addSceneBoxes(hero_scene, hero_boxcount);
       addSceneBoxes(footer_scene, footer_boxcount);
       addSceneBoxes(port_scene, port_boxcount);
+
+      for (let portLeftScene of portLeftScenes) {
+        addSceneBoxes(portLeftScene, port_boxcount);
+      }
 
       function addSceneBoxes(scene, boxCount) {
         const boxes = [];
@@ -491,7 +509,10 @@ export class Animation extends Component {
         resizeRendererToDisplaySize(renderer);
 
         renderSceneInfo(hero_scene);
-        renderSceneInfo(port_scene);
+        for (let portLeftScene of portLeftScenes) {
+          renderSceneInfo(portLeftScene);
+        }
+        //renderSceneInfo(port_scene);
         renderSceneInfo(footer_scene);
 
         stats.update();
