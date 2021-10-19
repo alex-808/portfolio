@@ -54,7 +54,7 @@ export class Animation extends Component {
 
     // originally 180
     var hero_boxcount = 110;
-    var port_boxcount = 20;
+    var port_boxcount = 40;
     var footer_boxcount = 40;
 
     let flowControlPositions;
@@ -110,9 +110,8 @@ export class Animation extends Component {
         .querySelector('.hero_animation')
         .addEventListener('mousemove', onMouseMove, false);
 
-      // port_scene = setupScene(
-      //     document.querySelector('#port_animation')
-      // );
+      port_scene = setupScene(document.querySelector('.proj_animation'));
+      //port_scene.scene.background = new THREE.Color(0xff0000);
 
       footer_scene = setupScene(document.querySelector('.footer_animation'));
 
@@ -186,6 +185,7 @@ export class Animation extends Component {
       flowControl.position.z = flowControlPositions.zPosition;
       flowControl.receiveShadow = true;
       // scene.add( flowControl );
+      port_scene.scene.add(flowControl);
       physics.addMesh(flowControl);
 
       const flowControl2 = new THREE.Mesh(
@@ -205,6 +205,7 @@ export class Animation extends Component {
       // Add boxes to scenes
       addSceneBoxes(hero_scene, hero_boxcount);
       addSceneBoxes(footer_scene, footer_boxcount);
+      addSceneBoxes(port_scene, port_boxcount);
 
       function addSceneBoxes(scene, boxCount) {
         const boxes = [];
@@ -302,6 +303,12 @@ export class Animation extends Component {
       footer_scene.camera.rotation.y = 0;
       footer_scene.camera.rotation.z = 0;
 
+      port_scene.camera.position.set(0, 4, 6);
+      port_scene.camera.lookAt(0, 0, 0);
+      port_scene.camera.rotation.x = 0;
+      port_scene.camera.rotation.y = 0;
+      port_scene.camera.rotation.z = 0;
+
       // GUI
 
       var gui = new GUI();
@@ -325,25 +332,25 @@ export class Animation extends Component {
         .add(footer_scene.camera.rotation, 'z', -1, 1)
         .name('rotation z');
 
-      // const portCameraFolder = gui.addFolder('Port Camera');
-      // portCameraFolder
-      //     .add(port_scene.camera.position, 'y', -500, 0)
-      //     .name('camera y');
-      // portCameraFolder
-      //     .add(port_scene.camera.position, 'x', -500, 0)
-      //     .name('camera x');
-      // portCameraFolder
-      //     .add(port_scene.camera.position, 'z', -500, 0)
-      //     .name('camera z');
-      // portCameraFolder
-      //     .add(port_scene.camera.rotation, 'y', -3, 3)
-      //     .name('rotation y');
-      // portCameraFolder
-      //     .add(port_scene.camera.rotation, 'x', -3, 3)
-      //     .name('rotation x');
-      // portCameraFolder
-      //     .add(port_scene.camera.rotation, 'z', -3, 3)
-      //     .name('rotation z');
+      const portCameraFolder = gui.addFolder('Port Camera');
+      portCameraFolder
+        .add(port_scene.camera.position, 'y', 0, 10)
+        .name('camera y');
+      portCameraFolder
+        .add(port_scene.camera.position, 'x', 0, 10)
+        .name('camera x');
+      portCameraFolder
+        .add(port_scene.camera.position, 'z', 0, 10)
+        .name('camera z');
+      portCameraFolder
+        .add(port_scene.camera.rotation, 'y', -3, 3)
+        .name('rotation y');
+      portCameraFolder
+        .add(port_scene.camera.rotation, 'x', -3, 3)
+        .name('rotation x');
+      portCameraFolder
+        .add(port_scene.camera.rotation, 'z', -3, 3)
+        .name('rotation z');
 
       // const flowControlFolder = gui.addFolder('FlowControl');
 
@@ -484,7 +491,7 @@ export class Animation extends Component {
         resizeRendererToDisplaySize(renderer);
 
         renderSceneInfo(hero_scene);
-        // renderSceneInfo(port_scene);
+        renderSceneInfo(port_scene);
         renderSceneInfo(footer_scene);
 
         stats.update();

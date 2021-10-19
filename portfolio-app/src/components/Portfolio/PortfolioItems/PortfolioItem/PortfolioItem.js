@@ -33,6 +33,7 @@ export class PortfolioItem extends Component {
           <p className="proj_text">{this.props.project.text}</p>
         </div>
         <div className="port_divider"></div>
+        <div className="proj_animation"></div>
       </div>
     );
   }
