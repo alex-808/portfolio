@@ -83,7 +83,12 @@
   padding-top: 2.5em;
 }
 
-.proj_animation {
+.proj_animation_left {
+  width: 100%;
+  height: 500px;
+  z-index: -2;
+}
+.proj_animation_right {
   width: 100%;
   height: 500px;
   z-index: -2;
@@ -129,7 +134,7 @@
   }
 
   .proj_container {
-    flex: 1;
+    flex: 50%;
   }
 
   .port_right {
