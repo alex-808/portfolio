@@ -132,8 +132,8 @@ export class Animation extends Component {
         scene.camera.lookAt(0, 0, 0);
         scene.camera.rotation.x = 0;
         scene.camera.rotation.y = 0;
-        scene.camera.rotation.z = -1;
-        portLeftScenes.push(scene);
+        scene.camera.rotation.z = 1;
+        portRightScenes.push(scene);
       }
 
       footer_scene = setupScene(document.querySelector('.footer_animation'));
@@ -371,7 +371,6 @@ export class Animation extends Component {
         if (isOffscreen) {
           return;
         }
-        // console.log(renderer)
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
 
@@ -398,6 +397,9 @@ export class Animation extends Component {
       function animate() {
         requestAnimationFrame(animate);
 
+        renderer.setScissorTest(false);
+        renderer.clear();
+        renderer.setScissorTest(true);
         function resetBoxes(scene, resetY, newPos) {
           for (let i = 0; i < scene.boxes.length; i++) {
             if (scene.boxes[i].position.y < resetY) {
