@@ -79,7 +79,7 @@ export class Animation extends Component {
 
     let flowControlPositions;
 
-    let hero_scene, port_scene, footer_scene;
+    let hero_scene, footer_scene;
 
     init();
 
@@ -130,7 +130,6 @@ export class Animation extends Component {
         .querySelector('.hero_animation')
         .addEventListener('mousemove', onMouseMove, false);
 
-      port_scene = setupScene(document.querySelector('.proj_animation'));
       const portRightDivs = document.querySelectorAll('.proj_animation_left');
       const portLeftDivs = document.querySelectorAll('.proj_animation_right');
 
@@ -202,6 +201,8 @@ export class Animation extends Component {
         sceneInfo.geometry = geometryBox;
         sceneInfo.material = material;
         sceneInfo.accent_material = accent_material;
+        sceneInfo.accent_material2 = accent_material;
+        sceneInfo.accent_material2.fragmentShader = accentFragmentShader;
 
         return sceneInfo;
       }
@@ -228,7 +229,6 @@ export class Animation extends Component {
       flowControl.position.z = flowControlPositions.zPosition;
       flowControl.receiveShadow = true;
       // scene.add( flowControl );
-      port_scene.scene.add(flowControl);
       physics.addMesh(flowControl);
 
       const flowControl2 = new THREE.Mesh(
@@ -248,7 +248,6 @@ export class Animation extends Component {
       // Add boxes to scenes
       addSceneBoxes(hero_scene, hero_boxcount);
       addSceneBoxes(footer_scene, footer_boxcount);
-      addSceneBoxes(port_scene, port_boxcount);
 
       for (let portLeftScene of portLeftScenes) {
         addSceneBoxes(portLeftScene, port_boxcount);
@@ -351,12 +350,6 @@ export class Animation extends Component {
       //     .add(flowControl2.rotation, 'z', 0, 10)
       //     .name('fc2 rotation z');
 
-      // const portFrustumFolder = gui.addFolder('Port Frustum');
-      // portFrustumFolder.add(port_scene.camera, 'left', -1000, 1000);
-      // portFrustumFolder.add(port_scene.camera, 'right', -1000, 1000);
-      // portFrustumFolder.add(port_scene.camera, 'top', -1000, 1000);
-      // portFrustumFolder.add(port_scene.camera, 'bottom', -1000, 1000);
-
       // Renderer
 
       const canvas = document.getElementById('main_canvas');
@@ -420,6 +413,7 @@ export class Animation extends Component {
         renderer.setScissorTest(false);
         renderer.clear();
         renderer.setScissorTest(true);
+
         function resetBoxes(scene, resetY, newPos) {
           for (let i = 0; i < scene.boxes.length; i++) {
             if (scene.boxes[i].position.y < resetY) {
