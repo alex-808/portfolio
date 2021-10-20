@@ -74,7 +74,7 @@ export class Animation extends Component {
 
     // originally 180
     var hero_boxcount = 110;
-    var port_boxcount = 40;
+    var port_boxcount = 60;
     var footer_boxcount = 40;
 
     let flowControlPositions;
@@ -201,8 +201,6 @@ export class Animation extends Component {
         sceneInfo.geometry = geometryBox;
         sceneInfo.material = material;
         sceneInfo.accent_material = accent_material;
-        sceneInfo.accent_material2 = accent_material;
-        sceneInfo.accent_material2.fragmentShader = accentFragmentShader;
 
         return sceneInfo;
       }
@@ -282,14 +280,14 @@ export class Animation extends Component {
       );
       floor.position.y = -1;
       floor.receiveShadow = true;
-      footer_scene.scene.add(floor);
+      //footer_scene.scene.add(floor);
       physics.addMesh(floor);
 
       // footer_scene camera
 
-      footer_scene.camera.position.set(0, 2, 1);
+      footer_scene.camera.position.set(0, 3, 2.5);
       footer_scene.camera.lookAt(0, 0, 0);
-      footer_scene.camera.rotation.x = 1;
+      footer_scene.camera.rotation.x = -0.5;
       footer_scene.camera.rotation.y = 0;
       footer_scene.camera.rotation.z = 0;
 
@@ -428,7 +426,7 @@ export class Animation extends Component {
         }
 
         resetBoxes(hero_scene, 2, { x: -0.5, y: 6, z: -0.5 });
-        resetBoxes(footer_scene, 2, { x: 0, y: 3, z: -0.5 });
+        resetBoxes(footer_scene, 2, { x: 0, y: 6, z: -0.5 });
 
         resizeRendererToDisplaySize(renderer);
 
@@ -443,6 +441,8 @@ export class Animation extends Component {
 
           renderSceneInfo(portRightScene);
         }
+
+        footer_scene.camera.rotation.z += 0.005;
         renderSceneInfo(footer_scene);
 
         stats.update();
