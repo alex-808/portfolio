@@ -119,7 +119,7 @@ export class Animation extends Component {
 
       for (let portLeftDiv of portLeftDivs) {
         let scene = setupScene(portLeftDiv);
-        scene.camera.position.set(0, 4, 6);
+        scene.camera.position.set(0, 4, 3);
         scene.camera.lookAt(0, 0, 0);
         scene.camera.rotation.x = 0;
         scene.camera.rotation.y = 0;
@@ -128,7 +128,7 @@ export class Animation extends Component {
       }
       for (let portRightDiv of portRightDivs) {
         let scene = setupScene(portRightDiv);
-        scene.camera.position.set(0, 4, 6);
+        scene.camera.position.set(0, 4, 3);
         scene.camera.lookAt(0, 0, 0);
         scene.camera.rotation.x = 0;
         scene.camera.rotation.y = 0;
