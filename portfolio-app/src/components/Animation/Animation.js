@@ -6,28 +6,17 @@ import Stats from 'three/examples/jsm/libs/stats.module.js';
 import { GUI } from 'three/examples/jsm/libs/dat.gui.module';
 export class Animation extends Component {
   componentDidMount() {
-    let renderer, stats;
-    let physics;
-
-    // originally 180
     var hero_boxcount = 110;
     var port_boxcount = 60;
     var footer_boxcount = 40;
 
-    let flowControlPositions;
-
-    let hero_scene, footer_scene;
-
     init();
-
-    const heroDiv = document.querySelector('.hero_animation');
-    const footerDiv = document.querySelector('.footer_animation');
 
     window.addEventListener('mousemove', onMouseMove);
     function onMouseMove(event) {
       // current sticking point: the z-index of the animations are -2 so the event doesn't reach them
-      if (event.target !== heroDiv && event.target !== footerDiv) return;
-      console.log('yes');
+      //if (event.target !== heroDiv && event.target !== footerDiv) return;
+      //console.log('yes');
       //const { left, right, top, bottom, width, height } =
       //elem.getBoundingClientRect();
       //if (
@@ -42,7 +31,7 @@ export class Animation extends Component {
     }
 
     async function init() {
-      physics = await AmmoPhysics();
+      let physics = await AmmoPhysics();
 
       //Scenes
 
@@ -62,7 +51,7 @@ export class Animation extends Component {
         return { scene, camera, elem };
       }
 
-      hero_scene = setupScene(document.querySelector('.hero_animation'));
+      const hero_scene = setupScene(document.querySelector('.hero_animation'));
       document
         .querySelector('.hero_animation')
         .addEventListener('mousemove', onMouseMove, false);
@@ -92,11 +81,14 @@ export class Animation extends Component {
         portRightScenes.push(scene);
       }
 
-      footer_scene = setupScene(document.querySelector('.footer_animation'));
+      const footer_scene = setupScene(
+        document.querySelector('.footer_animation')
+      );
 
       function setupScene(elem) {
         const sceneInfo = makeScene(elem);
         const geometryBox = new THREE.BoxBufferGeometry(0.2, 0.2, 0.2);
+
         const material = new THREE.ShaderMaterial({
           uniforms: {
             size: {
@@ -116,6 +108,7 @@ export class Animation extends Component {
           vertexShader: shaders.vertexShader,
           fragmentShader: shaders.fragmentShader,
         });
+
         const accent_material = new THREE.ShaderMaterial({
           uniforms: {
             size: {
@@ -135,6 +128,7 @@ export class Animation extends Component {
           vertexShader: shaders.vertexShader,
           fragmentShader: shaders.accentFragmentShader2,
         });
+
         sceneInfo.geometry = geometryBox;
         sceneInfo.material = material;
         sceneInfo.accent_material = accent_material;
@@ -144,11 +138,11 @@ export class Animation extends Component {
 
       // Flow Control Object
 
-      const flowControl = new THREE.Mesh(
+      const wall1 = new THREE.Mesh(
         new THREE.BoxBufferGeometry(5, 0.5, 5),
         new THREE.MeshBasicMaterial({ color: 'blue' })
       );
-      flowControlPositions = {
+      const wallPosition = {
         xRotation: 9.7,
         yRotation: 0,
         zRotation: 8.5,
@@ -157,28 +151,23 @@ export class Animation extends Component {
         zPosition: -2,
       };
 
-      flowControl.rotation.x = flowControlPositions.xRotation;
-      flowControl.rotation.z = flowControlPositions.zRotation;
-      flowControl.position.y = flowControlPositions.yPosition;
-      flowControl.position.x = flowControlPositions.xPosition;
-      flowControl.position.z = flowControlPositions.zPosition;
-      flowControl.receiveShadow = true;
-      // scene.add( flowControl );
-      physics.addMesh(flowControl);
+      wall1.rotation.x = wallPosition.xRotation;
+      wall1.rotation.z = wallPosition.zRotation;
+      wall1.position.y = wallPosition.yPosition;
+      wall1.position.x = wallPosition.xPosition;
+      wall1.position.z = wallPosition.zPosition;
+      physics.addMesh(wall1);
 
-      const flowControl2 = new THREE.Mesh(
+      const wall2 = new THREE.Mesh(
         new THREE.BoxBufferGeometry(5, 0.5, 5),
-        // new THREE.ShadowMaterial( { color: 'blue' } )
         new THREE.MeshBasicMaterial({ color: 'blue' })
       );
-      flowControl2.rotation.x = flowControlPositions.xRotation;
-      flowControl2.rotation.z = -flowControlPositions.zRotation;
-      flowControl2.position.y = flowControlPositions.yPosition;
-      flowControl2.position.x = flowControlPositions.xPosition;
-      flowControl2.position.z = flowControlPositions.zPosition;
-      flowControl2.receiveShadow = true;
-      // scene.add( flowControl2 );
-      physics.addMesh(flowControl2);
+      wall2.rotation.x = wallPosition.xRotation;
+      wall2.rotation.z = -wallPosition.zRotation;
+      wall2.position.y = wallPosition.yPosition;
+      wall2.position.x = wallPosition.xPosition;
+      wall2.position.z = wallPosition.zPosition;
+      physics.addMesh(wall2);
 
       // Add boxes to scenes
       addSceneBoxes(hero_scene, hero_boxcount);
@@ -218,7 +207,7 @@ export class Animation extends Component {
       floor.position.y = -1;
       floor.receiveShadow = true;
       //footer_scene.scene.add(floor);
-      physics.addMesh(floor);
+      //physics.addMesh(floor);
 
       // footer_scene camera
 
@@ -288,7 +277,7 @@ export class Animation extends Component {
       // Renderer
 
       const canvas = document.getElementById('main_canvas');
-      renderer = new THREE.WebGLRenderer({
+      const renderer = new THREE.WebGLRenderer({
         canvas,
         antialias: true,
         alpha: true,
@@ -298,7 +287,7 @@ export class Animation extends Component {
       renderer.shadowMap.enabled = true;
       renderer.outputEncoding = THREE.sRGBEncoding;
       document.body.appendChild(renderer.domElement);
-      stats = new Stats();
+      const stats = new Stats();
 
       const raycaster = new THREE.Raycaster();
       const mouse = new THREE.Vector2();
@@ -340,11 +329,12 @@ export class Animation extends Component {
       }
 
       let position = new THREE.Vector3();
-
       animate();
 
       function animate() {
         requestAnimationFrame(animate);
+
+        resizeRendererToDisplaySize(renderer);
 
         renderer.setScissorTest(false);
         renderer.clear();
@@ -364,24 +354,22 @@ export class Animation extends Component {
         }
 
         resetBoxes(hero_scene, 2, { x: -0.5, y: 6, z: -0.5 });
-        resetBoxes(footer_scene, 2, { x: 0, y: 6, z: -0.5 });
-
-        resizeRendererToDisplaySize(renderer);
+        resetBoxes(footer_scene, 2, { x: -0.5, y: 6, z: -0.5 });
 
         renderSceneInfo(hero_scene);
+        renderSceneInfo(footer_scene);
+
         for (let portLeftScene of portLeftScenes) {
           resetBoxes(portLeftScene, 2, { x: -0.5, y: 6, z: -0.5 });
-
           renderSceneInfo(portLeftScene);
         }
+
         for (let portRightScene of portRightScenes) {
           resetBoxes(portRightScene, 2, { x: -0.5, y: 6, z: -0.5 });
-
           renderSceneInfo(portRightScene);
         }
 
         footer_scene.camera.rotation.z += 0.005;
-        renderSceneInfo(footer_scene);
 
         stats.update();
       }

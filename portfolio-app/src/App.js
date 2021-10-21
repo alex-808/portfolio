@@ -30,16 +30,15 @@ class App extends Component {
             text: (
               <div>
                 <p>
-                  I am a <b>self-taught developer</b> born and raised in the
-                  sprawling cheese country (Wisconsin). I lived in Massachusetts
-                  for several years where I attended <b>Clark University</b>{' '}
-                  majoring in <b>Communications</b> before finally landing in
-                  San Diego. Along the way I realized the conventional path was
-                  not for me and decided to find my own way.
+                  I am a <b>self-taught developer</b> originally from Wisconsin
+                  but living in San Diego since 2019. Before that I lived in
+                  Massachusetts where I recieved a <b>B.A. in Communications</b>{' '}
+                  from <b>Clark University</b>. Grateful to be somewhere warm
+                  now.
                 </p>
                 <p>
-                  My passions aside from my burning <b>love of programming</b>{' '}
-                  are finding and making <b>weird music</b>, reading very{' '}
+                  My interests aside from my <b>love of programming</b> are
+                  finding and making <b>weird music</b>, reading very{' '}
                   <b>dry books</b>, trying to get outside once in a while and{' '}
                   <b>talking to people</b> who are <b>much smarter</b> than me.
                 </p>
@@ -114,7 +113,7 @@ class App extends Component {
             side_class: 'port_item port_left',
           },
           {
-            title: 'Project Title',
+            title: 'Game of Ur (with friends)',
             img: './imgs/mockup_yellow_cropped.png',
             text: (
               <p>
@@ -126,7 +125,7 @@ class App extends Component {
             side_class: 'port_item port_right',
           },
           {
-            title: 'Project Title',
+            title: 'Camera Obscura',
             img: './imgs/mockup_yellow_cropped.png',
             text: (
               <p>
