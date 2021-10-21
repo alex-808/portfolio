@@ -6,7 +6,7 @@ export class AboutMe extends Component {
     return (
       <section className="about_me_section">
         <h1 className="about_me_title">{this.props.about_me.title}</h1>
-        <p className="about_me_text">{this.props.about_me.text}</p>
+        <div className="about_me_text">{this.props.about_me.text}</div>
       </section>
     );
   }

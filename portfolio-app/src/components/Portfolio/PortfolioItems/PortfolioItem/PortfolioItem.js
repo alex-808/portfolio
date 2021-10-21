@@ -7,7 +7,6 @@ export class PortfolioItem extends Component {
   constructor(props) {
     super(props);
     Aos.init({ offset: 0, duration: 1500, easing: 'ease-in-out' });
-    console.log(props.project.side_class);
 
     if (props.project.side_class.includes('port_right')) {
       this.slideDir = 'left';
@@ -30,7 +29,7 @@ export class PortfolioItem extends Component {
             <img className="proj_img" src={this.props.project.img} />
             <div className="proj_img_tab"></div>
           </div>
-          <p className="proj_text">{this.props.project.text}</p>
+          <div className="proj_text">{this.props.project.text}</div>
         </div>
         <div className="port_divider"></div>
         <div className={`proj_animation_${this.slideDir}`}></div>
