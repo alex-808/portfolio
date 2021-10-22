@@ -191,9 +191,10 @@ class App extends Component {
       footer: {
         cta: 'Get in touch',
         social_icons: [
-          './imgs/checkmark.svg',
-          './imgs/checkmark.svg',
-          './imgs/checkmark.svg',
+          {
+            img: './imgs/GitHub-Mark-120px-plus.png',
+            link: 'https://github.com/alex-davis-808',
+          },
         ],
       },
     };
