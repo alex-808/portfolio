@@ -62,7 +62,7 @@ class App extends Component {
                   <b>Design sites</b> from scratch
                 </li>
                 <li>
-                  Constantly <b>expand skillset</b>
+                  Consistently <b>expand skillset</b>
                 </li>
                 <li>
                   Code <b>custom tooling</b>
@@ -85,29 +85,27 @@ class App extends Component {
             title: 'What I know',
             text: (
               <ul>
-                <b>Core Web Technologies:</b>
+                <b>Frontend:</b>
                 <li>JavaScript</li>
                 <li>HTML</li>
-                <li>CSS</li>
-                <b>Frontend Framework:</b>
+                <li>Modern CSS</li>
                 <li>React.js</li>
-                <b>Backend Technologies:</b>
+                <li>Sass</li>
+                <li>OAuth</li>
+                <b>Backend:</b>
                 <li>Node.js</li>
                 <li>Express.js</li>
                 <li>SQL</li>
                 <b>Tooling:</b>
                 <li>Git/Github</li>
                 <li>Figma Design and Prototyping</li>
-                <b>Libraries/Frameworks:</b>
-                <li>Three.js</li>
-                <li>OAuth</li>
-                <li>Sass</li>
+                <li>Jest</li>
                 <b>Programming Concepts:</b>
                 <li>Algorithms and Data Structures</li>
                 <li>Testing</li>
                 <li>Agile Development</li>
                 <li>Networks</li>
-                <li>Object Oriented Programming</li>
+                <li>OOP</li>
                 <li>Authetication</li>
                 <b>Other Languages:</b>
                 <li>TypeScript</li>
@@ -139,9 +137,15 @@ class App extends Component {
             img: './imgs/mockup_yellow_cropped.png',
             text: (
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                nibh magna, condimentum non pulvinar nec, semper vel ipsum.
-                Nulla facilisi. Suspendisse potent
+                Game of Ur (with friends) is{' '}
+                <b>a real-time online multiplayer board game</b> written in{' '}
+                <b>TypeScript</b> and based on a similar game played in
+                Mesopotamia over 4000 years ago. A local multiplayer version was
+                my mom's favorite project of mine so I created this version to
+                allow us to play with her in Wisconsin and me in San Diego. It
+                uses <b>Socket.io</b>, a real-time bi-directional communication
+                library to share and update game state between players and the
+                server written in <b>Node.js</b>
               </p>
             ),
             side_class: 'port_item port_right',
@@ -176,15 +180,11 @@ class App extends Component {
         title: 'My_Story: From for-loop to full-stack() {',
         text: (
           <p>
-            Several months ago I found myself with some extra time on my hands
-            and decided to do something with it. In the process I discovered
-            that I have a true passion for code in all its forms. In a span of
-            months I went from writing my first for-loop to planning, designing
-            and executing full-stack applications. Today I am looking for more
-            opportunities to show my skills, create value with them and continue
-            to grow by learning with the best. Although there is much that I
-            still want to learn, my ambition is to create things that will
-            change peoples lives.
+            I am currently looking for my first full-time position in the tech
+            industry as a full stack web developer. If anything you have seen
+            here interests you or you would like to reach out, feel free to
+            click below or check out my other links to see more info about me.
+            Thanks for visiting!
           </p>
         ),
       },
