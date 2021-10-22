@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import PortfolioItems from './PortfolioItems/PortFolioItems';
+import PortfolioItems from './PortfolioItems/PortfolioItems';
 
 export class Portfolio extends Component {
   render() {
