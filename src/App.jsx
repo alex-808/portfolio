@@ -49,21 +49,35 @@ class App extends Component {
             icon_url: './imgs/code.svg',
             title: 'What I do',
             text: (
-              <div>
-                <p>
-                  I solve problems through simple, elegant and scalable
-                  solutions, <b>learn like crazy</b>, rinse and repeat.
-                  Moreover, I plan, design and code
-                  <b> full-stack web applications </b> such as the one on{' '}
-                  <b>your screen now</b>. In everything I set my heart to I try
-                  to be careful, meticulous and imbue it with my own personal{' '}
-                  <b>passion</b>. When working with others I find my{' '}
-                  <b>strong communication skills</b> are often an asset to the
-                  final product. In my work I strive to be an{' '}
-                  <b>out-of-the-box thinker</b> and look for solutions beyond
-                  the obvious and apparent.
-                </p>
-              </div>
+              <ul>
+                <li>
+                  Write <b>tests</b>
+                </li>
+                <li>
+                  Build <b>APIs</b>
+                </li>
+                <li>Code CSS from designs</li>
+                <li>Write code for back end and front end</li>
+                <li>
+                  <b>Design sites</b> from scratch
+                </li>
+                <li>
+                  Constantly <b>expand skillset</b>
+                </li>
+                <li>
+                  Code <b>custom tooling</b>
+                </li>
+                <li>
+                  Write clean and <b>maintainable code</b>
+                </li>
+                <li>
+                  Work with <b>modern JS tooling</b>
+                </li>
+                <li>
+                  Use <b>git/Github</b> for version control
+                </li>
+                <li>Use best practices</li>
+              </ul>
             ),
           },
           {
@@ -71,25 +85,33 @@ class App extends Component {
             title: 'What I know',
             text: (
               <ul>
+                <b>Core Web Technologies:</b>
                 <li>JavaScript</li>
                 <li>HTML</li>
                 <li>CSS</li>
-                <li>REST</li>
-                <li>SQL</li>
-                <li>Git/Github</li>
-                <li>Web Design and Prototyping</li>
-                <li>Python</li>
-                <li>Networks</li>
-                <li>Object Oriented Programming</li>
+                <b>Frontend Framework:</b>
                 <li>React.js</li>
+                <b>Backend Technologies:</b>
                 <li>Node.js</li>
                 <li>Express.js</li>
+                <li>SQL</li>
+                <b>Tooling:</b>
+                <li>Git/Github</li>
+                <li>Figma Design and Prototyping</li>
+                <b>Libraries/Frameworks:</b>
                 <li>Three.js</li>
-                <li>Authetication</li>
+                <li>OAuth</li>
+                <li>Sass</li>
+                <b>Programming Concepts:</b>
                 <li>Algorithms and Data Structures</li>
-                <li>TypeScript</li>
                 <li>Testing</li>
                 <li>Agile Development</li>
+                <li>Networks</li>
+                <li>Object Oriented Programming</li>
+                <li>Authetication</li>
+                <b>Other Languages:</b>
+                <li>TypeScript</li>
+                <li>Python</li>
               </ul>
             ),
           },
