@@ -33,6 +33,10 @@
   font-family: 'Poppins SemiBold';
 }
 
+.skills-list {
+  padding: 10% 20%;
+}
+
 @media only screen and (min-width: 600px) {
   .spec_item_container {
     flex-direction: row;

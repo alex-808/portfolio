@@ -84,33 +84,45 @@ class App extends Component {
             icon_url: './imgs/checkmark.svg',
             title: 'What I know',
             text: (
-              <ul>
-                <b>Frontend:</b>
-                <li>JavaScript</li>
-                <li>HTML</li>
-                <li>Modern CSS</li>
-                <li>React.js</li>
-                <li>Sass</li>
-                <li>OAuth</li>
+              <>
+                <div>
+                  <b>Frontend:</b>
+                </div>
+                <ul className="skills-list">
+                  <li>JavaScript</li>
+                  <li>HTML</li>
+                  <li>Modern CSS</li>
+                  <li>React.js</li>
+                  <li>Sass</li>
+                  <li>OAuth</li>
+                </ul>
                 <b>Backend:</b>
-                <li>Node.js</li>
-                <li>Express.js</li>
-                <li>SQL</li>
+                <ul className="skills-list">
+                  <li>Node.js</li>
+                  <li>Express.js</li>
+                  <li>SQL</li>
+                </ul>
                 <b>Tooling:</b>
-                <li>Git/Github</li>
-                <li>Figma Design and Prototyping</li>
-                <li>Jest</li>
+                <ul className="skills-list">
+                  <li>Git/Github</li>
+                  <li>Figma Design and Prototyping</li>
+                  <li>Jest</li>
+                </ul>
                 <b>Programming Concepts:</b>
-                <li>Algorithms and Data Structures</li>
-                <li>Testing</li>
-                <li>Agile Development</li>
-                <li>Networks</li>
-                <li>OOP</li>
-                <li>Authetication</li>
+                <ul className="skills-list">
+                  <li>Algorithms and Data Structures</li>
+                  <li>Testing</li>
+                  <li>Agile Development</li>
+                  <li>Networks</li>
+                  <li>OOP</li>
+                  <li>Authetication</li>
+                </ul>
                 <b>Other Languages:</b>
-                <li>TypeScript</li>
-                <li>Python</li>
-              </ul>
+                <ul className="skills-list">
+                  <li>TypeScript</li>
+                  <li>Python</li>
+                </ul>
+              </>
             ),
           },
         ],
