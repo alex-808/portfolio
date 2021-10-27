@@ -177,7 +177,7 @@ class App extends Component {
         ],
       },
       about_me: {
-        title: 'My_Story: From for-loop to full-stack() {',
+        title: 'Dev For Hire!',
         text: (
           <p>
             I am currently looking for my first full-time position in the tech
