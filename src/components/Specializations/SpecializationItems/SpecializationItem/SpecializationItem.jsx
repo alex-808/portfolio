@@ -12,7 +12,9 @@ export class SpecializationItem extends Component {
   render() {
     return (
       <div data-aos="flip-left" className="spec_item">
-        <img className="spec_icon" src={this.props.item.icon_url} />
+        <div className="spec_icon_bg">
+          <img className="spec_icon" src={this.props.item.icon_url} />
+        </div>
         <h2 className="spec_title">{this.props.item.title}</h2>
         {this.props.item.text}
       </div>

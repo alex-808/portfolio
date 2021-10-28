@@ -3,11 +3,17 @@
 }
 
 .spec_icon {
-  width: 5em;
+  width: 4em;
   margin: auto;
-  padding: 2em;
+}
+
+.spec_icon_bg {
+  width: 4em;
+  height: 4em;
   background-color: var(--accent_color_main);
   border-radius: 100%;
+  margin: auto;
+  padding: 2em;
 }
 
 .spec_title {

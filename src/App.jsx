@@ -25,7 +25,7 @@ class App extends Component {
       spec: {
         items: [
           {
-            icon_url: './imgs/fingerprint.svg',
+            icon_url: './imgs/waving_hand.svg',
             title: 'Who I am',
             text: (
               <div>
@@ -46,7 +46,7 @@ class App extends Component {
             ),
           },
           {
-            icon_url: './imgs/code.svg',
+            icon_url: './imgs/auto_awesome.svg',
             title: 'What I do',
             text: (
               <ul>
@@ -81,7 +81,7 @@ class App extends Component {
             ),
           },
           {
-            icon_url: './imgs/checkmark.svg',
+            icon_url: './imgs/verified.svg',
             title: 'What I know',
             text: (
               <>
