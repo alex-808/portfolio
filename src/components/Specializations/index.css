@@ -47,7 +47,7 @@
   }
 
   .spec_item + .spec_item {
-    border-left: 0.15em solid;
+    border-left: 0.1em solid;
   }
 
   .spec_item:last-child {
@@ -59,7 +59,7 @@
 @media only screen and (min-width: 732px) {
   .spec_item:last-child {
     border-top: none;
-    border-left: 0.15em solid;
+    border-left: 0.1em solid;
   }
 }
 
@@ -73,6 +73,7 @@
   .spec_item_container {
     width: 70%;
     margin-top: -4.5em;
+    border-width: 0.3em;
   }
   .spec_item {
     padding: 2em 3em;
