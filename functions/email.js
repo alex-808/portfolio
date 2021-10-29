@@ -16,17 +16,13 @@ exports.handler = async function (event, context) {
     .send(msg)
     .then(() => {
       console.log('Email sent');
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: 'Email Sent' }),
-      };
     })
     .catch((error) => {
       console.error(error);
       console.log('Email not sent');
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: 'Email Not Sent' }),
-      };
     });
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: 'Email attempted' }),
+  };
 };
