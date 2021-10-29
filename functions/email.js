@@ -20,6 +20,6 @@ exports.handler = async function (event, context) {
   console.log('worked');
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'Hello World' }),
+    body: JSON.stringify({ message: 'Email Sent' }),
   };
 };
