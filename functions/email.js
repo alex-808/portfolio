@@ -2,6 +2,7 @@ exports.handler = async function (event, context) {
   const sgMail = require('@sendgrid/mail');
   console.log('API key:', process.env.SENDGRID_API_KEY);
   console.log('Email address:', process.env.EMAIL_ADDRESS);
+
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
@@ -11,18 +12,21 @@ exports.handler = async function (event, context) {
     text: "It's working",
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };
+
   console.log('worked');
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log('Email sent');
-    })
-    .catch((error) => {
-      console.error(error);
-      console.log('Email not sent');
-    });
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: 'Email attempted' }),
-  };
+  try {
+    const res = await sgMail.send(msg);
+    console.log(res);
+    console.log('Email sent');
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ msg: 'Email sent' }),
+    };
+  } catch (err) {
+    console.log('Email not sent');
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ msg: 'Email not sent' }),
+    };
+  }
 };
