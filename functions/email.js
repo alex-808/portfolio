@@ -5,15 +5,19 @@ exports.handler = async function (event, context) {
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+  const formData = JSON.parse(event.body);
+
   const msg = {
     to: process.env.EMAIL_ADDRESS, // Change to your recipient
     from: process.env.EMAIL_ADDRESS, // Change to your verified sender
-    subject: 'Hello from the other side',
-    text: "It's working",
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    subject: `New Porfolio Message from ${formData.name}`,
+    html: `<p>Name: ${formData.name}</p>
+	<p>Email: ${formData.email}</p>
+	<p>Message:${formData.message}</p>`,
   };
 
-  console.log('worked');
+  console.log('Message:', msg);
+
   try {
     const res = await sgMail.send(msg);
     console.log(res);
