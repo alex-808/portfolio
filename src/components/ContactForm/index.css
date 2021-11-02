@@ -1,0 +1,17 @@
+label {
+  /*padding-right: 10px;*/
+  display: flex;
+  justify-content: flex-end;
+}
+
+textarea {
+  width: 50%;
+}
+
+input {
+  margin-left: 10px;
+}
+
+form {
+  display: flex;
+}

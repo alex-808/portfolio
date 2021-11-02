@@ -27,7 +27,6 @@
 .proj_box_img {
   z-index: -2;
   position: relative;
-  background-image: url('./imgs/Blocks\ image.png');
   background-size: 49%;
   background-repeat: no-repeat;
   padding: 50%;
@@ -116,7 +115,7 @@
 }
 
 .proj_img_tab {
-  background-image: url('./imgs/whiteblack.png');
+  background-image: url('../../imgs/whiteblacktiny.png');
   background-size: cover;
   border-radius: 0px 0.5em 0.5em 0px;
   box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.25);

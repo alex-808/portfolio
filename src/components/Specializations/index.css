@@ -5,7 +5,7 @@
 }
 
 .spec_header_box {
-  background-image: url(./imgs/whiteblack.png);
+  background-image: url(../../imgs/whiteblacktiny.png);
   background-size: cover;
   background-attachment: fixed;
   padding: 2em;

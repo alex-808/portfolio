@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import axios from 'axios';
+import './index.css';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -25,19 +26,27 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={dispatchEmail} onChange={updateFormData}>
+      <div>
+        <label>
+          Name:
+          <input type="text" defaultValue={formData.name} name="name" />
+        </label>
+        <label>
+          Email:
+          <input type="text" defaultValue={formData.email} name="email" />
+        </label>
+      </div>
       <label>
-        Name:
-        <input type="text" defaultValue={formData.name} name="name" />
+        <div> Message:</div>
+        <textarea
+          type="textarea"
+          defaultValue={formData.message}
+          name="message"
+        />
       </label>
-      <label>
-        Email:
-        <input type="text" defaultValue={formData.email} name="email" />
-      </label>
-      <label>
-        Message:
-        <input type="textarea" defaultValue={formData.message} name="message" />
-      </label>
-      <input type="submit" value="Submit" />
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
     </form>
   );
 };
