@@ -10,9 +10,6 @@ import { Component } from 'react';
 class App extends Component {
   constructor() {
     super();
-    fetch('.netlify/functions/email')
-      .then((res) => res.json())
-      .then((json) => console.log(json));
     this.state = {
       hero: {
         title: 'Hello,',
