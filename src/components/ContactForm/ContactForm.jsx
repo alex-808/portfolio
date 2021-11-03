@@ -25,17 +25,20 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={dispatchEmail} onChange={updateFormData}>
-      <div>
-        <label>
-          Name:
-          <input type="text" defaultValue={formData.name} name="name" />
-        </label>
-        <label>
-          Email:
-          <input type="text" defaultValue={formData.email} name="email" />
-        </label>
-      </div>
+    <form
+      className="contact-form"
+      onSubmit={dispatchEmail}
+      onChange={updateFormData}
+    >
+      <h2>Contact Form</h2>
+      <label>
+        Name:
+        <input type="text" defaultValue={formData.name} name="name" />
+      </label>
+      <label>
+        Email:
+        <input type="text" defaultValue={formData.email} name="email" />
+      </label>
       <label>
         <div> Message:</div>
         <textarea
@@ -44,9 +47,7 @@ const ContactForm = () => {
           name="message"
         />
       </label>
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
+      <input className="submit-btn" type="submit" value="Submit" />
     </form>
   );
 };

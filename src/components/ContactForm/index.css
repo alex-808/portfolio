@@ -1,17 +1,37 @@
 label {
-  /*padding-right: 10px;*/
-  display: flex;
-  justify-content: flex-end;
+  display: block;
+  width: 100%;
+}
+
+input,
+textarea {
+  font-family: 'Poppins Regular';
+  display: block;
+  border-width: 0.25em;
+  border-radius: 0.4em;
+  border-style: solid;
+  border-color: black;
+  margin: 0.5em 0.5em;
+  width: 100%;
 }
 
 textarea {
-  width: 50%;
+  height: 100px;
 }
 
-input {
-  margin-left: 10px;
+.submit-btn {
+  width: 25%;
 }
-
-form {
+.contact-form {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  box-shadow: 17px 14px 23px rgba(0, 0, 0, 0.25);
+  border-radius: 1em;
+  padding: 10%;
+  /*position: fixed;*/
+  top: 25%;
+  left: 15%;
+  width: 50%;
 }
