@@ -66,7 +66,7 @@
   padding: 30% 15%;
 
   background-color: var(--accent_color_secondary);
-  box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.25);
+  box-shadow: 13px 14px 10px rgba(0, 0, 0, 0.25);
   transform: rotate(135deg);
 }
 
@@ -111,14 +111,14 @@
 .proj_img {
   width: 75%;
   height: auto;
-  box-shadow: 1em 1em 2em;
+  box-shadow: 13px 14px 10px rgba(0, 0, 0, 0.25);
 }
 
 .proj_img_tab {
   background-image: url('../../imgs/whiteblacktiny.png');
   background-size: cover;
   border-radius: 0px 0.5em 0.5em 0px;
-  box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.25);
+  box-shadow: 13px 14px 10px rgba(0, 0, 0, 0.25);
   width: 10%;
 }
 
