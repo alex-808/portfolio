@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { AmmoPhysics } from './AmmoPhysics';
 import * as shaders from './shaders';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GUI } from 'three/examples/jsm/libs/dat.gui.module';
 export class Animation extends Component {
   componentDidMount() {
@@ -167,6 +168,8 @@ export class Animation extends Component {
       wall2.position.y = wallPosition.yPosition;
       wall2.position.x = wallPosition.xPosition;
       wall2.position.z = wallPosition.zPosition;
+      //footer_scene.scene.add(wall1);
+      //footer_scene.scene.add(wall2);
       physics.addMesh(wall2);
 
       // Add boxes to scenes
@@ -198,47 +201,36 @@ export class Animation extends Component {
         scene.boxes = boxes;
       }
 
-      // Footer Floor
-
-      const floor = new THREE.Mesh(
-        new THREE.BoxBufferGeometry(10, 5, 10),
-        new THREE.MeshBasicMaterial({ color: '#10e9ee' })
-      );
-      floor.position.y = -1;
-      floor.receiveShadow = true;
-      //footer_scene.scene.add(floor);
-      //physics.addMesh(floor);
-
       // footer_scene camera
 
-      footer_scene.camera.position.set(0, 3, 2.5);
-      footer_scene.camera.lookAt(0, 0, 0);
-      footer_scene.camera.rotation.x = -0.5;
-      footer_scene.camera.rotation.y = 0;
+      footer_scene.camera.position.set(0, 4, 2);
+      footer_scene.camera.lookAt(0, 0, 2);
+      footer_scene.camera.rotation.x = 0;
+      footer_scene.camera.rotation.y = 1;
       footer_scene.camera.rotation.z = 0;
 
       // GUI
 
-      var gui = new GUI();
-      const footerCameraFolder = gui.addFolder('Footer Camera');
-      footerCameraFolder
-        .add(footer_scene.camera.position, 'y', 0, 10)
-        .name('camera y');
-      footerCameraFolder
-        .add(footer_scene.camera.position, 'x', 0, 10)
-        .name('camera x');
-      footerCameraFolder
-        .add(footer_scene.camera.position, 'z', 0, 10)
-        .name('camera z');
-      footerCameraFolder
-        .add(footer_scene.camera.rotation, 'y', -1, 1)
-        .name('rotation y');
-      footerCameraFolder
-        .add(footer_scene.camera.rotation, 'x', -1, 1)
-        .name('rotation x');
-      footerCameraFolder
-        .add(footer_scene.camera.rotation, 'z', -1, 1)
-        .name('rotation z');
+      //var gui = new GUI();
+      //const footerCameraFolder = gui.addFolder('Footer Camera');
+      //footerCameraFolder
+      //.add(footer_scene.camera.position, 'y', 0, 10)
+      //.name('camera y');
+      //footerCameraFolder
+      //.add(footer_scene.camera.position, 'x', 0, 10)
+      //.name('camera x');
+      //footerCameraFolder
+      //.add(footer_scene.camera.position, 'z', 0, 10)
+      //.name('camera z');
+      //footerCameraFolder
+      //.add(footer_scene.camera.rotation, 'y', -1, 1)
+      //.name('rotation y');
+      //footerCameraFolder
+      //.add(footer_scene.camera.rotation, 'x', -1, 1)
+      //.name('rotation x');
+      //footerCameraFolder
+      //.add(footer_scene.camera.rotation, 'z', -1, 1)
+      //.name('rotation z');
 
       // const flowControlFolder = gui.addFolder('FlowControl');
 
@@ -289,6 +281,14 @@ export class Animation extends Component {
       document.body.appendChild(renderer.domElement);
       const stats = new Stats();
 
+      const footer_controls = new OrbitControls(
+        footer_scene.camera,
+        renderer.domElement
+      );
+      //footer_controls.autoRotate = true;
+      //footer_controls.autoRotateSpeed = 10;
+
+      footer_controls.update();
       const raycaster = new THREE.Raycaster();
       const mouse = new THREE.Vector2();
 
@@ -354,7 +354,7 @@ export class Animation extends Component {
         }
 
         resetBoxes(hero_scene, 2, { x: -0.5, y: 6, z: -0.5 });
-        resetBoxes(footer_scene, 2, { x: -0.5, y: 6, z: -0.5 });
+        resetBoxes(footer_scene, -10, { x: -0.5, y: 6, z: -0.5 });
 
         renderSceneInfo(hero_scene);
         renderSceneInfo(footer_scene);
@@ -369,7 +369,7 @@ export class Animation extends Component {
           renderSceneInfo(portRightScene);
         }
 
-        footer_scene.camera.rotation.z += 0.005;
+        footer_scene.camera.rotation.z += 0.015;
 
         stats.update();
       }
