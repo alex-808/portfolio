@@ -134,15 +134,27 @@ class App extends Component {
             title: 'Hyporeal',
             img: './imgs/mockup_yellow_cropped.png',
             text: (
-              <p>
-                Hyporeal is a <b>Spotify visualizer</b> designed with the
-                intention of improving on the existing Spotify visualizers I had
-                seen by making a more dynamic, memorable and visually appealing
-                experience done through the use of the Spotify <b>Web API</b>{' '}
-                and <b>ThreeJS</b>.
-              </p>
+              <>
+                <p>
+                  Hyporeal is a <b>Spotify visualizer</b> designed with the
+                  intention of improving on the existing Spotify visualizers I
+                  had seen by making a more dynamic, memorable and visually
+                  appealing experience done through the use of the Spotify{' '}
+                  <b>Web API</b> and <b>ThreeJS</b>.
+                </p>
+              </>
             ),
             side_class: 'port_item port_left',
+            links: [
+              {
+                text: 'Github',
+                url: 'www.github.com',
+              },
+              {
+                text: 'Heroku',
+                url: 'www.heroku.com',
+              },
+            ],
           },
           {
             title: 'Game of Ur (with friends)',
@@ -161,6 +173,16 @@ class App extends Component {
               </p>
             ),
             side_class: 'port_item port_right',
+            links: [
+              {
+                text: 'Github',
+                url: 'www.github.com',
+              },
+              {
+                text: 'Heroku',
+                url: 'www.heroku.com',
+              },
+            ],
           },
           {
             title: 'Camera Obscura',
@@ -173,9 +195,19 @@ class App extends Component {
               </p>
             ),
             side_class: 'port_item port_left',
+            links: [
+              {
+                text: 'Github',
+                url: 'www.github.com',
+              },
+              {
+                text: 'Heroku',
+                url: 'www.heroku.com',
+              },
+            ],
           },
           {
-            title: 'Project Title',
+            title: 'Portfolio Website',
             img: './imgs/mockup_yellow_cropped.png',
             text: (
               <p>
@@ -185,6 +217,16 @@ class App extends Component {
               </p>
             ),
             side_class: 'port_item port_right',
+            links: [
+              {
+                text: 'Github',
+                url: 'www.github.com',
+              },
+              {
+                text: 'Heroku',
+                url: 'www.heroku.com',
+              },
+            ],
           },
         ],
       },

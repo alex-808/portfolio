@@ -15,6 +15,7 @@ export class PortfolioItem extends Component {
     }
   }
   render() {
+    console.log(this.props);
     return (
       <div data-aos={`slide-${this.slideDir}`} className="proj_container">
         <div className="proj_box_img"></div>
@@ -30,6 +31,9 @@ export class PortfolioItem extends Component {
             <div className="proj_img_tab"></div>
           </div>
           <div className="proj_text">{this.props.project.text}</div>
+          {this.props.project.links.map((link) => (
+            <a href={link.url}>{link.text}</a>
+          ))}
         </div>
         <div className="port_divider"></div>
         <div className={`proj_animation_${this.slideDir}`}></div>

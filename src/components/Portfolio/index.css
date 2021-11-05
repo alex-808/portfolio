@@ -38,7 +38,7 @@
 }
 
 .port_item {
-  padding: 1em 0em;
+  padding: 4em 0em;
   width: 80%;
   margin: auto;
   background: white;
@@ -128,6 +128,11 @@
   margin: 4em;
 }
 
+a {
+  padding-left: 4em;
+  color: black;
+}
+
 @media only screen and (min-width: 600px) {
   .port_container {
     flex-direction: row;
@@ -166,7 +171,7 @@
   .proj_text {
     padding-left: 4em;
     padding-right: 4em;
-    padding-bottom: 3em;
+    padding-bottom: 2em;
     padding-top: 4em;
   }
 }
