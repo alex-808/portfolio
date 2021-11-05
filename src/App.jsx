@@ -148,11 +148,11 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'www.github.com',
+                url: 'https://www.github.com',
               },
               {
                 text: 'Heroku',
-                url: 'www.heroku.com',
+                url: 'https://www.heroku.com',
               },
             ],
           },
@@ -176,33 +176,35 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'www.github.com',
+                url: 'https://www.github.com',
               },
               {
                 text: 'Heroku',
-                url: 'www.heroku.com',
+                url: 'https://www.heroku.com',
               },
             ],
           },
           {
-            title: 'Camera Obscura',
+            title: 'Camera Obscura (In Progress)',
             img: './imgs/mockup_yellow_cropped.png',
             text: (
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                nibh magna, condimentum non pulvinar nec, semper vel ipsum.
-                Nulla facilisi. Suspendisse potent
+                Camera Obscura is a data visualization project written with{' '}
+                <b>React </b> and <b>Chart.js</b> designed to give users an
+                overview of the musical lives via the Spotify Web API. It allows
+                users to select playlists that they have added music to and then
+                explore how their taste and interests has changed over time.
               </p>
             ),
             side_class: 'port_item port_left',
             links: [
               {
                 text: 'Github',
-                url: 'www.github.com',
+                url: 'https://www.github.com',
               },
               {
                 text: 'Heroku',
-                url: 'www.heroku.com',
+                url: 'https://www.heroku.com',
               },
             ],
           },
@@ -211,20 +213,18 @@ class App extends Component {
             img: './imgs/mockup_yellow_cropped.png',
             text: (
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                nibh magna, condimentum non pulvinar nec, semper vel ipsum.
-                Nulla facilisi. Suspendisse potent
+                This website was written using React and ThreeJS. It was
+                designed in Figma and is deployed via Netlify. An interesting
+                feature of the site is that it leverages serverless
+                functionality offered by the Netlify platform to handle the
+                sending of emails to me via the contact form below.
               </p>
             ),
             side_class: 'port_item port_right',
             links: [
               {
                 text: 'Github',
-                url: 'www.github.com',
-              },
-              {
-                text: 'Heroku',
-                url: 'www.heroku.com',
+                url: 'https://www.github.com/',
               },
             ],
           },
