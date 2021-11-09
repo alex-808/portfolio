@@ -164,12 +164,10 @@ class App extends Component {
                 Game of Ur (with friends) is{' '}
                 <b>a real-time online multiplayer board game</b> written in{' '}
                 <b>TypeScript</b> and based on a similar game played in
-                Mesopotamia over 4000 years ago. A local multiplayer version was
-                my mom's favorite project of mine so I created this version to
-                allow us to play with her in Wisconsin and me in San Diego. It
-                uses <b>Socket.io</b>, a real-time bi-directional communication
-                library to share and update game state between players and the
-                server written in <b>Node.js</b>
+                Mesopotamia over 4000 years ago. It uses <b>Socket.io</b>, a
+                real-time bi-directional communication library to share and
+                update game state between players and the server running{' '}
+                <b>Node.js.</b>
               </p>
             ),
             side_class: 'port_item port_right',
@@ -190,10 +188,11 @@ class App extends Component {
             text: (
               <p>
                 Camera Obscura is a data visualization project written with{' '}
-                <b>React </b> and <b>Chart.js</b> designed to give users an
-                overview of the musical lives via the Spotify Web API. It allows
-                users to select playlists that they have added music to and then
-                explore how their taste and interests has changed over time.
+                <b>React </b> and <b>Chart.js</b> designed to allow users to
+                analyze their musical lives via the Spotify Web API. Users
+                select playlists that they have added music to and then can
+                visually explore how their taste and interests has changed over
+                time.
               </p>
             ),
             side_class: 'port_item port_left',
