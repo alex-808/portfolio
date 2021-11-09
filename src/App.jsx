@@ -246,7 +246,7 @@ class App extends Component {
         ),
       },
       footer: {
-        cta: 'Get in touch',
+        cta: ' ',
         social_icons: [
           {
             img: './imgs/GitHub-Mark-120px-plus.png',
