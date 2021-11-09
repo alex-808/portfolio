@@ -23,7 +23,9 @@ export class PortfolioItem extends Component {
           <div className="proj_title_container">
             <h3 className="proj_title">{this.props.project.title}</h3>
             <div className="port_accent_container">
-              <div className="port_accent"></div>
+              <div
+                className={`port_accent-${this.props.project.accentColor}`}
+              ></div>
             </div>
           </div>
           <div className="proj_img_container">

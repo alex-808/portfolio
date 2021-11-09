@@ -145,6 +145,7 @@ class App extends Component {
               </>
             ),
             side_class: 'port_item port_left',
+            accentColor: 'main',
             links: [
               {
                 text: 'Github',
@@ -158,7 +159,7 @@ class App extends Component {
           },
           {
             title: 'Game of Ur (with friends)',
-            img: './imgs/mockup_yellow_cropped.png',
+            img: './imgs/Game_Of_Ur_Blue.png',
             text: (
               <p>
                 Game of Ur (with friends) is{' '}
@@ -171,31 +172,7 @@ class App extends Component {
               </p>
             ),
             side_class: 'port_item port_right',
-            links: [
-              {
-                text: 'Github',
-                url: 'https://www.github.com',
-              },
-              {
-                text: 'Heroku',
-                url: 'https://www.heroku.com',
-              },
-            ],
-          },
-          {
-            title: 'Camera Obscura (In Progress)',
-            img: './imgs/mockup_yellow_cropped.png',
-            text: (
-              <p>
-                Camera Obscura is a data visualization project written with{' '}
-                <b>React </b> and <b>Chart.js</b> designed to allow users to
-                analyze their musical lives via the Spotify Web API. Users
-                select playlists that they have added music to and then can
-                visually explore how their taste and interests has changed over
-                time.
-              </p>
-            ),
-            side_class: 'port_item port_left',
+            accentColor: 'secondary',
             links: [
               {
                 text: 'Github',
@@ -209,21 +186,48 @@ class App extends Component {
           },
           {
             title: 'Portfolio Website',
-            img: './imgs/mockup_yellow_cropped.png',
+            img: './imgs/Portfolio_Mockup_Blue.png',
             text: (
               <p>
-                This website was written using React and ThreeJS. It was
-                designed in Figma and is deployed via Netlify. An interesting
-                feature of the site is that it leverages serverless
-                functionality offered by the Netlify platform to handle the
-                sending of emails to me via the contact form below.
+                This website was written using <b>React and ThreeJS</b>. It was
+                designed in <b>Figma</b> and is deployed via Netlify. An
+                interesting feature of the site is that it leverages{' '}
+                <b>serverless functions</b> offered by the Netlify platform to
+                handle the sending of emails to me via the contact form below.
               </p>
             ),
-            side_class: 'port_item port_right',
+            side_class: 'port_item port_left',
+            accentColor: 'secondary',
             links: [
               {
                 text: 'Github',
                 url: 'https://www.github.com/',
+              },
+            ],
+          },
+          {
+            title: 'Camera Obscura (In Progress)',
+            img: './imgs/Camera_Obscura_Mockup.png',
+            text: (
+              <p>
+                Camera Obscura is a <b>data visualization</b> project written
+                with <b>React </b> and <b>Chart.js</b> designed to allow users
+                to analyze their musical lives via the Spotify Web API. Users
+                select playlists that they have added music to and then can
+                visually explore how their taste and interests has changed over
+                time.
+              </p>
+            ),
+            side_class: 'port_item port_right',
+            accentColor: 'main',
+            links: [
+              {
+                text: 'Github',
+                url: 'https://www.github.com',
+              },
+              {
+                text: 'Heroku',
+                url: 'https://www.heroku.com',
               },
             ],
           },

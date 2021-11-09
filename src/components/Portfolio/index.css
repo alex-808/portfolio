@@ -57,7 +57,20 @@
   flex: 1;
 }
 
-.port_accent {
+.port_accent-main {
+  position: relative;
+  right: 0em;
+  top: 0%;
+  display: inline-block;
+
+  padding: 30% 15%;
+
+  background-color: var(--accent_color_main);
+  box-shadow: 13px 14px 10px rgba(0, 0, 0, 0.25);
+  transform: rotate(135deg);
+}
+
+.port_accent-secondary {
   position: relative;
   right: 0em;
   top: 0%;
