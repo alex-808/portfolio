@@ -132,7 +132,7 @@ class App extends Component {
         projects: [
           {
             title: 'Hyporeal',
-            img: './imgs/mockup_yellow_cropped.png',
+            img: './imgs/mockup_yellow_cropped.jpg',
             text: (
               <>
                 <p>
@@ -155,7 +155,7 @@ class App extends Component {
           },
           {
             title: 'Game of Ur (with friends)',
-            img: './imgs/Game_Of_Ur_Blue.png',
+            img: './imgs/Game_Of_Ur_Blue.jpg',
             text: (
               <p>
                 Game of Ur (with friends) is{' '}
@@ -178,7 +178,7 @@ class App extends Component {
           },
           {
             title: 'Portfolio Website',
-            img: './imgs/Portfolio_Mockup_Blue.png',
+            img: './imgs/Portfolio_Mockup_Blue.jpg',
             text: (
               <p>
                 This website was written using <b>React and ThreeJS</b>. It was
@@ -199,7 +199,7 @@ class App extends Component {
           },
           {
             title: 'Camera Obscura (In Progress)',
-            img: './imgs/Camera_Obscura_Mockup.png',
+            img: './imgs/Camera_Obscura_Mockup.jpg',
             text: (
               <p>
                 Camera Obscura is a <b>data visualization</b> project written
