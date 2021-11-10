@@ -8,17 +8,31 @@ const ContactForm = () => {
     email: '',
     message: '',
   });
-
   const [messageSent, setMessageSent] = useState(false);
+  const [formErrorMsg, setFormErrorMsg] = useState('');
 
   const dispatchEmail = async (e, msg) => {
     e.preventDefault();
+    const isValidEmail = validateEmail(formData.email);
+
+    if (!isValidEmail) {
+      setFormErrorMsg('Invalid Email');
+      return;
+    }
+
     setMessageSent(true);
 
-    console.log(formData);
-    const res = await axios.post('.netlify/functions/email', formData);
+    try {
+      const res = await axios.post('.netlify/functions/email', formData);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-    console.log(res);
+  const validateEmail = (string) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(string);
   };
 
   const updateFormData = (e) => {
@@ -55,7 +69,7 @@ const ContactForm = () => {
       <label>
         Email:
         <input
-          type="text"
+          type="email"
           defaultValue={formData.email}
           name="email"
           placeholder="jamiesmith@gmail.com"
@@ -73,6 +87,7 @@ const ContactForm = () => {
         />
       </label>
       <input className="submit-btn" type="submit" value="Submit" />
+      <div>{formErrorMsg}</div>
     </form>
   );
 };
