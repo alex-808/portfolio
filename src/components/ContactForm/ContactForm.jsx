@@ -45,11 +45,22 @@ const ContactForm = () => {
       <h2>Contact Form</h2>
       <label>
         Name:
-        <input type="text" defaultValue={formData.name} name="name" />
+        <input
+          type="text"
+          defaultValue={formData.name}
+          name="name"
+          placeholder="Jamie Smith"
+        />
       </label>
       <label>
         Email:
-        <input type="text" defaultValue={formData.email} name="email" />
+        <input
+          type="text"
+          defaultValue={formData.email}
+          name="email"
+          placeholder="jamiesmith@gmail.com"
+          required
+        />
       </label>
       <label>
         <div> Message:</div>
@@ -57,6 +68,8 @@ const ContactForm = () => {
           type="textarea"
           defaultValue={formData.message}
           name="message"
+          placeholder="I like your site!"
+          required
         />
       </label>
       <input className="submit-btn" type="submit" value="Submit" />
