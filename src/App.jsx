@@ -149,7 +149,7 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'https://www.github.com/alex-808',
+                url: 'https://www.github.com/alex-808/hyporeal-visualizer',
               },
             ],
           },
