@@ -149,11 +149,7 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'https://www.github.com',
-              },
-              {
-                text: 'Heroku',
-                url: 'https://www.heroku.com',
+                url: 'https://www.github.com/alex-808',
               },
             ],
           },
@@ -176,11 +172,7 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'https://www.github.com',
-              },
-              {
-                text: 'Heroku',
-                url: 'https://www.heroku.com',
+                url: 'https://www.github.com/alex-808/game-of-ur-with-friends',
               },
             ],
           },
@@ -201,7 +193,7 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'https://www.github.com/',
+                url: 'https://www.github.com/alex-808/portfolio',
               },
             ],
           },
@@ -223,11 +215,7 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'https://www.github.com',
-              },
-              {
-                text: 'Heroku',
-                url: 'https://www.heroku.com',
+                url: 'https://www.github.com/alex-808/camera-obscura',
               },
             ],
           },
@@ -246,11 +234,11 @@ class App extends Component {
         ),
       },
       footer: {
-        cta: ' ',
+        cta: '',
         social_icons: [
           {
             img: './imgs/GitHub-Mark-120px-plus.png',
-            link: 'https://github.com/alex-davis-808',
+            link: 'https://github.com/alex-808',
           },
         ],
       },
