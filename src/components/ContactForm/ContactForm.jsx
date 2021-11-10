@@ -9,8 +9,11 @@ const ContactForm = () => {
     message: '',
   });
 
+  const [messageSent, setMessageSent] = useState(false);
+
   const dispatchEmail = async (e, msg) => {
     e.preventDefault();
+    setMessageSent(true);
 
     console.log(formData);
     const res = await axios.post('.netlify/functions/email', formData);
@@ -23,6 +26,15 @@ const ContactForm = () => {
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
+
+  if (messageSent) {
+    return (
+      <div className="message-sent contact-form">
+        <h1>Message sent!</h1>
+        Thank you, I will get back to you soon.
+      </div>
+    );
+  }
 
   return (
     <form
