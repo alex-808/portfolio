@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import DOMPurify from 'dompurify';
 import axios from 'axios';
 import './index.css';
 
@@ -11,7 +12,7 @@ const ContactForm = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [formErrorMsg, setFormErrorMsg] = useState('');
 
-  const dispatchEmail = async (e, msg) => {
+  const dispatchEmail = async (e) => {
     e.preventDefault();
     const isValidEmail = validateEmail(formData.email);
 
@@ -20,10 +21,14 @@ const ContactForm = () => {
       return;
     }
 
+    const sanitized = sanitizeFormData(formData);
+    console.log(formData);
+    console.log(sanitized);
+
     setMessageSent(true);
 
     try {
-      const res = await axios.post('.netlify/functions/email', formData);
+      const res = await axios.post('.netlify/functions/email', sanitized);
       console.log(res);
     } catch (err) {
       console.log(err);
@@ -39,6 +44,14 @@ const ContactForm = () => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const sanitizeFormData = (formData) => {
+    const sanitized = {};
+    for (let [key, value] of Object.entries(formData)) {
+      sanitized[key] = DOMPurify.sanitize(value);
+    }
+    return sanitized;
   };
 
   if (messageSent) {
