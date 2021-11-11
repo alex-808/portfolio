@@ -22,8 +22,6 @@ const ContactForm = () => {
     }
 
     const sanitized = sanitizeFormData(formData);
-    console.log(formData);
-    console.log(sanitized);
 
     setMessageSent(true);
 

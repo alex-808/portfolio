@@ -319,11 +319,12 @@ export class Animation extends Component {
 
       function resizeRendererToDisplaySize(renderer) {
         const canvas = renderer.domElement;
-        const width = canvas.clientWidth;
-        const height = canvas.clientHeight;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
         const needResize = canvas.width !== width || canvas.height !== height;
         if (needResize) {
-          renderer.setSize(width, height, false);
+          renderer.setSize(width, height);
         }
         return needResize;
       }
@@ -376,7 +377,7 @@ export class Animation extends Component {
     }
   }
   render() {
-    return <div></div>;
+    return <></>;
   }
 }
 
