@@ -94,25 +94,24 @@ class App extends Component {
                   <li>Modern CSS</li>
                   <li>React.js</li>
                   <li>Sass</li>
-                  <li>OAuth</li>
+                  <li>JSS</li>
                 </ul>
                 <b>Backend:</b>
                 <ul className="skills-list">
                   <li>Node.js</li>
                   <li>Express.js</li>
-                  <li>SQL</li>
                 </ul>
                 <b>Tooling:</b>
                 <ul className="skills-list">
                   <li>Git/Github</li>
                   <li>Figma Design and Prototyping</li>
+                  <li>Storybook</li>
                   <li>Jest</li>
                 </ul>
                 <b>Programming Concepts:</b>
                 <ul className="skills-list">
                   <li>Algorithms and Data Structures</li>
                   <li>Testing</li>
-                  <li>Agile Development</li>
                   <li>Networks</li>
                   <li>OOP</li>
                   <li>Authetication</li>
@@ -151,6 +150,10 @@ class App extends Component {
                 text: 'Github',
                 url: 'https://www.github.com/alex-808/hyporeal-visualizer',
               },
+              {
+                text: 'Full Write-up',
+                url: 'https://github.com/alex-808/write-ups/blob/master/Hyporeal.md',
+              },
             ],
           },
           {
@@ -174,6 +177,10 @@ class App extends Component {
                 text: 'Github',
                 url: 'https://www.github.com/alex-808/game-of-ur-with-friends',
               },
+              {
+                text: 'Full Write-up',
+                url: 'https://github.com/alex-808/write-ups/blob/master/Game-of-Ur-with-Friends.md',
+              },
             ],
           },
           {
@@ -194,6 +201,10 @@ class App extends Component {
               {
                 text: 'Github',
                 url: 'https://www.github.com/alex-808/portfolio',
+              },
+              {
+                text: 'Full Write-up',
+                url: 'https://github.com/alex-808/write-ups/blob/master/Portfolio-Site.md',
               },
             ],
           },

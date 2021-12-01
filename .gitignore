@@ -27,3 +27,6 @@ attributions.txt
 *.swp
 sendgrid.env
 
+
+# Local Netlify folder
+.netlify
