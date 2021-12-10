@@ -157,14 +157,13 @@ class App extends Component {
             ],
           },
           {
-            title: 'Game of Ur (with friends)',
+            title: 'Ur.io',
             img: './imgs/Game_Of_Ur_Blue.jpg',
             text: (
               <p>
-                Game of Ur (with friends) is{' '}
-                <b>a real-time online multiplayer board game</b> written in{' '}
-                <b>TypeScript</b> and based on a similar game played in
-                Mesopotamia over 4000 years ago. It uses <b>Socket.io</b>, a
+                Ur.io is <b>a real-time online multiplayer board game</b>{' '}
+                written in <b>TypeScript</b> and based on a similar game played
+                in Mesopotamia over 4000 years ago. It uses <b>Socket.io</b>, a
                 real-time bi-directional communication library to share and
                 update game state between players and the server running{' '}
                 <b>Node.js.</b>
@@ -175,11 +174,11 @@ class App extends Component {
             links: [
               {
                 text: 'Github',
-                url: 'https://www.github.com/alex-808/game-of-ur-with-friends',
+                url: 'https://www.github.com/alex-808/ur.io',
               },
               {
                 text: 'Full Write-up',
-                url: 'https://github.com/alex-808/write-ups/blob/master/Game-of-Ur-with-Friends.md',
+                url: 'https://github.com/alex-808/write-ups/blob/master/Ur.io.md',
               },
             ],
           },
