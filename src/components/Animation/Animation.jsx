@@ -7,29 +7,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GUI } from 'three/examples/jsm/libs/dat.gui.module';
 export class Animation extends Component {
   componentDidMount() {
+    const stats = new Stats();
+    document.body.appendChild(stats.dom);
+
     var hero_boxcount = 110;
     var port_boxcount = 60;
     var footer_boxcount = 40;
 
     init();
-
-    window.addEventListener('mousemove', onMouseMove);
-    function onMouseMove(event) {
-      // current sticking point: the z-index of the animations are -2 so the event doesn't reach them
-      //if (event.target !== heroDiv && event.target !== footerDiv) return;
-      //console.log('yes');
-      //const { left, right, top, bottom, width, height } =
-      //elem.getBoundingClientRect();
-      //if (
-      //event.clientX > right ||
-      //event.clientX < left ||
-      //event.clientY > top ||
-      //event.clientY < bottom
-      //)
-      //return;
-      //mouse.x = (event.clientX / width) * 2 - 1;
-      //mouse.y = (event.clientY / height) * 2 + 1;
-    }
 
     async function init() {
       let physics = await AmmoPhysics();
@@ -53,9 +38,6 @@ export class Animation extends Component {
       }
 
       const hero_scene = setupScene(document.querySelector('.hero_animation'));
-      document
-        .querySelector('.hero_animation')
-        .addEventListener('mousemove', onMouseMove, false);
 
       const portRightDivs = document.querySelectorAll('.proj_animation_left');
       const portLeftDivs = document.querySelectorAll('.proj_animation_right');
@@ -209,63 +191,6 @@ export class Animation extends Component {
       footer_scene.camera.rotation.y = 1;
       footer_scene.camera.rotation.z = 0;
 
-      // GUI
-
-      //var gui = new GUI();
-      //const footerCameraFolder = gui.addFolder('Footer Camera');
-      //footerCameraFolder
-      //.add(footer_scene.camera.position, 'y', 0, 10)
-      //.name('camera y');
-      //footerCameraFolder
-      //.add(footer_scene.camera.position, 'x', 0, 10)
-      //.name('camera x');
-      //footerCameraFolder
-      //.add(footer_scene.camera.position, 'z', 0, 10)
-      //.name('camera z');
-      //footerCameraFolder
-      //.add(footer_scene.camera.rotation, 'y', -1, 1)
-      //.name('rotation y');
-      //footerCameraFolder
-      //.add(footer_scene.camera.rotation, 'x', -1, 1)
-      //.name('rotation x');
-      //footerCameraFolder
-      //.add(footer_scene.camera.rotation, 'z', -1, 1)
-      //.name('rotation z');
-
-      // const flowControlFolder = gui.addFolder('FlowControl');
-
-      // flowControlFolder
-      //     .add(flowControl.position, 'x', 0, 10)
-      //     .name('flowControl x');
-      // flowControlFolder
-      //     .add(flowControl.position, 'z', 0, 10)
-      //     .name('flowControl z');
-      // flowControlFolder
-      //     .add(flowControl.rotation, 'y', 0, 10)
-      //     .name('fc rotation y');
-      // flowControlFolder
-      //     .add(flowControl.rotation, 'x', 8, 11)
-      //     .name('fc rotation x');
-      // flowControlFolder
-      //     .add(flowControl.rotation, 'z', 0, 10)
-      //     .name('fc rotation z');
-
-      // flowControlFolder
-      //     .add(flowControl2.position, 'x', 0, 10)
-      //     .name('flowControl2 x');
-      // flowControlFolder
-      //     .add(flowControl2.position, 'z', 0, 10)
-      //     .name('flowControl2 z');
-      // flowControlFolder
-      //     .add(flowControl2.rotation, 'y', 0, 10)
-      //     .name('fc2 rotation y');
-      // flowControlFolder
-      //     .add(flowControl2.rotation, 'x', 8, 11)
-      //     .name('fc2 rotation x');
-      // flowControlFolder
-      //     .add(flowControl2.rotation, 'z', 0, 10)
-      //     .name('fc2 rotation z');
-
       // Renderer
 
       const canvas = document.getElementById('main_canvas');
@@ -279,18 +204,13 @@ export class Animation extends Component {
       renderer.shadowMap.enabled = true;
       renderer.outputEncoding = THREE.sRGBEncoding;
       document.body.appendChild(renderer.domElement);
-      const stats = new Stats();
 
       const footer_controls = new OrbitControls(
         footer_scene.camera,
         renderer.domElement
       );
-      //footer_controls.autoRotate = true;
-      //footer_controls.autoRotateSpeed = 10;
 
       footer_controls.update();
-      const raycaster = new THREE.Raycaster();
-      const mouse = new THREE.Vector2();
 
       function renderSceneInfo(sceneInfo) {
         const { scene, camera, elem } = sceneInfo;
