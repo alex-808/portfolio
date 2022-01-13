@@ -4,11 +4,11 @@ import { AmmoPhysics } from './AmmoPhysics';
 import * as shaders from './shaders';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GUI } from 'three/examples/jsm/libs/dat.gui.module';
+
 export class Animation extends Component {
   componentDidMount() {
     const stats = new Stats();
-    document.body.appendChild(stats.dom);
+    //document.body.appendChild(stats.dom);
 
     var hero_boxcount = 110;
     var port_boxcount = 60;
