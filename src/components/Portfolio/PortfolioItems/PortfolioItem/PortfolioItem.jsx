@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import './index.css';
 
 export class PortfolioItem extends Component {
   constructor(props) {
@@ -15,7 +14,6 @@ export class PortfolioItem extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div data-aos={`slide-${this.slideDir}`} className="proj_container">
         <div className="proj_box_img"></div>

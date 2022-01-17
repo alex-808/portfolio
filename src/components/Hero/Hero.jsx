@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import './index.css';
 
 export class Hero extends Component {
   constructor(props) {

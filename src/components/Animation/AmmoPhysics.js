@@ -4,7 +4,6 @@ async function AmmoPhysics() {
     return;
   }
 
-  console.log('AMMO');
   const AmmoLib = await Ammo(); // eslint-disable-line no-undef
 
   const frameRate = 60;

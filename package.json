@@ -44,6 +44,15 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
     "aos": "^2.3.4"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!three)"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css)$": "<rootDir>/CSSStub.js"
+    }
   }
 }
