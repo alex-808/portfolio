@@ -7,7 +7,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 export class Animation extends Component {
   componentDidMount() {
-    const stats = new Stats();
+    //const stats = new Stats();
     //document.body.appendChild(stats.dom);
 
     var hero_boxcount = 110;
@@ -165,7 +165,7 @@ export class Animation extends Component {
         addSceneBoxes(portRightScene, port_boxcount);
       }
 
-      function addSceneBoxes(scene, boxCount) {
+      async function addSceneBoxes(scene, boxCount) {
         const boxes = [];
         let box;
         for (let i = 0; i < boxCount; i++) {
@@ -261,7 +261,7 @@ export class Animation extends Component {
         renderer.clear();
         renderer.setScissorTest(true);
 
-        function resetBoxes(scene, resetY, newPos) {
+        async function resetBoxes(scene, resetY, newPos) {
           for (let i = 0; i < scene.boxes.length; i++) {
             if (scene.boxes[i].position.y < resetY) {
               position.set(
@@ -292,7 +292,7 @@ export class Animation extends Component {
 
         footer_scene.camera.rotation.z += 0.015;
 
-        stats.update();
+        //stats.update();
       }
     }
   }
