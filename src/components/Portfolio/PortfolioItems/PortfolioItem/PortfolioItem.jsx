@@ -31,8 +31,10 @@ export class PortfolioItem extends Component {
             <div className="proj_img_tab"></div>
           </div>
           <div className="proj_text">{this.props.project.text}</div>
-          {this.props.project.links.map((link) => (
-            <a href={link.url}>{link.text}</a>
+          {this.props.project.links.map((link, i) => (
+            <a href={link.url} key={i}>
+              {link.text}
+            </a>
           ))}
         </div>
         <div className="port_divider"></div>
