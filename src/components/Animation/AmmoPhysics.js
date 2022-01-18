@@ -1,10 +1,5 @@
 import { default as Ammo } from 'ammo.js/builds/ammo';
 async function AmmoPhysics() {
-  //if ('Ammo' in window === false) {
-  //console.error("AmmoPhysics: Couldn't find Ammo.js");
-  //return;
-  //}
-
   const AmmoLib = await Ammo(); // eslint-disable-line no-undef
 
   const frameRate = 60;

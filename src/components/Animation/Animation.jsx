@@ -17,7 +17,8 @@ export class Animation extends Component {
     init();
 
     async function init() {
-      let physics = await AmmoPhysics();
+      let physics;
+      physics = await AmmoPhysics();
 
       //Scenes
 
@@ -165,7 +166,7 @@ export class Animation extends Component {
         addSceneBoxes(portRightScene, port_boxcount);
       }
 
-      async function addSceneBoxes(scene, boxCount) {
+      function addSceneBoxes(scene, boxCount) {
         const boxes = [];
         let box;
         for (let i = 0; i < boxCount; i++) {
@@ -261,7 +262,7 @@ export class Animation extends Component {
         renderer.clear();
         renderer.setScissorTest(true);
 
-        async function resetBoxes(scene, resetY, newPos) {
+        function resetBoxes(scene, resetY, newPos) {
           for (let i = 0; i < scene.boxes.length; i++) {
             if (scene.boxes[i].position.y < resetY) {
               position.set(
