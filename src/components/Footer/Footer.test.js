@@ -13,7 +13,7 @@ afterEach(() => {
   container = null;
 });
 
-test('Footer links to Github', () => {
+test('Footer accepts and renders social links', () => {
   const { getByRole } = render(
     <Footer
       footer={{
@@ -30,6 +30,25 @@ test('Footer links to Github', () => {
   );
   expect(getByRole('link').getAttribute('href')).toBe('www.github.com');
 });
+
+test('Footer accepts and renders social imgs', () => {
+  const { getByRole } = render(
+    <Footer
+      footer={{
+        cta: '',
+        social_icons: [
+          {
+            img: './img.jpg',
+            link: null,
+          },
+        ],
+      }}
+    />,
+    container
+  );
+  expect(getByRole('img').getAttribute('src')).toBe('./img.jpg');
+});
+
 test('cta prop sets cta text', () => {
   const { getByText } = render(
     <Footer
@@ -42,4 +61,8 @@ test('cta prop sets cta text', () => {
   );
 
   getByText('Call to Action');
+});
+
+test('Footer can handle no cta or social icons', () => {
+  render(<Footer />, container);
 });
