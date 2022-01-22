@@ -260,7 +260,7 @@ class App extends Component {
         <main>
           <canvas id="main_canvas"></canvas>
           <Hero hero={this.state.hero} />
-          <Specializations spec={this.state.spec} />
+          <Specializations items={this.state.spec.items} />
           <Portfolio port={this.state.port} />
           <AboutMe about_me={this.state.about_me} />
           <Footer footer={this.state.footer} />
