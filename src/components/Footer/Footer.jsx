@@ -3,7 +3,7 @@ import SocialIcons from './SocialIcons/SocialIcons';
 
 const Footer = ({ footer = { cta: '', social_icons: [] } }) => {
   return (
-    <section className="footer_section">
+    <section data-testid="footer" className="footer_section">
       <div className="footer_accent">{footer.cta}</div>
       <div className="social_icons">
         <SocialIcons social_icons={footer.social_icons} />
