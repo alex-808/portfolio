@@ -3,6 +3,19 @@ import DOMPurify from 'dompurify';
 import axios from 'axios';
 import './index.css';
 
+const sanitizeFormData = (formData) => {
+  const sanitized = {};
+  for (let [key, value] of Object.entries(formData)) {
+    sanitized[key] = DOMPurify.sanitize(value);
+  }
+  return sanitized;
+};
+
+const validateEmail = (string) => {
+  const regex = /\S+@\S+\.\S+/;
+  return regex.test(string);
+};
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -33,23 +46,10 @@ const ContactForm = () => {
     }
   };
 
-  const validateEmail = (string) => {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(string);
-  };
-
   const updateFormData = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const sanitizeFormData = (formData) => {
-    const sanitized = {};
-    for (let [key, value] of Object.entries(formData)) {
-      sanitized[key] = DOMPurify.sanitize(value);
-    }
-    return sanitized;
   };
 
   if (messageSent) {
@@ -103,4 +103,4 @@ const ContactForm = () => {
   );
 };
 
-export { ContactForm };
+export { ContactForm, sanitizeFormData, validateEmail };
