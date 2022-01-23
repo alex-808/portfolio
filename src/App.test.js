@@ -40,3 +40,7 @@ test('renders Footer component', () => {
   render(<App />, container);
   screen.getByTestId('footer');
 });
+test('canvas element is rendered', () => {
+  render(<App />, container);
+  screen.getByTestId('canvas');
+});

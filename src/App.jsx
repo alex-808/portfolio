@@ -258,7 +258,7 @@ class App extends Component {
     return (
       <div className="App">
         <main>
-          <canvas id="main_canvas"></canvas>
+          <canvas data-testid="canvas" id="main_canvas"></canvas>
           <Hero hero={this.state.hero} test />
           <Specializations items={this.state.spec.items} />
           <Portfolio port={this.state.port} />
