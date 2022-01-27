@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as ReactDOM from 'react-dom';
 import AboutMe from './AboutMe';
 
@@ -14,14 +14,11 @@ afterEach(() => {
 });
 
 test('Title prop sets heading', () => {
-  const { getByText } = render(
-    <AboutMe about_me={{ title: 'Title' }} />,
-    container
-  );
-  getByText('Title');
+  render(<AboutMe about_me={{ title: 'Title' }} />, container);
+  screen.getByText('Title');
 });
 
-test('Text prop sets heading', () => {
+test('Text prop sets text', () => {
   const { getByText } = render(
     <AboutMe about_me={{ text: 'text' }} />,
     container
