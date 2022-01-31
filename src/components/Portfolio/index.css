@@ -38,7 +38,7 @@
 }
 
 .port_item {
-  padding: 4em 0em;
+  padding: 2em 0em;
   width: 70%;
   margin: auto;
   background: white;
@@ -148,8 +148,14 @@
   margin: 4em;
 }
 
+.proj_links {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 a {
-  padding-left: 4em;
   color: black;
 }
 

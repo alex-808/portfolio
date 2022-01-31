@@ -154,6 +154,10 @@ class App extends Component {
                 text: 'Full Write-up',
                 url: 'https://github.com/alex-808/write-ups/blob/master/Hyporeal.md',
               },
+              {
+                text: 'Demo Video',
+                url: 'https://youtu.be/7cn17OJAH3Y',
+              },
             ],
           },
           {
@@ -179,6 +183,10 @@ class App extends Component {
               {
                 text: 'Full Write-up',
                 url: 'https://github.com/alex-808/write-ups/blob/master/Ur.io.md',
+              },
+              {
+                text: 'Demo Video',
+                url: 'https://youtu.be/_Krkc32Tp_M',
               },
             ],
           },

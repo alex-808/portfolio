@@ -36,12 +36,16 @@ const PortfolioItem = ({
           />
           <div className="proj_img_tab"></div>
         </div>
-        <div className="proj_text">{project.text}</div>
-        {project.links.map((link, i) => (
-          <a href={link.url} key={i}>
-            {link.text}
-          </a>
-        ))}
+        <div className="proj_text">
+          {project.text}
+          <div className="proj_links">
+            {project.links.map((link, i) => (
+              <a href={link.url} key={i}>
+                {link.text}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
       <div className="port_divider"></div>
       <div className={`proj_animation_${slideDir}`}></div>
