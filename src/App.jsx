@@ -1,4 +1,5 @@
 import './App.css';
+import LogRocket from 'logrocket';
 import Hero from './components/Hero/Hero';
 import Specializations from './components/Specializations/Specializations';
 import Portfolio from './components/Portfolio/Portfolio';
@@ -10,6 +11,7 @@ import { Component } from 'react';
 class App extends Component {
   constructor() {
     super();
+    LogRocket.init('oxw2vq/portfolio');
     this.state = {
       hero: {
         title: 'Hello,',
