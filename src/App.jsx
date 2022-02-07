@@ -246,10 +246,10 @@ class App extends Component {
         text: (
           <p>
             I am currently looking for my first full-time position in the tech
-            industry as a full stack web developer. If anything you have seen
-            here interests you or you would like to reach out, feel free to
-            click below or check out my other links to see more info about me.
-            Thanks for visiting!
+            industry as a developer. If anything you have seen here interests
+            you or you would like to reach out, feel free to click below or
+            check out my other links to see more info about me. Thanks for
+            visiting!
           </p>
         ),
       },
