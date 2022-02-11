@@ -24,6 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "jest --coverage",
     "start:lambda": "netlify-lambda serve functions",
     "eject": "react-scripts eject"
   },
