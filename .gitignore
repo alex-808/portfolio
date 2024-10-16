@@ -30,3 +30,5 @@ sendgrid.env
 
 # Local Netlify folder
 .netlify
+
+todo.txt
