@@ -259,8 +259,8 @@ class App extends Component {
                     <p>
                         If anything you have seen here interests you or you
                         would like to reach out, feel free to shoot me an email
-                        at alex@alexdavis.dev or check out my other links to see
-                        more info about me. Thanks for visiting!
+                        at <b>alex@alexdavis.dev</b> or check out my other links
+                        to see more info about me.
                     </p>
                 ),
             },
