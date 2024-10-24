@@ -1,5 +1,5 @@
 import * as ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Footer from './Footer';
 
 let container;
@@ -14,7 +14,7 @@ afterEach(() => {
 });
 
 test('Footer accepts and renders social links', () => {
-    const { getByRole } = render(
+    render(
         <Footer
             footer={{
                 cta: '',
@@ -28,11 +28,13 @@ test('Footer accepts and renders social links', () => {
         />,
         container
     );
-    expect(getByRole('link').getAttribute('href')).toBe('www.github.com');
+    expect(screen.getByRole('link').getAttribute('href')).toBe(
+        'www.github.com'
+    );
 });
 
 test('Footer accepts and renders social imgs', () => {
-    const { getByRole } = render(
+    render(
         <Footer
             footer={{
                 cta: '',
@@ -46,11 +48,11 @@ test('Footer accepts and renders social imgs', () => {
         />,
         container
     );
-    expect(getByRole('img').getAttribute('src')).toBe('./img.jpg');
+    expect(screen.getByRole('img').getAttribute('src')).toBe('./img.jpg');
 });
 
 test('cta prop sets cta text', () => {
-    const { getByText } = render(
+    render(
         <Footer
             footer={{
                 cta: 'Call to Action',
@@ -60,7 +62,7 @@ test('cta prop sets cta text', () => {
         container
     );
 
-    getByText('Call to Action');
+    screen.getByText('Call to Action');
 });
 
 test('Footer can handle no cta or social icons', () => {

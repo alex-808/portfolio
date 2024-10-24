@@ -8,9 +8,10 @@
     },
     "dependencies": {
         "@sendgrid/mail": "^7.5.0",
-        "@testing-library/jest-dom": "^5.11.6",
-        "@testing-library/react": "^11.2.1",
-        "@testing-library/user-event": "^12.2.2",
+        "@testing-library/dom": "^10.4.0",
+        "@testing-library/jest-dom": "^6.6.2",
+        "@testing-library/react": "^16.0.1",
+        "@testing-library/user-event": "^14.5.2",
         "ammo.js": "github:kripken/ammo.js",
         "dompurify": "^3.1.7",
         "logrocket": "^9.0.0",
@@ -29,7 +30,7 @@
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
-        "test:coverage": "jest --coverage",
+        "test:coverage": "react-app-rewired test --coverage",
         "start:lambda": "netlify-lambda serve functions",
         "eject": "react-app-rewired eject"
     },
