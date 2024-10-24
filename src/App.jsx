@@ -18,7 +18,7 @@ class App extends Component {
                 text: (
                     <p>
                         My name is Alex and this is my website. I am a{' '}
-                        <b>self-taught developer</b> excited by the problems and
+                        <b>full stack developer</b> excited by the problems and
                         opportunities of the <b>modern web</b>. Take a look
                         around. Let me know if you see anything you like.{' '}
                         <b>Careful of the cubes.</b>
@@ -33,12 +33,11 @@ class App extends Component {
                         text: (
                             <div>
                                 <p>
-                                    I am a <b>self-taught developer</b>{' '}
-                                    originally from Wisconsin but living in San
-                                    Diego since 2019. Before that I lived in
-                                    Massachusetts where I recieved a{' '}
-                                    <b>B.A. in Communications</b> from{' '}
-                                    <b>Clark University</b>. Grateful to be
+                                    I am a <b>full stack developer</b> based in
+                                    San Diego coding professionally since 2020.
+                                    Before that I lived in Massachusetts where I
+                                    recieved a <b>B.A. in Communications</b>{' '}
+                                    from <b>Clark University</b>. Grateful to be
                                     somewhere warm now.
                                 </p>
                                 <p>
@@ -57,16 +56,16 @@ class App extends Component {
                         title: 'What I do',
                         text: (
                             <ul>
+                                <li>Write code for back end and front end</li>
+                                <li>
+                                    <b>Design sites</b> from scratch
+                                </li>
+                                <li>Implement web pages from designs</li>
                                 <li>
                                     Write <b>tests</b>
                                 </li>
                                 <li>
                                     Build <b>APIs</b>
-                                </li>
-                                <li>Code CSS from designs</li>
-                                <li>Write code for back end and front end</li>
-                                <li>
-                                    <b>Design sites</b> from scratch
                                 </li>
                                 <li>
                                     Consistently <b>expand skillset</b>
@@ -97,16 +96,18 @@ class App extends Component {
                                 </div>
                                 <ul className="skills-list">
                                     <li>JavaScript</li>
+                                    <li>TypeScript</li>
                                     <li>HTML</li>
                                     <li>Modern CSS</li>
                                     <li>React.js</li>
-                                    <li>Sass</li>
-                                    <li>JSS</li>
+                                    <li>Vue</li>
                                 </ul>
                                 <b>Backend:</b>
                                 <ul className="skills-list">
                                     <li>Node.js</li>
                                     <li>Express.js</li>
+                                    <li>Python</li>
+                                    <li>PHP</li>
                                 </ul>
                                 <b>Tooling:</b>
                                 <ul className="skills-list">
@@ -115,19 +116,17 @@ class App extends Component {
                                     <li>Storybook</li>
                                     <li>Jest</li>
                                 </ul>
-                                <b>Programming Concepts:</b>
+                                {/* <b>Programming Concepts:</b>
                                 <ul className="skills-list">
                                     <li>Algorithms and Data Structures</li>
                                     <li>Testing</li>
                                     <li>Networks</li>
                                     <li>OOP</li>
                                     <li>Authetication</li>
-                                </ul>
-                                <b>Other Languages:</b>
-                                <ul className="skills-list">
-                                    <li>TypeScript</li>
-                                    <li>Python</li>
-                                </ul>
+                                </ul> */}
+                                {/* <b>Other Languages:</b> */}
+                                {/* <ul className="skills-list"> */}
+                                {/* </ul> */}
                             </>
                         ),
                     },
